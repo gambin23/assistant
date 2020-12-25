@@ -1,21 +1,36 @@
+import React from "react";
 import { Provider } from "react-redux";
-
-import TransactionsPage from './ui/Transactions';
-import store from "./store/Store";
 import { IntlProvider } from "react-intl";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+
+import store from "./store/Store";
+import TransactionsPage from "./ui/TransactionsPage";
+import AddTransactionPage from "./ui/AddTransactionPage";
 
 function App() {
     return (
         <Provider store={store}>
             <IntlProvider locale="en">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <h1>Assistant</h1>
-                            <TransactionsPage />
-                        </div>
+                <Router>
+                    <ul>
+                        <li>
+                            <Link to="/">Transactions</Link>
+                        </li>
+                        <li>
+                            <Link to="/new">Add Transaction</Link>
+                        </li>
+                    </ul>
+                    <div className="container">
+                        <Switch>
+                            <Route path="/new">
+                                <AddTransactionPage />
+                            </Route>
+                            <Route path="/">
+                                <TransactionsPage />
+                            </Route>
+                        </Switch>
                     </div>
-                </div>
+                </Router>
             </IntlProvider>
         </Provider>
     );
