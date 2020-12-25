@@ -1,4 +1,4 @@
-import Currency from "./utils/Currency";
+import Currency from "./common/Currency";
 import { Transaction } from "../../models/Transaction";
 
 interface ITransactionProps {

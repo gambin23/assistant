@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { PlusSquareFill } from "react-bootstrap-icons";
 
 import { getTransactions } from "../store/Transactions";
-import TransactionsList from "./common/TransactionsList";
+import TransactionsList from "./components/TransactionsList";
 
 const TransactionsPage = () => {
 
