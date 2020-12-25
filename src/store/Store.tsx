@@ -1,9 +1,16 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import transactionsReducer, { TransactionsState } from "./Transactions";
+import { Action, combineReducers, configureStore, getDefaultMiddleware, MiddlewareArray } from "@reduxjs/toolkit";
 
-export default configureStore({
+import transactionsReducer, { TransactionsState } from "./Transactions";
+import categoriesReducer, { CategoriesState } from "./Categories";
+import transactionTypesReducer, { TransactionTypesState } from "./TransactionTypes";
+
+export default configureStore<AppState, Action<any>, MiddlewareArray<any>>({
     reducer: {
-        transactions: transactionsReducer
+        transactions: transactionsReducer,
+        metadata: combineReducers({
+            transactionTypes: transactionTypesReducer,
+            categories: categoriesReducer
+        })
     },
     middleware: getDefaultMiddleware({
         serializableCheck: false
@@ -11,5 +18,9 @@ export default configureStore({
 });
 
 export interface AppState {
-    transactions: TransactionsState
+    transactions: TransactionsState;
+    metadata: {
+        categories: CategoriesState;
+        transactionTypes: TransactionTypesState;
+    }
 }

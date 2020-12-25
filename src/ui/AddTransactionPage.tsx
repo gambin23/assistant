@@ -1,23 +1,24 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
 import classNames from "classnames";
 
 import { Transaction } from "../models/Transaction";
-import { TransactionCategory } from "../models/TransactionCategory";
-import { TransactionType } from "../models/TransactionType";
 import { transactionAdd } from "../store/Transactions";
+import { getCategories } from "../store/Categories";
+import { getTransactionTypes } from "../store/TransactionTypes";
 
 const AddTransactionPage = () => {
     const dispatch = useDispatch();
 
-    let types = Object.keys(TransactionType).filter(x => !isNaN(Number(x)));
-    let categories = Object.keys(TransactionCategory).filter(x => !isNaN(Number(x)));
+    let types = useSelector(getTransactionTypes);
+    let categories = useSelector(getCategories);
 
-    const { register, handleSubmit, errors } = useForm<Transaction>();
+    const { register, handleSubmit, errors, reset } = useForm<Transaction>();
 
     const onSubmit = (transaction: Transaction) => {
+        reset({});
         transaction.id = uuid();
         transaction.date = new Date();
         transaction.currency = "EUR";
@@ -50,10 +51,10 @@ const AddTransactionPage = () => {
                 <label>Type</label>
                 <select name="type" defaultValue=""
                     className={classNames('form-control', { 'is-invalid': errors.type })}
-                    ref={register({ valueAsNumber: true, required: "Type is required" })}>
+                    ref={register({ required: "Type is required" })}>
                     <option value="" disabled>Select…</option>
-                    {types.map(type => (
-                        <option value={type} key={type}>{TransactionType[type as any]}</option>
+                    {Object.keys(types).map(key => (
+                        <option value={key} key={key}>{types[key]}</option>
                     ))}
                 </select>
             </div>
@@ -62,10 +63,10 @@ const AddTransactionPage = () => {
                 <label>Category</label>
                 <select name="category" defaultValue=""
                     className={classNames('form-control', { 'is-invalid': errors.category })}
-                    ref={register({ valueAsNumber: true, required: "Category is required" })}>
+                    ref={register({ required: "Category is required" })}>
                     <option value="" disabled>Select…</option>
-                    {categories.map(category => (
-                        <option value={category} key={category}>{TransactionCategory[category as any]}</option>
+                    {Object.keys(categories).map(key => (
+                        <option value={key} key={key}>{categories[key]}</option>
                     ))}
                 </select>
             </div>

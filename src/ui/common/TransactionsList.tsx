@@ -1,6 +1,5 @@
 import Currency from "./utils/Currency";
 import { Transaction } from "../../models/Transaction";
-import { TransactionType } from "../../models/TransactionType";
 
 interface ITransactionProps {
     transactions: Transaction[];
@@ -17,7 +16,7 @@ const TransactionsList = (props: ITransactionProps) => {
                                 {x.entity}
                             </div>
                             <div className="col-sm-3">
-                                {x.type === TransactionType.Income ? "+" : "-"}
+                                {x.type === "income" ? "+" : "-"}
                                 <Currency value={x.amount} currency={x.currency} />
                             </div>
                         </div>
