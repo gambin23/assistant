@@ -3,7 +3,7 @@ import { Transaction } from './../models/Transaction';
 
 export const mockTransactions: Transaction[] = [{
     id: "transaction-1",
-    date: new Date(),
+    dateCreated: new Date(),
     status: TransactionStatus.Unassigned,
     type: "income",
     category: "salary",
@@ -13,7 +13,7 @@ export const mockTransactions: Transaction[] = [{
 },
 {
     id: "transaction-2",
-    date: new Date(),
+    dateCreated: new Date(),
     status: TransactionStatus.Unassigned,
     type: "income",
     category: "salary",

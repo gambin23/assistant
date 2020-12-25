@@ -5,3 +5,8 @@ body {
 .card {
     border:none;
 }
+
+.caption {
+    font-size:11px;
+    color: darkgray;
+}

@@ -27,3 +27,4 @@ const slice = createSlice({
 export default slice.reducer;
 export const { transactionAdd } = slice.actions;
 export const getTransactions = (state: AppState) => state.transactions.data;
+export const getTransaction = (id: string) => (state: AppState) => state.transactions.data.find( x => x.id === id);

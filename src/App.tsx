@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import store from "./store/Store";
 import TransactionsPage from "./ui/TransactionsPage";
 import AddTransactionPage from "./ui/AddTransactionPage";
+import TransactionPage from "./ui/TransactionPage";
 
 function App() {
     return (
         <Provider store={store}>
-            <IntlProvider locale="en">
+            <IntlProvider locale="en-GB">
                 <Router>
                     <ul>
                         <li>
@@ -22,17 +23,14 @@ function App() {
                     </ul>
                     <div className="container">
                         <Switch>
-                            <Route path="/new">
-                                <AddTransactionPage />
-                            </Route>
-                            <Route path="/">
-                                <TransactionsPage />
-                            </Route>
+                            <Route path="/new" component={AddTransactionPage} />
+                            <Route path="/transaction/:id" component={TransactionPage} />
+                            <Route path="/" component={TransactionsPage} />
                         </Switch>
                     </div>
                 </Router>
             </IntlProvider>
-        </Provider>
+        </Provider >
     );
 }
 

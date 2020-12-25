@@ -1,27 +1,20 @@
-import Currency from "./common/Currency";
-import { Transaction } from "../../models/Transaction";
+import React from "react";
+import { Link } from "react-router-dom";
 
-interface ITransactionProps {
+import { Transaction } from "../../models/Transaction";
+import TransactionCard from "./TransactionCard";
+
+interface ITransactionsListProps {
     transactions: Transaction[];
 }
 
-const TransactionsList = (props: ITransactionProps) => {
+const TransactionsList = ({ transactions }: ITransactionsListProps) => {
     return (
         <>
-            {props.transactions.map(x => (
-                <div key={x.id} className="card">
-                    <div className="card-body">
-                        <div className="row">
-                            <div className="col-sm-9">
-                                {x.entity}
-                            </div>
-                            <div className="col-sm-3">
-                                {x.type === "income" ? "+" : "-"}
-                                <Currency value={x.amount} currency={x.currency} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {transactions.map(transaction => (
+                <Link key={transaction.id} to={`/transaction/${transaction.id}`}>
+                    <TransactionCard transaction={transaction} />
+                </Link>
             ))}
         </>
     );

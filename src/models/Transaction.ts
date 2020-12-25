@@ -2,7 +2,7 @@ import { TransactionStatus } from './TransactionStatus';
 
 export interface Transaction {
     id: string;
-    date: Date;
+    dateCreated: Date;
     type: string;
     category: string;
     status: TransactionStatus;

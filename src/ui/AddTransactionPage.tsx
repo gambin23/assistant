@@ -20,7 +20,7 @@ const AddTransactionPage = () => {
     const onSubmit = (transaction: Transaction) => {
         reset({});
         transaction.id = uuid();
-        transaction.date = new Date();
+        transaction.dateCreated = new Date();
         transaction.currency = "EUR";
         dispatch(transactionAdd(transaction));
     }

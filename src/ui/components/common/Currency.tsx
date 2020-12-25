@@ -5,9 +5,9 @@ interface ICurrencyProps {
     currency: string;
 }
 
-const Currency = (props: ICurrencyProps) => {
+const Currency = ({ value, currency }: ICurrencyProps) => {
     return (
-        <FormattedNumber value={props.value} currency={props.currency} style="currency" />
+        <FormattedNumber value={value} currency={currency} style="currency" />
     )
 }
 export default Currency;
