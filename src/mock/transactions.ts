@@ -1,4 +1,4 @@
-import { times, constant } from "lodash";
+import { times } from "lodash";
 import { v4 as uuid } from "uuid";
 import { Transaction } from './../models/Transaction';
 

@@ -3,6 +3,7 @@
 
     &.active {
         background-color: lighten($primary, 49%);
+
         & button {
             color: $white;
             background-color: $primary;
@@ -26,7 +27,6 @@
             background-color: darken($primary, 10%);
         }
     }
-
 }
 
 .card-sidebar {
@@ -66,5 +66,9 @@
         &:last-child {
             background-color: darken($primary, 10%);
         }
+    }
+
+    &+.card-body {
+        padding-left: 5px;
     }
 }
