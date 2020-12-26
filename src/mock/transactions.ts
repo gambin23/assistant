@@ -1,8 +1,10 @@
+import { times, constant, uniqueId } from "lodash";
+
 import { TransactionStatus } from "../models/TransactionStatus";
 import { Transaction } from './../models/Transaction';
 
 export const mockTransactions: Transaction[] = [{
-    id: "transaction-1",
+    id: `transaction-${uniqueId()}`,
     dateCreated: new Date(),
     status: TransactionStatus.Unassigned,
     type: "income",
@@ -11,8 +13,8 @@ export const mockTransactions: Transaction[] = [{
     currency: "EUR",
     entity: "GiG"
 },
-{
-    id: "transaction-2",
+...times(15, constant<Transaction>({
+    id: `transaction-${uniqueId()}`,
     dateCreated: new Date(),
     status: TransactionStatus.Unassigned,
     type: "income",
@@ -20,4 +22,5 @@ export const mockTransactions: Transaction[] = [{
     amount: 150,
     currency: "EUR",
     entity: "GiG"
-}]
+}))
+]

@@ -27,7 +27,6 @@ function App() {
                             <div className="list-group list-group-flush">
                                 <Link to="/" className="list-group-item list-group-item-action bg-light">Transactions</Link>
                                 <Link to="/new" className="list-group-item list-group-item-action bg-light">Add Transaction</Link>
-                                <Link to="/" className="list-group-item list-group-item-action bg-light">Dashboard</Link>
                                 <Link to="/" className="list-group-item list-group-item-action bg-light">Settings</Link>
                                 <Link to="/" className="list-group-item list-group-item-action bg-light">Logout</Link>
                             </div>
@@ -52,10 +51,7 @@ function App() {
                                     </ul>
                                 </div>
                             </nav>
-
-
                             <div className="container">
-                                {hideMenu && 'Assistant'}
                                 <Switch>
                                     <Route path="/new" component={AddTransactionPage} />
                                     <Route path="/transaction/:id" component={TransactionPage} />

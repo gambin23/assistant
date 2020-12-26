@@ -9,7 +9,7 @@ export interface Transaction {
     amount: number;
     currency: string;
     entity?: string;
-    description?: string;
+    note?: string;
     subCategory?: string;
     ref?: string;
 }

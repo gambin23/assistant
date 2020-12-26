@@ -1,12 +1,20 @@
+@import "bootstrap/scss/bootstrap.scss";
+@import "bootstrap/scss/_variables.scss";
+
 @import "./menu";
 @import "./card";
+@import "./avatar";
 
 body {
     background-color: #f7f7f7;
 }
 
-.caption {
-    font-size:11px;
-    color: darkgray;
+a {
+    text-decoration: none !important;
+    color: inherit;
 }
 
+.caption {
+    font-size: 11px;
+    color: darkgray;
+}

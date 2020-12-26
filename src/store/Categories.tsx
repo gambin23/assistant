@@ -23,3 +23,4 @@ const slice = createSlice({
 export default slice.reducer;
 export const { } = slice.actions;
 export const getCategories = (state: AppState) => state.metadata.categories.data;
+export const getCategory = (id: string) => (state: AppState) => state.metadata.categories.data[id];
