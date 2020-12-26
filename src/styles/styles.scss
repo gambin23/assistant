@@ -27,12 +27,17 @@ button {
     }
 }
 
+
+mark {
+    background-color: rgb(255, 226, 97);
+    padding: 0;
+}
+
 .caption {
     font-size: 11px;
     color: darkgray;
 }
 
-mark {
-    background-color: rgb(255, 226, 97);
-    padding: 0;
+.nav-item {
+    cursor: pointer;
 }
