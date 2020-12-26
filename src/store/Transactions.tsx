@@ -36,6 +36,8 @@ const slice = createSlice({
 })
 
 export default slice.reducer;
+
 export const { addTransaction, favouriteTransaction, unfavouriteTransaction, archiveTransaction, unarchiveTransaction } = slice.actions;
-export const getTransactions = (state: AppState) => state.transactions.data;
+
 export const getTransaction = (id: string) => (state: AppState) => state.transactions.data.find(x => x.id === id);
+export const getTransactions = (state: AppState) => state.transactions.data;
