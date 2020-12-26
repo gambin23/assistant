@@ -1,11 +1,11 @@
-import { TransactionStatus } from './TransactionStatus';
-
 export interface Transaction {
     id: string;
     dateCreated: Date;
     type: string;
     category: string;
-    status: TransactionStatus;
+    isFavourite: boolean;
+    isArchived: boolean;
+    isProcessed: boolean;
     amount: number;
     currency: string;
     entity?: string;

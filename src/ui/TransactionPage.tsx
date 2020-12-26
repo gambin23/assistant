@@ -13,7 +13,9 @@ const TransactionPage = (props: RouteComponentProps<IParams>) => {
     const transaction = useSelector(getTransaction(props.match.params.id));
 
     return (
-        <TransactionCard transaction={transaction} />
+        <>
+            { transaction ? <TransactionCard transaction={transaction} /> : <div>Not found</div>}
+        </>
     );
 }
 export default TransactionPage;

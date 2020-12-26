@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import classNames from "classnames";
 
 import { Transaction } from "../models/Transaction";
-import { transactionAdd } from "../store/Transactions";
+import { addTransaction } from "../store/Transactions";
 import { getCategories } from "../store/Categories";
 import { getTransactionTypes } from "../store/TransactionTypes";
 
@@ -22,7 +22,7 @@ const AddTransactionPage = () => {
         transaction.id = uuid();
         transaction.dateCreated = new Date();
         transaction.currency = "EUR";
-        dispatch(transactionAdd(transaction));
+        dispatch(addTransaction(transaction));
     }
 
     return (

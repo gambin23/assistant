@@ -1,3 +1,70 @@
 .card {
     border: none;
+
+    &.active {
+        background-color: lighten($primary, 49%);
+        & button {
+            color: $white;
+            background-color: $primary;
+        }
+    }
+
+    &:hover {
+        background-color: lighten($primary, 49%);
+    }
+
+    &.pinned {
+        background-color: $primary;
+        color: $white;
+
+        & .caption,
+        button {
+            color: $white;
+        }
+
+        &:hover {
+            background-color: darken($primary, 10%);
+        }
+    }
+
+}
+
+.card-sidebar {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    button {
+        padding: 28px 5px;
+        border: none;
+
+        &.active {
+            color: $white;
+            background-color: $primary;
+        }
+
+    }
+
+    ul {
+        display: flex;
+        margin-bottom: 0;
+        padding-inline-start: 0;
+        list-style: none;
+        color: $white;
+        background-color: $primary;
+    }
+
+    li {
+        display: inline-block;
+        padding: 27px;
+        text-align: center;
+
+        span {
+            display: block;
+        }
+
+        &:last-child {
+            background-color: darken($primary, 10%);
+        }
+    }
 }

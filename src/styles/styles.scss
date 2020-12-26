@@ -12,6 +12,18 @@ body {
 a {
     text-decoration: none !important;
     color: inherit;
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+button {
+    background-color: transparent;
+
+    &:focus {
+        outline: 0;
+    }
 }
 
 .caption {
