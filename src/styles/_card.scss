@@ -2,7 +2,7 @@
     border: none;
 
     &.active {
-        background-color: lighten($primary, 49%);
+        background-color: $primary-l-50;
 
         & button {
             color: $white;
@@ -11,7 +11,7 @@
     }
 
     &:hover {
-        background-color: lighten($primary, 49%);
+        background-color: $primary-l-50;
     }
 
     &.pinned {
@@ -24,7 +24,7 @@
         }
 
         &:hover {
-            background-color: darken($primary, 10%);
+            background-color: $primary-d-10;
         }
     }
 }
@@ -64,7 +64,7 @@
         }
 
         &:last-child {
-            background-color: darken($primary, 10%);
+            background-color: $primary-d-10
         }
     }
 
