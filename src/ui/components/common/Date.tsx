@@ -1,4 +1,4 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import { FormattedDate } from "react-intl";
 
 export interface IDateProps {
@@ -9,7 +9,7 @@ export interface IDateProps {
     year?: string;
 }
 
-const Date = ({ value, day, weekday, month, year }: IDateProps) => {
+const Date: FunctionComponent<IDateProps> = ({ value, day, weekday, month, year }) => {
     return (
         <FormattedDate
             value={value}

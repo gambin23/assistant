@@ -1,4 +1,4 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 
@@ -9,8 +9,8 @@ interface IParams {
     id: string;
 }
 
-const TransactionPage = (props: RouteComponentProps<IParams>) => {
-    const transaction = useSelector(getTransaction(props.match.params.id));
+const TransactionPage: FunctionComponent<RouteComponentProps<IParams>> = ({ match }) => {
+    const transaction = useSelector(getTransaction(match.params.id));
 
     return (
         <>

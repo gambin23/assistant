@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import { FormattedNumber } from "react-intl";
 
 interface ICurrencyProps {
@@ -5,7 +6,7 @@ interface ICurrencyProps {
     currency: string;
 }
 
-const Currency = ({ value, currency }: ICurrencyProps) => {
+const Currency: FunctionComponent<ICurrencyProps> = ({ value, currency }) => {
     return (
         <FormattedNumber value={value} currency={currency} style="currency" />
     )

@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 
 interface IAvatarProps {
     value: string;
@@ -5,7 +6,7 @@ interface IAvatarProps {
     className?: string;
 }
 
-const Currency = ({ value, size = 32, className }: IAvatarProps) => {
+const Currency: FunctionComponent<IAvatarProps> = ({ value, size = 32, className }) => {
     function generateCode(value: string) {
         if (value) {
             const names = value.split(/([0-9 ])+/g);

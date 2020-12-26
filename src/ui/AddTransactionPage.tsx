@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
@@ -9,7 +10,7 @@ import { addTransaction } from "../store/Transactions";
 import { getCategories } from "../store/Categories";
 import { getTransactionTypes } from "../store/TransactionTypes";
 
-const AddTransactionPage = () => {
+const AddTransactionPage: FunctionComponent = () => {
     const dispatch = useDispatch();
 
     let types = useSelector(getTransactionTypes);

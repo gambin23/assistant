@@ -9,7 +9,7 @@ export const mockTransactions: Transaction[] = [{
     category: "salary",
     amount: 50,
     currency: "EUR",
-    entity: "GiG",
+    entity: "Government",
     isFavourite: true,
     isArchived: false,
     isProcessed: true

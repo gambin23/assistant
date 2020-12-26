@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BookmarkDashFill, BookmarkPlusFill, EyeFill, EyeSlashFill, ThreeDotsVertical } from "react-bootstrap-icons";
@@ -15,7 +15,7 @@ interface ITransactionCardProps {
     transaction: Transaction;
 }
 
-const TransactionCard = ({ transaction }: ITransactionCardProps) => {
+const TransactionCard: FunctionComponent<ITransactionCardProps> = ({ transaction }) => {
     const [showMenu, setShowMenu] = useState(false);
     const dispatch = useDispatch();
     const category = useSelector(getCategory(transaction.category));

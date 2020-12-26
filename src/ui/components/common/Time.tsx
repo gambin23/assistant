@@ -1,5 +1,6 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import { FormattedTime } from "react-intl";
+
 import { IDateProps } from "./Date";
 
 interface ITimeProps extends IDateProps {
@@ -8,7 +9,7 @@ interface ITimeProps extends IDateProps {
     second?: string;
 }
 
-const Time = ({ value, day, weekday, month, year, hour, minute, second }: ITimeProps) => {
+const Time: FunctionComponent<ITimeProps> = ({ value, day, weekday, month, year, hour, minute, second }) => {
     return (
         <FormattedTime
             value={value}
