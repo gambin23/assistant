@@ -1,0 +1,9 @@
+.theme-dark {
+    .skeleton {
+        .bone {
+            &:after {
+                background-image: linear-gradient(90deg, lighten($dark, 5), $dark, lighten($dark, 5));
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.theme-dark {
+
+    .navbar-switch {
+        color: $dark;
+
+        &:hover {
+
+            &>* {
+                background: $dark;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .navbar-wrapper {
+            border: none !important;
+            background: $dark !important;
+        }
+
+        .navbar-item {
+            color: $dark-inverted !important;
+        }
+
+        .navbar-header {
+            background: $dark !important;
+            color: $white !important;
+            border-color: $dark-l-10 !important;
+        }
+
+    }
+
+}

@@ -1,0 +1,34 @@
+.alert-hero {
+    @extend .alert;
+    width: 100%;
+    display: none;
+    flex: 0 1 auto;
+    align-content: center;
+    text-align: center;
+    padding: 0.25rem;
+    border-radius: 0;
+    z-index: 2;
+
+    box-shadow: 0px 7px 5px 0px rgba($dark, 0.1);
+    -webkit-box-shadow: 0px 7px 5px 0px rgba($dark, 0.1);
+    -moz-box-shadow: 0px 7px 5px 0px rgba($dark, 0.1);
+
+    & span {
+        margin: auto;
+    }
+
+    & button {
+        @extend .btn;
+        padding: 0.25rem !important;
+        font-size: 1.5rem;
+    }
+
+    &.show {
+        @extend .slide-down;
+        display: flex;
+    }
+}
+
+.alert-primary {
+    color: $primary !important;
+}

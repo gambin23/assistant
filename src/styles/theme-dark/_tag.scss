@@ -1,0 +1,16 @@
+.theme-dark {
+    .tag-dark {
+        color: $dark-inverted !important;
+        border-color: $dark-inverted !important;
+    }
+
+    .tag-light {
+        color: $light-inverted !important;
+        border-color: $light-inverted !important;
+    }
+
+    .tag-secondary {
+        color: $secondary-inverted !important;
+        border-color: $secondary-inverted !important;
+    }
+}

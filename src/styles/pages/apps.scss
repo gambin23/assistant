@@ -1,0 +1,36 @@
+#apps {
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 1rem;
+    }
+
+    li {
+        list-style-type: none;
+        display: inline !important;
+    }
+
+    a {
+        padding: 0 2rem;
+        text-align: center;
+        cursor: pointer;
+
+        & svg {
+            font-size: 5rem;
+        }
+
+        & div {
+            padding-top: 0.75rem;
+        }
+
+        &:hover {
+            & svg {
+                color: $primary;
+            }
+        }
+    }
+
+
+}

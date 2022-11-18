@@ -1,0 +1,23 @@
+.theme-dark {
+    .form-control {
+        background-color: darken($dark-theme-light, 2);
+        color: $dark-inverted;
+
+        &:focus {
+            background-color: $dark-theme-light;
+        }
+    }
+
+    input:disabled {
+        background-color: $dark !important;
+    }
+
+    input[type="text"],
+    input[type="search"] {
+        color: $secondary-inverted;
+
+        &:disabled {
+            @extend .faded;
+        }
+    }
+}

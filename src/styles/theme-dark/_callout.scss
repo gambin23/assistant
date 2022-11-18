@@ -1,0 +1,17 @@
+.theme-dark {
+    .callout {
+        // background: $dark-theme-light !important;
+    }
+
+    .callout-dark {
+        color: $dark-inverted !important;
+    }
+
+    .callout-light {
+        color: $light-inverted !important;
+    }
+
+    .callout-secondary {
+        color: $secondary-inverted !important;
+    }
+}

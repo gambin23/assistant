@@ -1,0 +1,28 @@
+$primary-l-10: lighten($primary, 10);
+$primary-l-30: lighten($primary, 30);
+$primary-l-50: lighten($primary, 43);
+$primary-d-10: darken($primary, 10);
+$primary-d-30: darken($primary, 20);
+$primary-d-50: darken($primary, 50);
+
+$secondary-l-10: lighten($secondary, 10);
+$secondary-l-30: lighten($secondary, 45);
+$secondary-l-50: lighten($secondary, 70);
+
+
+$dark-d-10: darken($dark, 10);
+$dark-d-30: darken($dark, 20);
+$dark-d-50: darken($dark, 50);
+$dark-l-10: lighten($dark, 30);
+$dark-l-30: lighten($dark, 50);
+$dark-l-50: lighten($dark, 80);
+
+
+$dark-l-10: lighten($dark, 20);
+
+$screen-max-sm: 575px;
+$screen-min-sm: 576px;
+$screen-max-md: 767px;
+$screen-min-md: 768px;
+$screen-max-lg: 991px;
+$screen-min-lg: 992px;

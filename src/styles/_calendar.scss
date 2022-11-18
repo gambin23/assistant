@@ -1,0 +1,53 @@
+.calendar {
+    @extend .card;
+}
+
+.calendar-lg {
+    .calendar-day {
+        width: 4rem;
+        height: 4rem;
+        margin: 0.5rem;
+        line-height: 4rem;
+    }
+}
+
+.calendar-months {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.calendar-weekday {
+    @extend .calendar-day;
+    @extend .faded;
+    padding: 1rem 0;
+}
+
+.calendar-days,
+.calendar-weekdays {
+    list-style: none;
+    text-align: center;
+}
+
+.calendar-day {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    margin: 0rem;
+    line-height: 3rem;
+    text-align: center;
+    border-radius: 1000rem;
+    cursor: pointer;
+
+    &.active {
+        color: $white;
+        background: $primary;
+    }
+
+    &.disabled {
+        opacity: 0.25;
+    }
+
+    @media only screen and (max-width: $screen-max-lg) {}
+}

@@ -1,0 +1,45 @@
+.skeleton {
+
+    .bone-hide {
+        display: none !important;
+    }
+
+    span.bone {
+        display: inline-block;
+    }
+
+    .show-when-loading {
+        display: block;
+    }
+
+    .hide-when-loading {
+        display: none !important;
+    }
+
+    .bone {
+        position: relative;
+        overflow: hidden;
+        border-radius: $border-radius;
+        text-overflow: clip;
+        max-width: 100%;
+        pointer-events: none;
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        &:after {
+            background-image: linear-gradient(90deg, $white, darken($white, 5), $white);
+        }
+
+        &.tag {
+            border: none;
+        }
+    }
+}

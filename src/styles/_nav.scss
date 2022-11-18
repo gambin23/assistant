@@ -1,0 +1,11 @@
+.nav-link {
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    color: $light;
+
+    &.active {
+        color: $primary;
+        border-bottom: 5px solid $primary;
+    }
+}

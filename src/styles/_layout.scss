@@ -1,0 +1,21 @@
+#wrapper {
+    display: flex;
+
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+    }
+}
+
+
+#content-wrapper {
+    min-width: 0;
+    width: 100%;
+}
+
+.row {
+    @extend .mt-3;
+}
+
+[class*="col-"] {
+    @extend .mb-3;
+}

@@ -1,0 +1,37 @@
+.tag {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: $primary;
+    border: 0.15rem solid $primary;
+    border-radius: 0.25rem;
+
+    &.ms-auto {
+        margin-right: 0;
+    }
+
+    &:not(:only-child) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.tag-sm {
+    padding: 0.25rem 1rem !important;
+    font-size: 0.75rem;
+    border-width: 0.1rem;
+}
+
+.tag-icon {
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+@each $name,
+$color in $theme-colors {
+    .tag-#{$name} {
+        color: $color;
+        border-color: $color;
+    }
+}

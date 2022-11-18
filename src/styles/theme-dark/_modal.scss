@@ -1,0 +1,18 @@
+.theme-dark {
+
+    .modal-content {
+        background: $dark!important;
+    }
+
+    .modal-footer {
+        border-color: $dark-l-10;
+    }
+
+    .btn-close {
+        color: $white!important;
+        background-image: none;
+        &::before {
+            content: "X"
+        }
+    }
+}

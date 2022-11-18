@@ -1,0 +1,23 @@
+.hero-icon {
+    font-size: 3rem;
+    text-align: center;
+    color: $primary;
+    width: 5rem;
+    height: 5rem;
+
+
+    &.border {
+        border: 0.1rem solid $primary !important;
+        border-radius: 250rem;
+    }
+
+    &* {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+
+    &.text-secondary.border {
+        border-color: $secondary !important;
+    }
+}

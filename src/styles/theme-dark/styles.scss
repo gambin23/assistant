@@ -1,0 +1,51 @@
+@import "variables";
+@import "card";
+@import "callout";
+@import "list-group";
+@import "tag";
+@import "input";
+@import "modal";
+@import "sidebar";
+@import "skeleton";
+@import "progress";
+
+
+body.theme-dark {
+    background: $dark !important;
+}
+
+.theme-dark {
+    color: $white;
+
+    #content-wrapper {
+        background: $dark !important;
+    }
+
+    .bg-white {
+        background-color: $black !important;
+    }
+
+    .bg-primary {
+        background-color: $primary !important;
+    }
+
+    .bg-secondary {
+        background-color: $secondary !important;
+    }
+
+    .img-placeholder {
+        opacity: 0.025;
+    }
+
+    .text-secondary {
+        color: $secondary-inverted !important;
+    }
+
+    .text-dark {
+        color: $dark-inverted !important;
+    }
+
+    .bg-dark-l-50 {
+        background-color: lighten($dark, 10) !important;
+    }
+}

@@ -1,0 +1,88 @@
+.card {
+    @extend .p-3;
+    border: none;
+
+    &.active {
+        background-color: $secondary-l-50;
+        color: inherit !important;
+    }
+
+    &.clickable {
+        cursor: pointer;
+
+        &:hover {
+            -webkit-box-shadow: 0 0.1rem 0.5rem 0.1rem rgba($dark, 0.1);
+            box-shadow: 0 0.1rem 0.5rem 0.1rem rgba($dark, 0.1);
+        }
+    }
+}
+
+.card-header {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.card-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-footer {
+    border: none;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -1rem;
+
+    &>div {
+        padding: 1rem 2rem;
+    }
+
+    ul {
+        display: flex;
+        padding-inline-start: 0;
+        list-style: none;
+        color: $white;
+        margin-bottom: 0;
+        margin-right: 0.75rem;
+    }
+}
+
+.card-menu-item {
+    padding: 0.5rem;
+    margin: 0.5rem 0.25rem;
+    width: 5rem;
+    cursor: pointer;
+    text-align: center;
+    background: $primary;
+    border-radius: 0.5rem;
+
+    & svg {
+        font-size: 1.25rem;
+    }
+
+    & div {
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    &:hover {
+        background-color: $primary-l-10 !important;
+    }
+
+    &:first-child:not(:only-child) {
+        background-color: $secondary;
+
+        &:hover {
+            background-color: $secondary-l-10 !important;
+        }
+    }
+
+}

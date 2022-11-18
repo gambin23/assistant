@@ -1,0 +1,91 @@
+button {
+    background-color: inherit;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.btn {
+    @extend .p-3;
+
+    &:focus,
+    &:focus:active {
+        box-shadow: none;
+    }
+}
+
+.btn-primary {
+    &:hover {
+        background-color: $secondary;
+        border-color: $secondary;
+    }
+}
+
+.btn-light {
+    @extend .text-primary;
+    position: relative;
+    border-radius: 500rem !important;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:focus:active {
+        background: none;
+        border: none;
+    }
+
+    &:hover {
+        color: $primary-l-30 !important;
+    }
+
+
+    &:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+
+    &::after {
+        content: "";
+        background: rgba($secondary, 0.1);
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px;
+        margin-top: -120%;
+        opacity: 0;
+        transition: ease 0.75s;
+    }
+
+    &:disabled {
+        background-color: inherit;
+    }
+}
+
+.btn-float {
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    margin: 1rem;
+    border-radius: 50%;
+    line-height: 1rem;
+    z-index: 999;
+    box-shadow: 0 0.5rem 0.5rem 0 rgba($dark, 0.1);
+    -webkit-box-shadow: 0px 0.5rem 0.5rem 0 rgba($dark, 0.2);
+    -moz-box-shadow: 0 0.5rem 0.5rem 0 rgba($dark, 0.2);
+}
+
+.btn-link {
+    text-decoration: none;
+
+    // &:hover {
+    //     color: $primary-l-30;
+    // }
+}

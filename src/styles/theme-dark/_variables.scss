@@ -1,0 +1,4 @@
+$dark-theme-light: lighten($dark, 5);
+$dark-inverted: invert($dark);
+$light-inverted: lighten(invert($light), 50);
+$secondary-inverted: invert($secondary);

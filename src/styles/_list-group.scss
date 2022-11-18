@@ -1,0 +1,111 @@
+.list-group {
+
+    .card & {
+        margin-right: -1rem !important;
+        margin-left: -1rem !important;
+        margin-bottom: -1.5rem !important;
+    }
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    border: none;
+    color: inherit;
+    -webkit-box-shadow: 5px 6px 8px -1px #f7f7f7;
+    box-shadow: 5px 6px 8px -1px #f7f7f7;
+
+    &>.list-group-menu {
+        @extend .p-0;
+        padding: 0 !important;
+    }
+
+    &.active {
+        background-color: $primary-l-50;
+        color: $primary;
+
+        .caption {
+            color: $dark;
+        }
+    }
+
+    &:only-child,
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+.list-group-menu {
+    @extend .ms-3;
+    cursor: pointer;
+    margin: -0.5rem -1rem -0.5rem 0;
+
+    ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding-inline-start: 0;
+        margin-bottom: 0;
+    }
+
+    li {
+        text-align: center;
+        padding: 0.5rem;
+
+        & svg {
+            font-size: 1.5rem;
+        }
+
+        & div {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        &:not(:last-child) {
+            display: inline-block;
+            visibility: hidden;
+            position: absolute;
+            opacity: 0;
+            width: 5rem;
+            margin-left: 0.5rem;
+            border-radius: 0.5rem;
+            background: $primary;
+            color: $white;
+
+            &:hover {
+                background: $primary-l-10;
+            }
+        }
+
+        &:first-child {
+            background: $secondary !important;
+
+            &:hover {
+                background: $secondary-l-10 !important;
+            }
+        }
+
+        &:last-child {
+            padding: 1.55rem 0.5rem;
+        }
+    }
+
+    &.active {
+        li {
+            transition: 1s ease;
+
+            &:not(:last-child) {
+                display: inline-block;
+                position: relative;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            &:last-child {
+                color: $primary;
+            }
+        }
+    }
+}

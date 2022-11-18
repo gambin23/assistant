@@ -1,0 +1,61 @@
+.progress-circle {
+    border-radius: 50%;
+    display: inline-block;
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+
+    &:before {
+        align-items: center;
+        background-color: $white;
+        border-radius: 50%;
+        content: "";
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        left: 0.5rem;
+        right: 0.55rem;
+        top: 0.5rem;
+        bottom: 0.5rem;
+        transition: transform 0.2s ease;
+    }
+
+    &:after {
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+    }
+
+    & * {
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+    }
+}
+
+$increment: 360 / 100;
+$half: 50;
+
+@for $i from 0 through 100 {
+    .progress-circle[data-progress="#{$i}"]:after {
+        @if $i < $half {
+            $next-deg: 90deg+$increment * $i;
+            background-image: linear-gradient(90deg, $dark 50%, transparent 50%, transparent), linear-gradient($next-deg, $primary 50%, $dark 50%, $dark);
+        }
+
+        @else {
+            $next-deg: -90deg + $increment * ($i - $half);
+            background-image: linear-gradient($next-deg, $primary 50%, transparent 50%, transparent), linear-gradient(270deg, $primary 50%, $dark 50%, $dark)
+        }
+    }
+}

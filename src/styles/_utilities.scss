@@ -1,0 +1,113 @@
+.p-0 {
+    padding: 0 !important;
+}
+
+.dashed {
+    border-style: dashed;
+}
+
+.rounded-5 {
+    border-radius: 2rem;
+}
+
+.mt-0 {
+    margin-top: 0 !important
+}
+
+.max-vh-50 {
+    max-height: 50vh;
+}
+
+.fit-cover {
+    object-fit: cover;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.faded {
+    opacity: 0.5;
+}
+
+.text-muted {
+    color: $light !important;
+}
+
+.caption {
+    color: $light;
+    font-size: 0.85rem;
+}
+
+.caption-xs {
+    @extend .caption;
+    font-size: 0.75rem;
+}
+
+.text-primary-l-30 {
+    color: $primary-l-30;
+}
+
+.text-primary-l-50 {
+    color: $primary-l-50;
+}
+
+.bg-primary-l-30 {
+    background: $primary-l-30;
+}
+
+.bg-primary-l-50 {
+    background: $primary-l-50;
+}
+
+.bg-secondary-l-30 {
+    background: $secondary-l-30;
+}
+
+.bg-secondary-l-50 {
+    background: $secondary-l-50;
+}
+
+.bg-dark-l-30 {
+    background: $dark-l-30;
+}
+
+.bg-dark-l-50 {
+    background: $dark-l-50;
+}
+
+.bg-dark {
+    background: $dark;
+}
+
+.bg-dark-l-30 {
+    background: $dark-l-30;
+}
+
+.bg-dark-l-50 {
+    background: $dark-l-50;
+}
+
+.text-gray {
+    color: gray;
+}
+
+.disabled {
+    pointer-events: none !important;
+}
+
+.display-contents {
+    display: contents;
+}
+
+.z-index-1 {
+    z-index: 1!important;
+}

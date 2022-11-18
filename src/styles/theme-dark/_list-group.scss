@@ -1,0 +1,21 @@
+.theme-dark {
+
+    .list-group {
+        background: $dark-theme-light !important;
+    }
+
+    .list-group-item {
+        background: $dark-theme-light;
+        -webkit-box-shadow: 5px 6px 8px -1px $dark;
+        box-shadow: 5px 6px 8px -1px $dark;
+
+        &.active {
+            background: $primary-d-10;
+            color: $white;
+
+            .caption {
+                color: $dark-inverted
+            }
+        }
+    }
+}

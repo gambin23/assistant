@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import "theme";
+@import "variables";
+
+@import "bootstrap/scss/bootstrap.scss";
+@import "bootstrap/scss/_variables";
+
+@import "avatar";
+@import "utilities";
+@import "card";
+@import "layout";
+@import "sidebar";
+@import "nav";
+@import "list-group";
+@import "input";
+@import "button";
+@import "layout";
+@import "modal";
+@import "scrollbar";
+@import "callout";
+@import "alert";
+@import "animations";
+@import "icons";
+@import "tag";
+@import "dropdown";
+@import "typography";
+@import "stepper";
+@import "calendar";
+@import "progress";
+@import "skeleton";
+@import "./theme-dark/styles";
+
+
+@import "./pages/apps";
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+}
+
+@include media-breakpoint-down(md) {
+    html {
+        font-size: 0.75rem;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+input[type=number] {
+    -moz-appearance: textfield !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+mark {
+    background-color: rgb(255, 226, 97);
+    padding: 0;
+}
+
+.text-muted {
+    color: $light;
+}
+
+.recharts-legend-item {
+    font-size: 0.75rem;
+}
+
+.bg-splash {
+    background: $primary;
+    background: linear-gradient(49deg, $primary 0%, #e13a2b 35%, #961535 85%, #692a34 100%);
+}
+
+ol,
+ul {
+    padding-left: 0;
+}
+
+.img-placeholder {
+    opacity: 0.1;
+}

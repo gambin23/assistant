@@ -1,0 +1,20 @@
+.callout {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-left: 0.25rem solid;
+    color: $primary;
+    background: rgba($primary, 0.1);
+
+    & svg {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+    }
+}
+
+@each $name,$color in $theme-colors {
+    .callout-#{$name} {
+        color: $color;
+        background: rgba($color, 0.1);
+    }
+}

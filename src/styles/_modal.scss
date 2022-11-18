@@ -1,0 +1,48 @@
+.modal-title {
+    font-size: 2rem;
+}
+
+.modal-backdrop {
+    background: rgba($primary-d-10, 0.15);
+}
+
+.modal-content {
+    background: #fbfbfb;
+    border: none;
+    border-radius: 0;
+    box-shadow: -0.25rem 0 0.25rem 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -0.25rem 0 0.25rem 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: -0.25rem 0 0.25rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    width: inherit;
+    margin: auto;
+    height: 100%;
+}
+
+/*Left*/
+.modal.left .modal-dialog {
+    left: 0;
+}
+
+/*Right*/
+.modal.right .modal-dialog {
+    right: 0;
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    border: none;
+
+    button {
+        @extend .btn;
+    }
+}
