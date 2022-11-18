@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
-import { UserActions } from '../user/store/user.actions';
+import { UserActions } from '@assistant/common-sdk';
 
 @Component({
     selector: 'app-login',
@@ -16,7 +16,8 @@ export class LoginComponent {
     login() {
         this.userActions.login({
             id: "id",
-            name: "Gilbert Gambin"
+            name: "Gilbert Gambin",
+            email: "gilbertgambin@gmail.com"
         });
     }
 }

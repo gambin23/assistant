@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { createSelector, Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { AppState } from '../../store/store';
-import { User } from '../user.model';
+import { AppState } from '../store/store';
+import { User } from './user.model';
 
 export const selectUser = (state: AppState) => state.user;
 export const selectUserId = createSelector(selectUser, x => x.id);

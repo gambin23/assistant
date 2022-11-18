@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
-import { User } from '../user.model';
+import { User } from './user.model';
 
 export const userLogin = createAction('[USER] Login', props<{ user: User }>());
 export const userLogout = createAction('[USER] Logout');

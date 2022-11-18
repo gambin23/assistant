@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { UserSelector } from '@assistant/common-sdk';
 import { Observable } from 'rxjs';
-import { UserSelector } from './user/store/user.selectors';
-import { User } from './user/user.model';
 
 @Component({
     selector: 'app-root',

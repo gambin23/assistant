@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { UserState } from '../user.model';
 import { userLogin, userLogout } from './user.actions';
+import { UserState } from './user.model';
 
 export const initialState: UserState = {};
 

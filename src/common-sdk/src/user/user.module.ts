@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { UserSelector } from './user.selectors';
+import { UserSelector } from './user.selector';
 import { UserActions } from './user.actions';
 
 @NgModule({
