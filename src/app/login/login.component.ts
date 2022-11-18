@@ -1,26 +1,17 @@
 import { ChangeDetectionStrategy } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { UserActions } from '../user/store/user.actions';
-import { UserSelector } from '../user/store/user.selectors';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnInit {
-
-    userName$: Observable<string | undefined> | undefined;
+export class LoginComponent {
 
     constructor(
-        private userActions: UserActions,
-        private userSelector: UserSelector
+        private userActions: UserActions
     ) { }
-
-    ngOnInit() {
-        this.userName$ = this.userSelector.userName$();
-    }
 
     login() {
         this.userActions.login({

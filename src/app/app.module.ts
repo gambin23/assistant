@@ -7,10 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { reducers } from './store/store';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        NavigationComponent
     ],
     imports: [
         BrowserModule,

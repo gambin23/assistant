@@ -18,6 +18,10 @@ export class UserSelector {
         return this.store.select(state => state.user);
     }
 
+    isLoggedIn$(): Observable<boolean> {
+        return this.userId$().pipe(map(x => !!x));
+    }
+
     userId$(): Observable<string | undefined> {
         return this.user$().pipe(map(x => x.id));
     }
