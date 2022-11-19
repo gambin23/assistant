@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-    isLoggedIn$: Observable<boolean> | undefined;
+    isAuthenticated$: Observable<boolean> | undefined;
 
     constructor(private userSelector: UserSelector) { }
 
     ngOnInit() {
-        this.isLoggedIn$ = this.userSelector.isLoggedIn$();
+        this.isAuthenticated$ = this.userSelector.isAuthenticated$();
     }
 }

@@ -22,24 +22,29 @@
             </div>
         </div>
         <div class="navbar navbar-menu">
-            <a class="navbar-item" href="/finance/">
-                svg<span>Dashboard</span>
-            </a>
-            <a class="navbar-item" href="/finance/transactions">
-                svg<span>Transactions</span>
+            <a *ngFor="let route of routes" class="navbar-item" [routerLink]="[route.path]">
+                svg<span>{{route.title}}</span>
             </a>
         </div>
-        <div class="navbar navbar-settings"><a class="navbar-item d-flex align-items-center" href="/account">
-                <div class="avatar avatar-32 rounded-circle text-primary d-inline"><img
-                        src="https://lh3.googleusercontent.com/a/AATXAJzyuQDC4vRlKus_x8jLAa-xVq-YMd48fS_nMPT-=s96-c"
-                        alt="Gilbert Gambin" class="rounded-circle align-baseline"></div><span>Gilbert Gambin</span>
+        <div class="navbar navbar-settings">
+            <a *ngIf="user$|async as user" class="navbar-item d-flex align-items-center" href="/account">
+                <div class="avatar avatar-32 rounded-circle text-primary d-inline">
+                    <img src="https://lh3.googleusercontent.com/a/AATXAJzyuQDC4vRlKus_x8jLAa-xVq-YMd48fS_nMPT-=s96-c"
+                        [alt]="user.name" class="rounded-circle align-baseline" />
+                </div>
+                <span>
+                    {{user.name}}
+                </span>
             </a>
             <a class="navbar-item" href="/settings">
-                svg<span>Settings</span></a><a class="navbar-item" href="/logout">
-                svg<span>Logout</span></a>
+                svg<span>Settings</span>
+            </a>
+            <a class="navbar-item" [routerLink]="['/logout']">
+                svg<span>Logout</span>
+            </a>
         </div>
     </div>
     <div id="content-wrapper">
-        <app-dashboard></app-dashboard>
+        <router-outlet #food></router-outlet>
     </div>
 </div>

@@ -9,15 +9,18 @@
             <div id="apps">
                 <div class="card">
                     <div class="card-header">svg All Apps</div>
-                    <ul><a href="/finance/">
+                    <ul>
+                        <a [routerLink]="['finance']">
                             <li>
                                 svg <div>Finance</div>
                             </li>
-                        </a><a href="/food/">
+                        </a>
+                        <a [routerLink]="['food']">
                             <li>
                                 svg <div>Food</div>
                             </li>
-                        </a></ul>
+                        </a>
+                    </ul>
                 </div>
             </div>
         </div>

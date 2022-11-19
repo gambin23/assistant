@@ -9,7 +9,7 @@ export const selectUserId = createSelector(selectUser, x => x.id);
 export const selectUserName = createSelector(selectUser, x => x.name);
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UserSelector {
 
     constructor(private store: Store<AppState>) { }
@@ -18,7 +18,7 @@ export class UserSelector {
         return this.store.select(state => state.user);
     }
 
-    isLoggedIn$(): Observable<boolean> {
+    isAuthenticated$(): Observable<boolean> {
         return this.userId$().pipe(map(x => !!x));
     }
 

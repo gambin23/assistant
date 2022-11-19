@@ -5,11 +5,15 @@ import { User } from './user.model';
 export const userLogin = createAction('[USER] Login', props<{ user: User }>());
 export const userLogout = createAction('[USER] Logout');
 
-@Injectable({providedIn: "root"})
+@Injectable({ providedIn: "root" })
 export class UserActions {
     constructor(private store: Store) { }
 
     login(user: User) {
         this.store.dispatch(userLogin({ user }));
+    }
+
+    logout() {
+        this.store.dispatch(userLogout());
     }
 }

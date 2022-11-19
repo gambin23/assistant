@@ -4,10 +4,8 @@ import { reducers } from '@assistant/common-sdk';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
-import { NavigationComponent } from './navigation/navigation.component';
+import { RoutesModule } from './routes.module';
 
 @NgModule({
     declarations: [
@@ -15,9 +13,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
-        LoginModule,
-        NavigationComponent,
+        RoutesModule,
         StoreModule.forRoot(reducers),
         StoreDevtoolsModule.instrument()
     ],
