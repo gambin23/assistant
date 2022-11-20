@@ -31,6 +31,8 @@
         font-size: 0.9rem;
         padding: 1rem;
         width: 100%;
+        display: flex;
+        align-content: center;
 
         &:hover,
         &:active {
@@ -44,7 +46,7 @@
             background: $secondary;
         }
 
-        & svg {
+        & i {
             font-size: 2rem;
         }
 

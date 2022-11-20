@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserActions, UserStoreModule } from '@assistant/common-sdk';
+import { IconComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'app-login',
@@ -11,7 +12,8 @@ import { UserActions, UserStoreModule } from '@assistant/common-sdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        UserStoreModule
+        UserStoreModule,
+        IconComponent
     ]
 })
 export class LoginComponent {

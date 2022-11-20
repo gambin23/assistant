@@ -1,6 +1,6 @@
 import { RouterModule } from '@angular/router';
-import { UserHeaderComponent } from '../../common-ui/src/user-header/user-header.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { IconComponent, UserHeaderComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'app-home',
@@ -9,7 +9,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         RouterModule,
-        UserHeaderComponent
+        UserHeaderComponent,
+        IconComponent
     ]
 })
 export class HomeComponent {

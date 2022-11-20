@@ -1,4 +1,5 @@
 export * from './src/store/store';
+export * from './src/routes/routes.model';
 
 export * from './src/user/user.actions';
 export * from './src/user/user.model';
