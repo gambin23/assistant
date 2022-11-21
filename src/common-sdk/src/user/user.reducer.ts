@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { userLogin, userLogout } from './user.actions';
 import { UserState } from './user.model';
 
-export const initialState: UserState = {};
+const initialState: UserState = {};
 
 export const userReducer = createReducer(
     initialState,

@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="navbar navbar-menu">
-            <a *ngFor="let route of routes" class="navbar-item" [routerLink]="[route.path]">
+            <a *ngFor="let route of routes" class="navbar-item" [routerLink]="[route.path]" [routerLinkActive]="'active'">
                 <icon [name]="route.icon" type="solid"></icon>
                 <span>{{route.title}}</span>
             </a>
@@ -48,6 +48,8 @@
         </div>
     </div>
     <div id="content-wrapper">
-        <router-outlet #food></router-outlet>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>

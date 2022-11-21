@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+import { RouterModule } from '@angular/router';
+import { AppRoutes } from '@assistant/common-sdk';
 import { HostComponent } from './host.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-const financeRoutes: Routes = [
+export const financeRoutes: AppRoutes = [
     {
-        path: '',
+        path: 'dashboard',
+        title: 'Dashboard',
+        icon: 'table-list',
         component: DashboardComponent
     }
 ]

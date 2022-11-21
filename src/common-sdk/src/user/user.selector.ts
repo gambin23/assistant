@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
-import { createSelector, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { AppState } from '../store/store';
 import { User } from './user.model';
-
-export const selectUser = (state: AppState) => state.user;
-export const selectUserId = createSelector(selectUser, x => x.id);
-export const selectUserName = createSelector(selectUser, x => x.name);
-
 
 @Injectable({providedIn: 'root'})
 export class UserSelector {
