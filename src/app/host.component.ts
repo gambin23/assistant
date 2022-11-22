@@ -4,11 +4,11 @@ import { AppActions, AppSelector, ThemeService } from '@assistant/common-sdk';
 import { combineLatest } from 'rxjs';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
+    selector: 'root',
+    templateUrl: './host.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class HostComponent implements OnInit {
 
     constructor(
         private themeService: ThemeService,

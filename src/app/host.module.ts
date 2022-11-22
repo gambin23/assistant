@@ -5,7 +5,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { AppStore, reducers, ThemeService } from '@assistant/common-sdk';
 import { NavigationComponent } from '@assistant/common-ui';
-import { AppComponent } from './app.component';
+import { HostComponent } from './host.component';
 import { RoutesModule } from './routes.module';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({
@@ -16,7 +16,7 @@ export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localSto
 const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer];
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [HostComponent],
     imports: [
         BrowserModule,
         RoutesModule,
@@ -25,6 +25,6 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         NavigationComponent
     ],
     providers: [ThemeService],
-    bootstrap: [AppComponent]
+    bootstrap: [HostComponent]
 })
-export class AppModule { }
+export class HostModule { }
