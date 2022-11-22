@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { PreferencesActions, PreferencesSelector, PreferencesStoreModule, Theme, ThemeService } from '@assistant/common-sdk';
-import { IconComponent, UserHeaderComponent } from '@assistant/common-ui';
+import { PreferencesActions, PreferencesSelector, PreferencesStoreModule, Theme } from '@assistant/common-sdk';
+import { IconComponent, SettingsCardModule, UserHeaderComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'app-settings',
@@ -14,7 +14,8 @@ import { IconComponent, UserHeaderComponent } from '@assistant/common-ui';
         CommonModule,
         PreferencesStoreModule,
         IconComponent,
-        UserHeaderComponent
+        UserHeaderComponent,
+        SettingsCardModule
     ]
 })
 export class SettingsComponent implements OnInit {

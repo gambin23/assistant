@@ -6,30 +6,14 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="card clickable" (click)="toggleDarkTheme()">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar avatar-64 rounded-circle bg-dark-l-50 text-dark me-3"><svg
-                                stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em"
-                                width="1em" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8V16Z"
-                                    fill="currentColor"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4V8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16V20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"
-                                    fill="currentColor"></path>
-                            </svg></div>
-                        <div>
-                            <div class="h4">Dark Mode</div>
-                            <div class="caption">Toggle Dark Mode on/off</div>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="ms-auto form-check form-switch"><input type="checkbox" readonly=""
-                                    [checked]="(theme$|async) === 'dark'" class="form-check-input">
-                            </div>
-                        </div>
-                    </div>
+            <settings-card (clicked)="toggleDarkTheme()">
+                <settings-card-icon icon="circle-half-stroke"></settings-card-icon>
+                <settings-card-title>Dark Mode</settings-card-title>
+                <settings-card-description>Toggle Dark Mode on/off</settings-card-description>
+                <div class="form-check form-switch">
+                    <input type="checkbox" readonly [checked]="(theme$|async) === 'dark'" class="form-check-input">
                 </div>
-            </div>
+            </settings-card>
         </div>
     </div>
 </div>
