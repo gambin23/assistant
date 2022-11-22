@@ -1,6 +1,6 @@
-<div id="wrapper" class="">
-    <div class="navbar-wrapper show">
-        <div class="navbar-switch">
+<div id="wrapper">
+    <div class="navbar-wrapper show" [class.show]="showSidebar">
+        <div class="navbar-switch" (click)="toggleSidebar()">
             <icon name="square-caret-left" type="solid" size="xs"></icon>
         </div>
         <div class="navbar-header bg-gradient">
@@ -10,25 +10,29 @@
                 </div>
                 <ul class="dropdown-menu">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="dropdown-header">Switch to</h3><a href="/">
+                        <h3 class="dropdown-header">Switch to</h3>
+                        <a [routerLink]="['']">
                             <div class="p-3 ms-5 text-nowrap">All Apps svg</div>
                         </a>
-                    </div><a href="/finance/">
+                    </div>
+                    <a [routerLink]="['/finance']">
                         <li class="dropdown-item">svg Finance</li>
-                    </a><a href="/food/">
+                    </a>
+                    <a [routerLink]="['/food']">
                         <li class="dropdown-item">svg Food</li>
                     </a>
                 </ul>
             </div>
         </div>
         <div class="navbar navbar-menu">
-            <a *ngFor="let route of routes" class="navbar-item" [routerLink]="[route.path]" [routerLinkActive]="'active'">
+            <a *ngFor="let route of routes" class="navbar-item" [routerLink]="[route.path]" routerLinkActive="active">
                 <icon [name]="route.icon" type="solid"></icon>
                 <span>{{route.title}}</span>
             </a>
         </div>
         <div class="navbar navbar-settings">
-            <a *ngIf="user$|async as user" class="navbar-item d-flex align-items-center" href="/account">
+            <a *ngIf="user$|async as user" class="navbar-item d-flex align-items-center" [routerLink]="['/account']"
+                routerLinkActive="active">
                 <div class="avatar avatar-32 rounded-circle text-primary d-inline">
                     <img src="https://lh3.googleusercontent.com/a/AATXAJzyuQDC4vRlKus_x8jLAa-xVq-YMd48fS_nMPT-=s96-c"
                         [alt]="user.name" class="rounded-circle align-baseline" />
@@ -37,11 +41,11 @@
                     {{user.name}}
                 </span>
             </a>
-            <a class="navbar-item" href="/settings">
+            <a class="navbar-item" [routerLink]="['/settings']" routerLinkActive="active">
                 <icon type="solid" name="gear"></icon>
                 <span>Settings</span>
             </a>
-            <a class="navbar-item" [routerLink]="['/logout']">
+            <a class="navbar-item" [routerLink]="['/logout']" routerLinkActive="active">
                 <icon type="solid" name="right-from-bracket"></icon>
                 <span>Logout</span>
             </a>

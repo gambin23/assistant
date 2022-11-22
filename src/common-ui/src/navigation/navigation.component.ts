@@ -21,11 +21,16 @@ export class NavigationComponent implements OnInit {
 
     @Input() routes: AppRoutes | undefined;
     user$: Observable<User | undefined> | undefined;
+    showSidebar = true;
 
     constructor(private userSelector: UserSelector) { }
 
     ngOnInit(): void {
         this.user$ = this.userSelector.user$();
+    }
+
+    toggleSidebar() {
+        this.showSidebar = !this.showSidebar;
     }
 
 }

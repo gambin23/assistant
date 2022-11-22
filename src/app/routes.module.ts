@@ -22,6 +22,10 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard]
     },
     {
+        path: 'account',
+        redirectTo: ''
+    },
+    {
         path: 'settings',
         component: SettingsComponent,
         canActivate: [AuthenticationGuard]

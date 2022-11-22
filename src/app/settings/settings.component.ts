@@ -1,7 +1,8 @@
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PreferencesActions, PreferencesSelector, PreferencesStoreModule, Theme } from '@assistant/common-sdk';
 import { IconComponent, SettingsCardModule, UserHeaderComponent } from '@assistant/common-ui';
 
@@ -12,6 +13,7 @@ import { IconComponent, SettingsCardModule, UserHeaderComponent } from '@assista
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
+        RouterModule,
         PreferencesStoreModule,
         IconComponent,
         UserHeaderComponent,
