@@ -32,12 +32,12 @@ const routes: Routes = [
     },
     {
         path: 'food',
-        loadChildren: () => import('@assistant/food').then(x => x.FoodRoutesModule),
+        loadChildren: () => import('@assistant/food').then(x => x.FoodAppModule),
         canActivate: [AuthenticationGuard]
     },
     {
         path: 'finance',
-        loadChildren: () => import('@assistant/finance').then(x => x.FinanceRoutesModule),
+        loadChildren: () => import('@assistant/finance').then(x => x.FinanceAppModule),
         canActivate: [AuthenticationGuard]
     },
     {

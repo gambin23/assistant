@@ -1,10 +1,10 @@
-import { AppState } from './../common-sdk/src/store/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { reducers, ThemeService } from '@assistant/common-sdk';
+import { AppStore, reducers, ThemeService } from '@assistant/common-sdk';
+import { NavigationComponent } from '@assistant/common-ui';
 import { AppComponent } from './app.component';
 import { RoutesModule } from './routes.module';
 
@@ -13,17 +13,16 @@ export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localSto
     rehydrate: true
 })(reducer);
 
-const metaReducers: Array<MetaReducer<AppState, any>> = [localStorageSyncReducer];
+const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer];
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         RoutesModule,
         StoreModule.forRoot(reducers, { metaReducers }),
-        StoreDevtoolsModule.instrument()
+        StoreDevtoolsModule.instrument(),
+        NavigationComponent
     ],
     providers: [ThemeService],
     bootstrap: [AppComponent]

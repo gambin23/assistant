@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { AppState } from '../store/store';
+import { AppStore } from '../store/store';
 import { User } from './user.model';
 
 @Injectable({providedIn: 'root'})
 export class UserSelector {
 
-    constructor(private store: Store<AppState>) { }
+    constructor(private store: Store<AppStore>) { }
 
     user$(): Observable<User> {
         return this.store.select(state => state.user);

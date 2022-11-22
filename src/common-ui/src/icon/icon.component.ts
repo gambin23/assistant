@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { IconSize, IconType } from './icon.model';
 
 @Component({
@@ -9,19 +9,19 @@ import { IconSize, IconType } from './icon.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule]
 })
-export class IconComponent {
+export class IconComponent implements OnChanges {
 
-    @Input() set name(value: string | undefined) {
-        this.classes = this.classes + ` fa-${value}`;
-    };
-
-    @Input() set size(value: IconSize | undefined) {
-        this.classes = this.classes + ` fa-${value}`;
-    };
-
-    @Input() set type(value: IconType | undefined) {
-        this.classes = this.classes + ` fa-${value}`;
-    };
+    @Input() name: string | undefined;
+    @Input() type: IconType | undefined;
+    @Input() size: IconSize | undefined;
 
     classes = '';
+
+    ngOnChanges() {
+        if (this.size) {
+            this.classes = `fa-${this.name} fa-${this.type} fa-${this.size}`;
+        } else {
+            this.classes = `fa-${this.name} fa-${this.type}`;
+        }
+    }
 }
