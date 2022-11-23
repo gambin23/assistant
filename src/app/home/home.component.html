@@ -12,16 +12,10 @@
                         <icon type="solid" name="house-crack" size="xl"></icon> All Apps
                     </div>
                     <ul>
-                        <a [routerLink]="['finance']">
+                        <a *ngFor="let app of apps$|async" [routerLink]="[app.id]">
                             <li>
-                                <icon type="solid" name="dollar-sign" size="2x"></icon>
-                                <div>Finance</div>
-                            </li>
-                        </a>
-                        <a [routerLink]="['food']">
-                            <li>
-                                <icon type="solid" name="utensils" size="2x"></icon>
-                                <div>Food</div>
+                                <icon type="solid" [name]="app.icon" size="2x"></icon>
+                                <div>{{app.name}}</div>
                             </li>
                         </a>
                     </ul>

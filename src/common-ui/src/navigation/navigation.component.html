@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="navbar navbar-menu">
-                    <a *ngFor="let route of activeApp.routes" class="navbar-item" [routerLink]="[activeApp.name, route.path]"
+                    <a *ngFor="let route of activeApp.routes" class="navbar-item" [routerLink]="[activeApp.id, route.path]"
                         routerLinkActive="active">
                         <icon [name]="route.icon" type="solid"></icon>
                         <span>{{route.title}}</span>

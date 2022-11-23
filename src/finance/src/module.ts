@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppActions, AppRoutes } from '@assistant/common-sdk';
+import { App, AppsActions, AppRoutes } from '@assistant/common-sdk';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-export const APP_NAME_FINANCE = 'finance';
+export const FINANCE_APP: App = {
+    id: 'finance',
+    name: 'Finance',
+    icon: 'dollar-sign'
+};
 
 const financeRoutes: AppRoutes = [
     {
@@ -26,10 +30,9 @@ const financeRoutes: AppRoutes = [
     )]
 })
 export class FinanceAppModule {
-    constructor(private appActions: AppActions) {
-        this.appActions.loadApp({
-            name: APP_NAME_FINANCE,
-            icon: 'dollar-sign',
+    constructor(private appsActions: AppsActions) {
+        this.appsActions.loadApp({
+            ...FINANCE_APP,
             routes: financeRoutes
         });
     }

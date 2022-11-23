@@ -1,8 +1,8 @@
 import { PreferencesState } from './../preferences/preferences.model';
 import { UserState } from '../user/user.model';
 import { userReducer } from '../user/user.reducer';
-import { appReducer } from '../app/app.reducer';
-import { AppState } from '../app/app.model';
+import { appsReducer } from '../apps/apps.reducer';
+import { AppState } from '../apps/apps.model';
 import { preferencesReducer } from '../preferences/preferences.reducer';
 
 export interface AppStore {
@@ -14,5 +14,5 @@ export interface AppStore {
 export const reducers = {
     user: userReducer,
     preferences: preferencesReducer,
-    app: appReducer
+    app: appsReducer
 }

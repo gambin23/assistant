@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppActions, AppRoutes } from '@assistant/common-sdk';
+import { App, AppsActions, AppRoutes } from '@assistant/common-sdk';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecipesComponent } from './recipes/recipes.component';
 
 
-export const APP_NAME_FOOD = 'food';
+export const FOOD_APP: App = {
+    id: 'food',
+    name: 'Food',
+    icon: 'utensils'
+};
 
 const foodRoutes: AppRoutes = [
     {
@@ -35,10 +39,9 @@ const foodRoutes: AppRoutes = [
     ]
 })
 export class FoodAppModule {
-    constructor(private appActions: AppActions) {
-        this.appActions.loadApp({
-            name: APP_NAME_FOOD,
-            icon: 'utensils',
+    constructor(private appsActions: AppsActions) {
+        this.appsActions.loadApp({
+            ...FOOD_APP,
             routes: foodRoutes
         });
     }

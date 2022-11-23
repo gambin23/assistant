@@ -1,8 +1,7 @@
-import { AppSelector } from './../../../common-sdk/src/app/app.selector';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { App, AppRoutes, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
+import { AppRoutes, AppsSelector, EnhancedApp, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
 import { Observable } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
 
@@ -23,18 +22,18 @@ export class NavigationComponent implements OnInit {
     @Input() routes: AppRoutes | undefined;
     isAuthenticated$!: Observable<boolean | undefined>;
     user$!: Observable<User | undefined>;
-    activeApp$!: Observable<App | undefined>;
+    activeApp$!: Observable<EnhancedApp | undefined>;
     showSidebar = true;
 
     constructor(
         private userSelector: UserSelector,
-        private appSelector: AppSelector
+        private appsSelector: AppsSelector
     ) { }
 
     ngOnInit(): void {
         this.isAuthenticated$ = this.userSelector.isAuthenticated$();
         this.user$ = this.userSelector.user$();
-        this.activeApp$ = this.appSelector.activeApp$();
+        this.activeApp$ = this.appsSelector.activeApp$();
     }
 
     toggleSidebar() {

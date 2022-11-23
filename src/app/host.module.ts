@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { AppStore, reducers, ThemeService } from '@assistant/common-sdk';
+import { AppsService, AppsModule, AppStore, reducers, ThemeService } from '@assistant/common-sdk';
 import { NavigationComponent } from '@assistant/common-ui';
+import { FINANCE_APP } from '@assistant/finance';
+import { FOOD_APP } from '@assistant/food';
 import { HostComponent } from './host.component';
 import { RoutesModule } from './routes.module';
 
@@ -20,11 +22,18 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
     imports: [
         BrowserModule,
         RoutesModule,
+        AppsModule.register([
+            FOOD_APP,
+            FINANCE_APP
+        ]),
         StoreModule.forRoot(reducers, { metaReducers }),
         StoreDevtoolsModule.instrument(),
         NavigationComponent
     ],
-    providers: [ThemeService],
+    providers: [
+        ThemeService,
+        AppsService
+    ],
     bootstrap: [HostComponent]
 })
 export class HostModule { }

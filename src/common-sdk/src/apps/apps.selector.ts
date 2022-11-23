@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { AppStore } from '../store/store';
-import { App } from './app.model';
+import { App, EnhancedApp } from './apps.model';
 
 @Injectable({ providedIn: 'root' })
-export class AppSelector {
+export class AppsSelector {
 
     private appState$ = this.store.select(state => state.app);
 
     constructor(private store: Store<AppStore>) { }
 
-    activeApp$(): Observable<App> {
+    activeApp$(): Observable<EnhancedApp> {
         return this.appState$.pipe(map(x => x.apps[x.active]));
     }
 

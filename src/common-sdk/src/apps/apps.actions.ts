@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
-import { App } from './app.model';
+import { App, EnhancedApp } from './apps.model';
 
-export const appSwitch = createAction('[APP] Switch', props<{ name: string }>());
-export const appLoad = createAction('[APP] Load', props<{ app: App }>());
+export const appSwitch = createAction('[APP] Switch', props<{ id: string }>());
+export const appLoad = createAction('[APP] Load', props<{ app: EnhancedApp }>());
 
 @Injectable({ providedIn: 'root' })
-export class AppActions {
+export class AppsActions {
 
     constructor(private store: Store) { }
 
-    switchApp(name: string) {
-        this.store.dispatch(appSwitch({ name }));
+    switchApp(id: string) {
+        this.store.dispatch(appSwitch({ id }));
     }
 
-    loadApp(app: App) {
+    loadApp(app: EnhancedApp) {
         app = {
             ...app,
-            routes: app.routes.map(x => {
+            routes: app.routes?.map(x => {
                 return {
                     path: x.path,
                     title: x.title,
