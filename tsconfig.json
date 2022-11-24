@@ -33,8 +33,14 @@
             "@assistant/food": [
                 "./src/food/index.ts"
             ],
+            "@assistant/food/name": [
+                "./src/food/name.ts"
+            ],
             "@assistant/finance": [
                 "./src/finance/index.ts"
+            ],
+            "@assistant/finance/name": [
+                "./src/finance/name.ts"
             ]
         }
     },

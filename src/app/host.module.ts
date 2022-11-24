@@ -5,8 +5,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { AppsService, AppsModule, AppStore, reducers, ThemeService } from '@assistant/common-sdk';
 import { NavigationComponent } from '@assistant/common-ui';
-import { FINANCE_APP } from '@assistant/finance';
-import { FOOD_APP } from '@assistant/food';
+import { FOOD_APP } from '@assistant/food/name';
+import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
 import { RoutesModule } from './routes.module';
 

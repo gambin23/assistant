@@ -27,11 +27,12 @@
                     </div>
                 </div>
                 <div class="navbar navbar-menu">
-                    <a *ngFor="let route of activeApp.routes" class="navbar-item" [routerLink]="[activeApp.id, route.path]"
-                        routerLinkActive="active">
-                        <icon [name]="route.icon" type="solid"></icon>
-                        <span>{{route.title}}</span>
-                    </a>
+                    <ng-container *ngFor="let route of activeApp.routes">
+                        <a *ngIf="!route.hidden" class="navbar-item" [routerLink]="[activeApp.id, route.path]" routerLinkActive="active">
+                            <icon [name]="route.icon" type="solid"></icon>
+                            <span>{{route.title}}</span>
+                        </a>
+                    </ng-container>
                 </div>
             </ng-container>
             <div class="navbar navbar-settings">

@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { App, AppsActions, AppRoutes } from '@assistant/common-sdk';
+import { FOOD_APP } from '../name';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecipesComponent } from './recipes/recipes.component';
 
-
-export const FOOD_APP: App = {
-    id: 'food',
-    name: 'Food',
-    icon: 'utensils'
-};
-
-const foodRoutes: AppRoutes = [
+const routes: AppRoutes = [
     {
         path: 'dashboard',
         title: 'Dashboard',
@@ -23,26 +17,19 @@ const foodRoutes: AppRoutes = [
         title: 'Recipes',
         icon: 'book',
         component: RecipesComponent
+    },
+    {
+        path: '**',
+        redirectTo: 'dashboard',
+        hidden: true
     }
 ]
 
 @NgModule({
-    imports: [
-        RouterModule.forChild([
-            ...foodRoutes,
-            {
-                path: '',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
-            }
-        ])
-    ]
+    imports: [RouterModule.forChild(routes)]
 })
 export class FoodAppModule {
     constructor(private appsActions: AppsActions) {
-        this.appsActions.loadApp({
-            ...FOOD_APP,
-            routes: foodRoutes
-        });
+        this.appsActions.loadApp({ ...FOOD_APP, routes });
     }
 }
