@@ -1,19 +1,33 @@
 import { AppRoutes } from '@assistant/common-sdk';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RecipesComponent } from './recipes/recipes.component';
+import { DashboardPageComponent } from './pages/dashboard/dashboard.component';
+import { SearchPageComponent } from './pages/search/search.component';
+import { NewPageComponent } from './pages/new/new.component';
+import { RecipesPageComponent } from './pages/recipes/recipes.component';
 
 export const routes: AppRoutes = [
     {
         path: 'dashboard',
         title: 'Dashboard',
-        icon: 'table-list',
-        component: DashboardComponent
+        icon: 'rectangle-list',
+        component: DashboardPageComponent
+    },
+    {
+        path: 'search',
+        title: 'Search',
+        icon: 'sun',
+        component: SearchPageComponent
+    },
+    {
+        path: 'new',
+        title: 'New Recipe',
+        icon: 'square-plus',
+        component: NewPageComponent
     },
     {
         path: 'recipes',
         title: 'Recipes',
-        icon: 'book',
-        component: RecipesComponent
+        icon: 'address-book',
+        component: RecipesPageComponent
     },
     {
         path: '**',

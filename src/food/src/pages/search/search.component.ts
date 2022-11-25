@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'food-recipes',
+  selector: 'search-page',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './recipes.component.html',
+  templateUrl: './search.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecipesComponent {
+export class SearchPageComponent {
 
 }

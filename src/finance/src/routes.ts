@@ -1,11 +1,11 @@
 import { AppRoutes } from '@assistant/common-sdk';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: AppRoutes = [
     {
         path: 'dashboard',
         title: 'Dashboard',
-        icon: 'table-list',
+        icon: 'rectangle-list',
         component: DashboardComponent
     },
     {

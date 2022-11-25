@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'food-dashboard',
+    selector: 'dashboard-page',
     standalone: true,
     templateUrl: './dashboard.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardComponent {
+export class DashboardPageComponent {
 
 }
