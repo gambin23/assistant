@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { App, AppsActions, AppRoutes } from '@assistant/common-sdk';
+import { AppsActions, AppRoutes } from '@assistant/common-sdk';
 import { FOOD_APP } from '../name';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecipesComponent } from './recipes/recipes.component';

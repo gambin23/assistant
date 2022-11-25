@@ -1,3 +1,4 @@
+import { SettingsCardModule } from './../../common-ui/src/settings-card/settings-card.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ import { App, AppsService } from '@assistant/common-sdk';
         CommonModule,
         RouterModule,
         UserHeaderComponent,
-        IconComponent
+        IconComponent,
+        SettingsCardModule
     ]
 })
 export class HomeComponent implements OnInit {
