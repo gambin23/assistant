@@ -4,16 +4,16 @@ import { Observable } from 'rxjs';
 import { User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
 
 @Component({
-    selector: 'user-header',
+    selector: 'dashboard-header',
     standalone: true,
-    templateUrl: './user-header.component.html',
+    templateUrl: './dashboard-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         UserStoreModule
     ]
 })
-export class UserHeaderComponent {
+export class DashboardHeaderComponent {
 
     user$: Observable<User> | undefined;
 

@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-body p-0">
+        <div class="d-flex align-items-center">
+            <div class="avatar avatar-64 rounded-circle text-primary me-3">
+                <img src="https://lh3.googleusercontent.com/a/AATXAJzyuQDC4vRlKus_x8jLAa-xVq-YMd48fS_nMPT-=s96-c"
+                    alt="Gilbert Gambin" class="rounded-circle align-baseline" />
+            </div>
+            <div *ngIf="user$|async as user">
+                <div class="h3">Hi {{user.name}}</div>
+            </div>
+            <div class="ms-auto">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
