@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
@@ -14,8 +14,6 @@ import { IconComponent } from '../icon/icon.component';
 })
 export class SettingsCardComponent {
 
-    @Input() title: string | undefined;
-    @Input() description: string | undefined;
     @Output() clicked = new EventEmitter();
 
     onClicked() {

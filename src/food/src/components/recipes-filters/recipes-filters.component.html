@@ -1,0 +1,31 @@
+<ul *ngIf="showFavouriteArchived" class="nav mb-3">
+    <li class="nav-link" (click)="showAll()" [class.active]="!filters.isFavourite && !filters.isArchived">
+        All
+    </li>
+    <li class="nav-link" (click)="showFavourites()" [class.active]="filters.isFavourite">
+        Favourites
+    </li>
+    <li class="nav-link" (click)="showArchived()" [class.active]="filters.isArchived">
+        Archived
+    </li>
+</ul>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">
+        <icon type="solid" name="magnifying-glass"></icon>
+    </span>
+    <input type="search" class="form-control" placeholder="Search…" [formControl]="search" />
+</div>
+
+<div class="mb-5 d-flex align-items-center justify-content-between">
+    <div class="tag bone link">Categories</div>
+    <div>
+        <button class="btn btn-link pe-0" (click)="onChangeSort()">
+            <icon type="solid" [name]="filters.sort === 'asc' ? 'arrow-up-a-z' : 'arrow-up-z-a'"></icon>
+        </button>
+        <button class="btn btn-link" (click)="onChangeView()">
+            <icon type="solid" name="table-cells" class="me-2" [class.faded]="view === 'grid'"></icon>
+            <icon type="solid" name="list" [class.faded]="view === 'list'"></icon>
+        </button>
+    </div>
+</div>

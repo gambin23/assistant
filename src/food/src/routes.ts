@@ -25,7 +25,7 @@ export const routes: AppRoutes = [
     },
     {
         path: 'recipes',
-        title: 'Recipes',
+        title: 'My Recipes',
         icon: 'address-book',
         component: RecipesPageComponent
     },
