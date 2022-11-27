@@ -17,3 +17,5 @@ export const reducers: ActionReducerMap<AppStore> = {
     preferences: preferencesReducer,
     apps: appsReducer
 }
+
+export const setState = <T>(state: T, partial: Partial<T>) => { return { ...state, ...partial } }
