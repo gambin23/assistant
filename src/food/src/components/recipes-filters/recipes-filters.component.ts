@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnI
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconComponent } from '@assistant/common-ui';
-import { RecipesFilters } from './recipes-filters.model';
 import { debounceTime, Subscription } from 'rxjs';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
+import { RecipesFilters } from '../../store/recipes/recipes.model';
 
 @Component({
     selector: 'recipes-filters',
@@ -30,10 +30,11 @@ export class RecipesFiltersComponent implements OnInit, OnDestroy {
     @Output() filtered = new EventEmitter<RecipesFilters>();
     @Output() viewChanged = new EventEmitter<RecipeView>();
 
-    search = new FormControl<string>('', { nonNullable: true });
+    search = new FormControl<string>(this.filters.search, { nonNullable: true });
     private subscription = new Subscription();
 
     ngOnInit() {
+        this.search.setValue(this.filters.search);
         this.subscription = this.search.valueChanges.pipe(
             debounceTime(500)
         ).subscribe(search =>

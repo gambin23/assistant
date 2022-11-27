@@ -1,13 +1,13 @@
 import { createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Observable, } from 'rxjs';
-import { Dictionary } from '@assistant/common-sdk';
 import { foodStore } from '../store';
-import { Recipe, recipesDictionary, recipeSkeleton } from '../../models/recipes';
+import { Recipe, recipesSkeleton, recipeSkeleton } from '../../models/recipes';
+import { RecipesFilters } from './recipes.model';
 
 const selectRecipesState = createSelector(foodStore, x => x.recipes);
 const selectIsBusy = createSelector(selectRecipesState, recipes => recipes.isBusy);
-const selectRecipes = createSelector(selectRecipesState, recipes => recipes.isBusy ? recipesDictionary : recipes.data);
+const selectRecipes = (filters: RecipesFilters) => createSelector(selectRecipesState, recipes => recipes.isBusy ? recipesSkeleton : Object.values(recipes.data));
 const selectRecipe = (id: string) => createSelector(selectRecipesState, recipes => recipes.isBusy ? recipeSkeleton : recipes.data[id]);
 
 @Injectable()
@@ -15,8 +15,8 @@ export class RecipesSelector {
 
     constructor(private store: Store) { }
 
-    recipes$(): Observable<Dictionary<Recipe>> {
-        return this.store.select(selectRecipes);
+    recipes$(filters: RecipesFilters): Observable<Recipe[]> {
+        return this.store.select(selectRecipes(filters));
     }
 
     isBusy$(): Observable<boolean> {
