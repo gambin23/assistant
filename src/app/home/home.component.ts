@@ -1,4 +1,4 @@
-import { SettingsCardModule } from './../../common-ui/src/settings-card/settings-card.module';
+import { SettingsCardModule } from '../../common-ui/src/common/settings-card/settings-card.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';

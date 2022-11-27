@@ -2,6 +2,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, switchMap } from 'rxjs';
+import { NotFoundModule } from '@assistant/common-ui';
 import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
 import { Recipe } from '../../models/recipes';
@@ -14,7 +15,8 @@ import { Recipe } from '../../models/recipes';
     imports: [
         CommonModule,
         RouterModule,
-        FoodRecipeComponent
+        FoodRecipeComponent,
+        NotFoundModule
     ]
 })
 export class RecipePageComponent implements OnInit {

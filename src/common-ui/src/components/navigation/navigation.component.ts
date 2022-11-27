@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { RouterModule } from '@angular/router';
 import { AppRoutes, AppsSelector, EnhancedApp, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
 import { Observable } from 'rxjs';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from '../../common/icon/icon.component';
 
 @Component({
     selector: 'navigation',

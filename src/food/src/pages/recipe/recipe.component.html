@@ -1,3 +1,17 @@
-<ng-container *ngIf="recipe$|async as recipe">
+<ng-container *ngIf="recipe$|async as recipe; else empty">
     <food-recipe [recipe]="recipe" [class.skeleton]="isBusy$|async"></food-recipe>
 </ng-container>
+
+<ng-template #empty>
+    <not-found>
+        <not-found-title>Recipe Not Found</not-found-title>
+        <not-found-description>
+            We're sorry the recipe you requested could not be found.
+        </not-found-description>
+        <not-found-actions>
+            <button class="btn btn-link" [routerLink]="['']">
+                Home
+            </button>
+        </not-found-actions>
+    </not-found>
+</ng-template>

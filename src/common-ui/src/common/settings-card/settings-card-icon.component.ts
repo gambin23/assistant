@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IconComponent } from './../icon/icon.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
     selector: 'settings-card-icon',
