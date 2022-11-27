@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { appLoad, appSwitch } from './apps.actions';
-import { AppState } from './apps.model';
+import { AppsState } from './apps.model';
 
-const initialState: AppState = {
+const initialState: AppsState = {
     active: '',
     apps: {}
 };

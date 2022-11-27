@@ -9,6 +9,7 @@ import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
 import { RoutesModule } from './routes.module';
+import { EffectsModule } from '@ngrx/effects';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({
     keys: ['user', 'preferences'],
@@ -27,6 +28,7 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
             FINANCE_APP
         ]),
         StoreModule.forRoot(reducers, { metaReducers }),
+        EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
         NavigationComponent
     ],

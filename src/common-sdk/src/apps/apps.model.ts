@@ -11,7 +11,7 @@ export interface EnhancedApp extends App {
     routes?: AppRoutes;
 }
 
-export interface AppState {
+export interface AppsState {
     active: string;
     apps: Dictionary<App>;
 }

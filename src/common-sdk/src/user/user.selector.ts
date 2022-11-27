@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { createSelector, Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { AppStore } from '../store/store';
 import { User } from './user.model';
+
+const getUser = createSelector((state: AppStore) => state.user, x => x);
 
 @Injectable({providedIn: 'root'})
 export class UserSelector {
@@ -10,7 +12,7 @@ export class UserSelector {
     constructor(private store: Store<AppStore>) { }
 
     user$(): Observable<User> {
-        return this.store.select(state => state.user);
+        return this.store.select(getUser);
     }
 
     isAuthenticated$(): Observable<boolean> {
