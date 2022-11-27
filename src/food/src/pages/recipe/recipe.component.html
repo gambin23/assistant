@@ -1,0 +1,3 @@
+<ng-container *ngIf="recipe$|async as recipe">
+    <food-recipe [recipe]="recipe" [class.skeleton]="isBusy$|async"></food-recipe>
+</ng-container>

@@ -3,6 +3,7 @@ import { DashboardPageComponent } from './pages/dashboard/dashboard.component';
 import { SearchPageComponent } from './pages/search/search.component';
 import { NewPageComponent } from './pages/new/new.component';
 import { RecipesPageComponent } from './pages/recipes/recipes.component';
+import { RecipePageComponent } from './pages/recipe/recipe.component';
 
 export const routes: AppRoutes = [
     {
@@ -27,7 +28,16 @@ export const routes: AppRoutes = [
         path: 'recipes',
         title: 'My Recipes',
         icon: 'address-book',
-        component: RecipesPageComponent
+        children: [
+            {
+                path: '',
+                component: RecipesPageComponent,
+            },
+            {
+                path: ':id',
+                component: RecipePageComponent
+            }
+        ]
     },
     {
         path: '**',

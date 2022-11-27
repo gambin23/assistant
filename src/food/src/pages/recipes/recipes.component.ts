@@ -32,7 +32,7 @@ export class RecipesPageComponent implements OnInit {
 
     ngOnInit() {
         this.recipes$ = this.recipesSelector.recipes$();
-        this.isBusy$ = this.recipesSelector.isBusy$().pipe(tap(isBusy => console.log(isBusy)));
+        this.isBusy$ = this.recipesSelector.isBusy$();
     }
 
     onFiltered(filters: RecipesFilters) {
