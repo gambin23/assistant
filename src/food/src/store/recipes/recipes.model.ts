@@ -1,8 +1,8 @@
-import { Dictionary, SortOrder } from '@assistant/common-sdk';
-import { Recipe } from '../../models/recipes';
+import { SortOrder } from '@assistant/common-sdk';
+import { Recipes } from '../../models/recipes';
 
 export interface RecipesState {
-    data: Dictionary<Recipe>;
+    data: Recipes;
     isBusy: boolean;
     isError: boolean;
 }

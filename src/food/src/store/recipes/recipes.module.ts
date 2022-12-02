@@ -1,5 +1,5 @@
-import { RecipesActions } from './recipes.actions';
 import { NgModule } from '@angular/core';
+import { RecipesActions } from './recipes.actions';
 import { RecipesSelector } from './recipes.selector';
 import { RecipesService } from './recipes.service';
 

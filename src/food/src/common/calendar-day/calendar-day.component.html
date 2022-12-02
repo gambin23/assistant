@@ -1,8 +1,9 @@
-<div class="card">
+<div class="card" [class.skeleton]="isBusy">
     <ul class="nav mb-3 d-flex justify-content-center">
-        <li class="nav-link">Breakfast</li>
-        <li class="nav-link active">Lunch</li>
-        <li class="nav-link">Dinner</li>
+        <li *ngFor="let type of meals" (click)="onSelectMeal(type.id)" class="nav-link"
+            [class.active]="meal === type.id">
+            {{type.name}}
+        </li>
     </ul>
     <div class="card-header bg-primary bg-gradient text-white text-center">
         <div class="d-flex align-items-center justify-content-between">
@@ -15,13 +16,27 @@
             </button>
         </div>
     </div>
+        <ng-container *ngIf="day[meal] as meal; else mealNotFound">
+            <ng-container *ngIf="getRecipe$(meal)|async as recipe">
+                <food-recipe-card [recipe]="recipe" [readonly]="true"></food-recipe-card>
+            </ng-container>
+        </ng-container>
+        <button class="btn btn-primary my-3" (click)="onSelectRecipe()">
+            Select Recipe
+        </button>
+</div>
+
+<ng-template #mealNotFound>
     <div class="callout callout-secondary mb-5">
-        Select one of your recipes by clicking 'Select' or pick a random recipe by clicking 'Pick Random'.
+        Select one of your recipes by clicking 'Select Recipe' or pick a random recipe by clicking 'Pick Random'.
     </div>
-    <button class="btn btn-primary my-3">
-        Select Recipe
-    </button>
     <button class="btn btn-secondary">
         Pick Random
     </button>
-</div>
+</ng-template>
+
+<ng-template #recipesModal>
+    <div class="modal-body">
+        <food-recipe-select [recipes]="recipes" (selected)="onSelectedRecipe($event)"></food-recipe-select>
+    </div>
+</ng-template>

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
-import { Dictionary } from '@assistant/common-sdk';
-import { Recipe } from '../../models/recipes';
+import { Recipes } from '../../models/recipes';
 
 const prefix = '[RECIPES]';
 export const recipesLoad = createAction(`${prefix} Load`);
-export const recipesLoadSuccess = createAction(`${prefix} Success`, props<{ recipes: Dictionary<Recipe> }>());
+export const recipesLoadSuccess = createAction(`${prefix} Success`, props<{ recipes: Recipes }>());
 export const recipesLoadError = createAction(`${prefix} Error`);
 
 @Injectable({ providedIn: "root" })
@@ -16,7 +15,7 @@ export class RecipesActions {
         this.store.dispatch(recipesLoad());
     }
 
-    loadSuccess(recipes: Dictionary<Recipe>) {
+    loadSuccess(recipes: Recipes) {
         this.store.dispatch(recipesLoadSuccess({ recipes }));
     }
 

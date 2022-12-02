@@ -18,4 +18,5 @@ export class FoodRecipeCardComponent {
 
     @Input() recipe!: Recipe;
     @Input() view: RecipeView = 'grid';
+    @Input() readonly = false;
 }

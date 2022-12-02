@@ -1,0 +1,23 @@
+<div class="input-group mb-3">
+    <span class="input-group-text">
+        <icon type="solid" name="magnifying-glass"></icon>
+    </span>
+    <input type="search" class="form-control" placeholder="Search…">
+</div>
+
+<div class="list-group">
+    <div *ngFor="let recipe of recipes" (click)="onSelect(recipe)"
+        class="list-group-item py-3 cursor-pointer d-flex align-items-center">
+        <div class="d-flex align-items-center">
+            <div class="me-3">
+                <div style="width: 6rem; height: 4rem;">
+                    <img [src]="recipe.image" [alt]="recipe.name" class="img-fluid fit-cover w-100 h-100" />
+                </div>
+            </div>
+            <div>
+                <div>{{recipe.name}}</div>
+                <div class="caption">{{recipe.description}}</div>
+            </div>
+        </div>
+    </div>
+</div>
