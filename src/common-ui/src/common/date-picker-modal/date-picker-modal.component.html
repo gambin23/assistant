@@ -1,0 +1,37 @@
+<div (click)="onShow()">
+    <ng-content>
+    </ng-content>
+</div>
+
+<ng-template #modal>
+    <div class="modal-body">
+        <div class="calendar">
+            <ul class="nav calendar-months">
+                <li (click)="onDecrementMonth()" class="nav-link">
+                    {{formatDate(subMonths(date, 1))}}
+                </li>
+                <li class="nav-link active">
+                    {{formatDate(date)}}
+                </li>
+                <li (click)="onIncrementMonth()" class="nav-link">
+                    {{formatDate(addMonths(date, 1))}}
+                </li>
+            </ul>
+            <hr />
+            <ul class="calendar-weekdays">
+                <li *ngFor="let weekDay of weekDays" class="calendar-weekday">
+                    {{weekDay}}
+                </li>
+            </ul>
+            <ul class="calendar-days">
+                <div *ngFor="let line of chunk(days(date), 7)">
+                    <li *ngFor="let day of line" class="calendar-day" [class.active]="isActiveDay(day)"
+                        [class.disabled]="isDisabledDay(day)" (click)="onSelectDay(day)">
+                        {{day.getDate()}}
+                    </li>
+                    <br />
+                </div>
+            </ul>
+        </div>
+    </div>
+</ng-template>

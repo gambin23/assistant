@@ -13,23 +13,25 @@
         </div>
     </div>
     <div class="col-md-3">
-        <div class="callout callout-secondary h-100 d-flex align-items-center p-3 text-center">
-            <a class="w-100" href="/food/new">
-                <div class="d-md-none d-flex align-items-center justify-content-between">
-                    <div>Create a new recipe</div>
-                    <div class="tag bone tag-secondary m-0">New +</div>
+        <a [routerLink]="routeFoodNewRecipe">
+            <div class="callout callout-secondary h-100 d-flex align-items-center p-3 text-center">
+                <div class="w-100">
+                    <div class="d-md-none d-flex align-items-center justify-content-between">
+                        <div>Create a new recipe</div>
+                        <div class="tag bone tag-secondary m-0">New +</div>
+                    </div>
+                    <div class="d-none d-md-block text-center">
+                        <div class="mb-3">Create a new recipe</div>
+                        <div class="tag bone tag-secondary m-0">New +</div>
+                    </div>
                 </div>
-                <div class="d-none d-md-block text-center">
-                    <div class="mb-3">Create a new recipe</div>
-                    <div class="tag bone tag-secondary m-0">New +</div>
-                </div>
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
 </div>
 
 <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-3" [class.skeleton]="isBusy$|async">
-    <a *ngFor="let recipe of recipes$|async" [routerLink]="[recipe.id]">
+    <a *ngFor="let recipe of recipes$|async" [routerLink]="routeFoodRecipe(recipe.id)">
         <food-recipe-card [recipe]="recipe" [view]="view"></food-recipe-card>
     </a>
 </div>

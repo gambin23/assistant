@@ -12,7 +12,7 @@
                         <icon type="solid" name="house-crack" size="xl"></icon> All Apps
                     </div>
                     <ul>
-                        <a *ngFor="let app of apps$|async" [routerLink]="[app.id]">
+                        <a *ngFor="let app of apps$|async" [routerLink]="app.id">
                             <li>
                                 <icon type="solid" [name]="app.icon" size="2x"></icon>
                                 <div>{{app.name}}</div>
@@ -25,7 +25,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <a [routerLink]="['settings']">
+            <a [routerLink]="'settings'">
                 <settings-card>
                     <settings-card-icon icon="gear"></settings-card-icon>
                     <settings-card-title>Settings</settings-card-title>
@@ -34,7 +34,7 @@
             </a>
         </div>
         <div class="col-md-6">
-            <a [routerLink]="['logout']">
+            <a [routerLink]="'logout'">
                 <settings-card>
                     <settings-card-icon icon="right-from-bracket"></settings-card-icon>
                     <settings-card-title>Logout</settings-card-title>

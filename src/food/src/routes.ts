@@ -1,3 +1,4 @@
+import { FOOD_APP } from './../name';
 import { AppRoutes } from '@assistant/common-sdk';
 import { DashboardPageComponent } from './pages/dashboard/dashboard.component';
 import { SearchPageComponent } from './pages/search/search.component';
@@ -45,3 +46,10 @@ export const routes: AppRoutes = [
         hidden: true
     }
 ]
+
+export const routeFood = (route: string) => `/${FOOD_APP.id}/${route}`;
+export const routeFoodNewRecipe = routeFood('new');
+export const routeFoodSearch = routeFood('search');
+export const routeFoodSearchRecipe = (id: string) => routeFood(`search/${id}`);
+export const routeFoodRecipes = routeFood('recipes');
+export const routeFoodRecipe = (id: string) => routeFood(`recipes/${id}`);

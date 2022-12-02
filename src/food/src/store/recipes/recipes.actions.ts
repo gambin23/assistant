@@ -11,15 +11,7 @@ export const recipesLoadError = createAction(`${prefix} Error`);
 export class RecipesActions {
     constructor(private store: Store) { }
 
-    load() {
-        this.store.dispatch(recipesLoad());
-    }
-
-    loadSuccess(recipes: Recipes) {
-        this.store.dispatch(recipesLoadSuccess({ recipes }));
-    }
-
-    loadError() {
-        this.store.dispatch(recipesLoadError());
-    }
+    load = () => this.store.dispatch(recipesLoad());
+    loadSuccess = (recipes: Recipes) => this.store.dispatch(recipesLoadSuccess({ recipes }));
+    loadError = () => this.store.dispatch(recipesLoadError());
 }

@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { routeFoodNewRecipe, routeFoodRecipe } from './../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
 import { RecipesFiltersComponent } from '../../components/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
@@ -32,6 +33,9 @@ export class RecipesPageComponent implements OnInit {
     };
     view: RecipeView = 'grid';
 
+    routeFoodNewRecipe = routeFoodNewRecipe;
+    routeFoodRecipe = routeFoodRecipe;
+
     constructor(private recipesSelector: RecipesSelector) { }
 
     ngOnInit() {
@@ -39,11 +43,7 @@ export class RecipesPageComponent implements OnInit {
         this.isBusy$ = this.recipesSelector.isBusy$();
     }
 
-    onFiltered(filters: RecipesFilters) {
-        this.filters = filters;
-    }
+    onFiltered = (filters: RecipesFilters) => this.filters = filters;
+    onViewChanged = (view: RecipeView) => this.view = view;
 
-    onViewChanged(view: RecipeView) {
-        this.view = view;
-    }
 }

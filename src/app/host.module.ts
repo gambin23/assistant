@@ -8,7 +8,7 @@ import { ModalModule, NavigationComponent } from '@assistant/common-ui';
 import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
-import { RoutesModule } from './routes.module';
+import { RoutesModule } from './host.routes';
 import { EffectsModule } from '@ngrx/effects';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({

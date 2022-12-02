@@ -37,11 +37,11 @@ export const calendarDaySkeleton: CalendarDay = {
 }
 
 export const calendarSkeleton: Calendar = {
+    "2022-12-01": calendarDaySkeleton,
     "2022-12-02": calendarDaySkeleton,
-    "0001-01-01": calendarDaySkeleton,
-    "0001-01-02": calendarDaySkeleton,
-    "0001-01-03": calendarDaySkeleton,
-    "0001-01-04": calendarDaySkeleton,
-    "0001-01-05": calendarDaySkeleton,
-    "0001-01-06": calendarDaySkeleton
+    "2022-12-03": calendarDaySkeleton,
+    "2022-12-04": { ...calendarDaySkeleton, lunch: '2' },
+    "2022-12-05": calendarDaySkeleton,
+    "2022-12-06": calendarDaySkeleton,
+    "2022-12-07": calendarDaySkeleton
 }

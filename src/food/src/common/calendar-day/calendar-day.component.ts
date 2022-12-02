@@ -1,12 +1,13 @@
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
-import { IconComponent, ModalService } from '@assistant/common-ui';
-import { RecipesSelector } from '../../store/recipes/recipes.selector';
+import { addDays, format, isToday, subDays } from 'date-fns';
+import { DatePickerModalComponent, IconComponent, ModalService } from '@assistant/common-ui';
 import { FoodRecipeSelectComponent } from '../recipe-select/recipe-select.component';
 import { FoodRecipeCardComponent } from '../recipe-card/recipe-card.component';
 import { Recipe } from '../../models/recipes';
 import { CalendarDay, MealType, meals } from '../../models/calendar';
-import { CalendarActions } from '../../store/calendar/calendar.actions';
+import { RouterModule } from '@angular/router';
+import { routeFoodRecipe } from '../../routes';
 
 @Component({
     selector: 'food-calendar-day',
@@ -15,44 +16,39 @@ import { CalendarActions } from '../../store/calendar/calendar.actions';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
+        RouterModule,
         IconComponent,
+        DatePickerModalComponent,
         FoodRecipeSelectComponent,
         FoodRecipeCardComponent
-    ],
-    providers: []
+    ]
 })
 export class FoodCalendarDayComponent {
 
-    @Input() date!: string;
-    @Input() meal: MealType = 'lunch';
+    @Input() date!: Date;
+    @Input() meal!: MealType;
     @Input() day!: CalendarDay;
     @Input() recipes!: Recipe[];
     @Input() isBusy!: boolean;
-
-    meals = meals;
+    @Output() dateChange = new EventEmitter<Date>();
+    @Output() mealChange = new EventEmitter<MealType>();
+    @Output() changed = new EventEmitter<string>();
 
     @ViewChild('recipesModal') recipesModal!: TemplateRef<string>;
 
-    constructor(
-        private modalService: ModalService,
-        private recipesSelector: RecipesSelector,
-        private calendarActions: CalendarActions
-    ) { }
+    meals = meals;
+    routeFoodRecipe = routeFoodRecipe;
 
-    onSelectMeal(meal: MealType) {
-        this.meal = meal;
-    }
+    constructor(private modalService: ModalService) { }
 
-    onSelectRecipe() {
-        this.modalService.show({ title: 'Select Recipe', template: this.recipesModal });
-    }
-
-    onSelectedRecipe(recipe: Recipe) {
-        this.calendarActions.updateDay(this.date, { [this.meal]: recipe.id })
+    onSelectMeal = (meal: MealType) => this.mealChange.emit(meal);
+    onSelectRecipe = () => this.modalService.show({ title: 'Select Recipe', template: this.recipesModal });
+    onNextDay = () => this.dateChange.emit(addDays(this.date, 1));
+    onPreviousDay = () => this.dateChange.emit(subDays(this.date, 1));
+    getRecipe = (id: string) => this.recipes.find(x => x.id === id);
+    getDay = () => isToday(this.date) ? 'Today' : format(this.date, 'dd MMM yyyy');
+    onSelectedRecipe = (recipe: Recipe) => {
+        this.changed.emit(recipe.id);
         this.modalService.hide();
-    }
-
-    getRecipe$(id: string) {
-        return this.recipesSelector.recipe$(id);
     }
 }

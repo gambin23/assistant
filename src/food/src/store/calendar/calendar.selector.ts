@@ -1,10 +1,10 @@
 import { createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { format } from 'date-fns';
+import { Observable, of } from 'rxjs';
 import { foodStore } from '../store';
 import { Calendar, CalendarDay, calendarDaySkeleton, calendarSkeleton } from '../../models/calendar';
 import { selectRecipesIsBusy } from '../recipes/recipes.selector';
+import { calendarDate } from './calendar.functions';
 
 export const selectCalendarState = createSelector(foodStore, x => x.calendar);
 const selectCalendarIsBusy = createSelector(selectCalendarState, x => x.isBusy);
@@ -25,7 +25,12 @@ export class CalendarSelector {
         return this.store.select(selectCalendarRecipesIsBusy);
     }
 
-    day$(id: string): Observable<CalendarDay> {
-        return this.store.select(selectDay(id));
+    day$(id: string | Date): Observable<CalendarDay> {
+        return this.store.select(selectDay(calendarDate(id)));
+    }
+
+    week$(id: string | Date): Observable<Calendar> {
+        return of(calendarSkeleton);
+        // return this.store.select(selectDay(calendarDate(id)));
     }
 }

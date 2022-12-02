@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { addDays, format, isSameDay, isToday, subDays } from 'date-fns';
 import { IconComponent } from '@assistant/common-ui';
-import { Calendar } from '../../models/calendar';
+import { Calendar, MealType } from '../../models/calendar';
+import { Recipe } from '../../models/recipes';
 
 @Component({
     selector: 'food-calendar-week',
@@ -15,16 +17,18 @@ import { Calendar } from '../../models/calendar';
 })
 export class FoodCalendarWeekComponent {
 
-    days: Calendar = {
-        "01-12-2022": {
-            breakfast: "1",
-            lunch: "2",
-            dinner: "2"
-        },
-        "02-12-2022": {
-            breakfast: "1",
-            lunch: "2",
-            dinner: "2"
-        }
-    }
+    @Input() date!: Date;
+    @Input() meal!: MealType;
+    @Input() week!: Calendar;
+    @Input() recipes!: Recipe[];
+    @Input() isBusy!: boolean;
+    @Output() dateChange = new EventEmitter<Date>();
+    @Output() changed = new EventEmitter<Date>();
+
+    onNextPage = () => this.dateChange.emit(addDays(this.date, 7));
+    onPreviousPage = () => this.dateChange.emit(subDays(this.date, 7));
+    onSelectDay = (day: string) => this.dateChange.emit(new Date(day));
+    getRecipe = (id: string): Recipe | undefined => this.recipes.find(x => x.id === id);
+    getDay = (day: string) => isToday(new Date(day)) ? 'Today' : format(new Date(day), 'iii, dd MMM');
+    isActiveDay = (day: string) => isSameDay(this.date, new Date(day));
 }

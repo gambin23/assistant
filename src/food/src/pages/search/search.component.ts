@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '@assistant/common-ui';
+import { routeFoodRecipes, routeFoodSearchRecipe } from '../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
 import { recipesSkeleton } from '../../models/recipes';
 import { RecipesFiltersComponent } from '../../components/recipes-filters/recipes-filters.component';
@@ -26,11 +27,9 @@ export class SearchPageComponent {
     recipes = recipesSkeleton;
     view: RecipeView = 'grid';
 
-    onFiltered(filters: RecipesFilters) {
-        console.log(filters);
-    }
+    routeFoodRecipes = routeFoodRecipes;
+    routeFoodSearchRecipe = routeFoodSearchRecipe;
 
-    onViewChanged(view: RecipeView) {
-        this.view = view;
-    }
+    onFiltered = (filters: RecipesFilters) => console.log(filters);
+    onViewChanged = (view: RecipeView) => this.view = view;
 }
