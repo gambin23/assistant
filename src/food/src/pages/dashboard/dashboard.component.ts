@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DashboardHeaderComponent } from '@assistant/common-ui';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DashboardHeaderComponent, PageComponent } from '@assistant/common-ui';
 import { Recipe } from '../../models/recipes';
 import { Calendar, CalendarDay, MealType } from '../../models/calendar';
 import { CalendarSelector } from '../../store/calendar/calendar.selector';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
+import { CalendarActions } from '../../store/calendar/calendar.actions';
+import { calendarDate } from '../../store/calendar/calendar.functions';
 import { FoodCalendarDayComponent } from '../../common/calendar-day/calendar-day.component';
 import { FoodCalendarWeekComponent } from '../../common/calendar-week/calendar-week.component';
-import { CalendarActions } from '../../store/calendar/calendar.actions';
+import { DashboardQueryParams } from './dashboard.model';
 
 @Component({
     selector: 'dashboard-page',
@@ -22,7 +25,7 @@ import { CalendarActions } from '../../store/calendar/calendar.actions';
         FoodCalendarWeekComponent
     ]
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent extends PageComponent<DashboardQueryParams> implements OnInit {
 
     date = new Date();
     meal: MealType = 'lunch';
@@ -32,18 +35,27 @@ export class DashboardPageComponent implements OnInit {
     isBusy$!: Observable<boolean>;
 
     constructor(
+        router: Router,
+        route: ActivatedRoute,
+        changeRef: ChangeDetectorRef,
         private recipesSelector: RecipesSelector,
         private calendarSelector: CalendarSelector,
         private calendarActions: CalendarActions
-    ) { }
+    ) {
+        super(router, route, changeRef);
+    }
 
     ngOnInit(): void {
         this.recipes$ = this.recipesSelector.recipes$();
-        this.day$ = this.calendarSelector.day$(this.date);
-        this.week$ = this.calendarSelector.week$(this.date);
         this.isBusy$ = this.calendarSelector.isBusy$();
+
+        super.queryParamsChange(() => {
+            this.day$ = this.calendarSelector.day$(this.date);
+            this.week$ = this.calendarSelector.week$(this.date);
+        });
     }
 
-    onDateChanged = (date: Date) => this.day$ = this.calendarSelector.day$(date);
-    onRecipeChanged = (id: string) => this.calendarActions.updateDay(this.date, { [this.meal]: id });
+    onDateChange = (date: Date) => this.setQueryParam({ date: calendarDate(date) });
+    onMealChange = (meal: MealType) => this.setQueryParam({ meal });
+    onRecipeChange = (id: string) => this.calendarActions.updateDay(this.date, { [this.meal]: id });
 }

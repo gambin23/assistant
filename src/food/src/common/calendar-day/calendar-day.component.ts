@@ -32,7 +32,7 @@ export class FoodCalendarDayComponent {
     @Input() isBusy!: boolean;
     @Output() dateChange = new EventEmitter<Date>();
     @Output() mealChange = new EventEmitter<MealType>();
-    @Output() changed = new EventEmitter<string>();
+    @Output() recipeChange = new EventEmitter<string>();
 
     @ViewChild('recipesModal') recipesModal!: TemplateRef<string>;
 
@@ -48,7 +48,7 @@ export class FoodCalendarDayComponent {
     getRecipe = (id: string) => this.recipes.find(x => x.id === id);
     getDay = () => isToday(this.date) ? 'Today' : format(this.date, 'dd MMM yyyy');
     onSelectedRecipe = (recipe: Recipe) => {
-        this.changed.emit(recipe.id);
+        this.recipeChange.emit(recipe.id);
         this.modalService.hide();
     }
 }
