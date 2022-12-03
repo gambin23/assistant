@@ -22,7 +22,7 @@ import { Recipe } from '../../models/recipes';
         RecipesFiltersComponent
     ]
 })
-export class RecipesPageComponent implements OnInit {
+export default class RecipesPageComponent implements OnInit {
 
     recipes$!: Observable<Recipe[]>;
     isBusy$!: Observable<boolean>;

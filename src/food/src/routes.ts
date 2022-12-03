@@ -1,29 +1,24 @@
 import { FOOD_APP } from './../name';
 import { AppRoutes } from '@assistant/common-sdk';
-import { DashboardPageComponent } from './pages/dashboard/dashboard.component';
-import { SearchPageComponent } from './pages/search/search.component';
-import { NewPageComponent } from './pages/new/new.component';
-import { RecipesPageComponent } from './pages/recipes/recipes.component';
-import { RecipePageComponent } from './pages/recipe/recipe.component';
 
 export const routes: AppRoutes = [
     {
         path: 'dashboard',
         title: 'Dashboard',
         icon: 'rectangle-list',
-        component: DashboardPageComponent
+        loadComponent: () => import('./pages/dashboard/dashboard.component')
     },
     {
         path: 'search',
         title: 'Search',
         icon: 'sun',
-        component: SearchPageComponent
+        loadComponent: () => import('./pages/search/search.component')
     },
     {
         path: 'new',
         title: 'New Recipe',
         icon: 'square-plus',
-        component: NewPageComponent
+        loadComponent: () => import('./pages/new/new.component')
     },
     {
         path: 'recipes',
@@ -32,11 +27,11 @@ export const routes: AppRoutes = [
         children: [
             {
                 path: '',
-                component: RecipesPageComponent,
+                loadComponent: () => import('./pages/recipes/recipes.component')
             },
             {
                 path: ':id',
-                component: RecipePageComponent
+                loadComponent: () => import('./pages/recipe/recipe.component')
             }
         ]
     },

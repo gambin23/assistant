@@ -15,12 +15,11 @@ export abstract class PageComponent<T> {
                 if ((<any>this)[key]) {
 
                     let value: any = params[key]
-                    if (['date', 'dateForm', 'dateTo'].includes(key)) {
-                        if (isValid(new Date(value))) {
-                            value = new Date(value);
-                        } else {
+                    if (key.includes('date')) {
+                        if (!isValid(new Date(value))) {
                             return;
                         }
+                        value = new Date(value);
                     }
 
                     (<any>this)[key] = value;

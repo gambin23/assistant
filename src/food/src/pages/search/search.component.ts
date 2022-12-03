@@ -22,7 +22,7 @@ import { RecipesFilters } from '../../store/recipes/recipes.model';
         FoodRecipeCardComponent
     ]
 })
-export class SearchPageComponent {
+export default class SearchPageComponent {
 
     recipes = recipesSkeleton;
     view: RecipeView = 'grid';

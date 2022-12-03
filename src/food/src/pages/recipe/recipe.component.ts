@@ -19,7 +19,7 @@ import { Recipe } from '../../models/recipes';
         NotFoundModule
     ]
 })
-export class RecipePageComponent implements OnInit {
+export default class RecipePageComponent implements OnInit {
 
     recipe$!: Observable<Recipe | undefined>;
     isBusy$!: Observable<boolean>;

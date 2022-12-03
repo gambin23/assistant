@@ -25,7 +25,7 @@ import { DashboardQueryParams } from './dashboard.model';
         FoodCalendarWeekComponent
     ]
 })
-export class DashboardPageComponent extends PageComponent<DashboardQueryParams> implements OnInit {
+export default class DashboardPageComponent extends PageComponent<DashboardQueryParams> implements OnInit {
 
     date = new Date();
     meal: MealType = 'lunch';

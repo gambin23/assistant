@@ -8,6 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './new.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewPageComponent {
+export default class NewPageComponent {
 
 }
