@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col">
+        <edit-card>
+            <edit-card-title>Method</edit-card-title>
+            <edit-card-action (click)="onEdit()">
+                <icon type="regular" name="pen-to-square"></icon> Edit
+            </edit-card-action>
+            <edit-card-content>
+                <list>
+                    <list-item *ngFor="let item of method; let i = index">
+                        <div>
+                            <p class="caption">Step {{i + 1}}</p>
+                            <span class="bone">{{item}}</span>
+                        </div>
+                    </list-item>
+                </list>
+            </edit-card-content>
+        </edit-card>
+    </div>
+</div>
+<modal [(show)]="showModal">
+    <modal-header>Modify Method</modal-header>
+    <modal-body>
+        <div class="input-group pe-3">
+            <input type="text" class="form-control" placeholder="Method" [class.is-invalid]="!newItem"
+                [(ngModel)]="newItem">
+            <button class="input-group-text btn btn-primary" [disabled]="!newItem" (click)="onAdd()">
+                <icon type="solid" name="plus"></icon>
+            </button>
+        </div>
+        <list>
+            <list-item *ngFor="let item of newMethod" class="cursor-pointer d-flex justify-content-between">
+                {{item}}
+                <button class="btn btn-primary px-4" (click)="onDelete(item)">
+                    <icon type="solid" name="trash-can"></icon>
+                </button>
+            </list-item>
+        </list>
+    </modal-body>
+    <modal-footer>
+        <button class="btn btn-link" (click)="onCancel()">
+            Cancel
+        </button>
+        <button class="btn btn-primary" (click)="onSave()" [disabled]="isSaveDisabled()">
+            Save
+        </button>
+    </modal-footer>
+</modal>

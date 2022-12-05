@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { isEqual } from 'lodash-es';
 import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent } from '@assistant/common-ui';
 import { categories, getCategory } from '../../models/category';

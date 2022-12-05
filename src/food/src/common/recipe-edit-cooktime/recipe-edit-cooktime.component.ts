@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { EditCardModule, IconComponent, ListModule, ModalModule } from '@assistant/common-ui';
 import { cookTimes, getCookTime } from '../../models/cook-time';
 

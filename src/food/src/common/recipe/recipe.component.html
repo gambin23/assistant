@@ -40,46 +40,7 @@
 </food-recipe-edit-categories>
 <food-recipe-edit-cooktime [cookTime]="recipe.cookTime" (updated)="onUpdated({cookTime: $event})">
 </food-recipe-edit-cooktime>
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="d-flex align-items-center">
-                <div class="text-muted">Ingredients</div>
-            </div>
-            <div *ngFor="let ingredient of recipe.ingredients" class="py-2">
-                <p>
-                    <span class="bone">
-                        {{ingredient}}
-                    </span>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="d-flex align-items-center">
-                <div class="text-muted">Method</div>
-            </div>
-            <div class="py-2">
-                <div class="list-group">
-                    <div *ngFor="let step of recipe.method; let i = index" class="list-group-item">
-                        <div>
-                            <h5 class="caption">
-                                <span class="bone">
-                                    Step {{i + 1}}
-                                </span>
-                            </h5>
-                            <div>
-                                <span class="bone">
-                                    {{step}}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<food-recipe-edit-ingredients [ingredients]="recipe.ingredients" (updated)="onUpdated({ingredients: $event})">
+</food-recipe-edit-ingredients>
+<food-recipe-edit-method [method]="recipe.method" (updated)="onUpdated({method: $event})">
+</food-recipe-edit-method>

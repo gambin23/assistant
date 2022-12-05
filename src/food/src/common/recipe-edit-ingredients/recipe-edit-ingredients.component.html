@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col">
+        <edit-card>
+            <edit-card-title>Ingredients</edit-card-title>
+            <edit-card-action (click)="onEdit()">
+                <icon type="regular" name="pen-to-square"></icon> Edit
+            </edit-card-action>
+            <edit-card-content>
+                <p *ngFor="let item of ingredients">
+                    <span class="bone">{{item}}</span>
+                </p>
+            </edit-card-content>
+        </edit-card>
+    </div>
+</div>
+<modal [(show)]="showModal">
+    <modal-header>Modify Ingredients</modal-header>
+    <modal-body>
+        <div class="input-group pe-3">
+            <input type="text" class="form-control" placeholder="Ingredient" [class.is-invalid]="!newIngredient"
+                [(ngModel)]="newIngredient">
+            <button class="input-group-text btn btn-primary" [disabled]="!newIngredient" (click)="onAdd()">
+                <icon type="solid" name="plus"></icon>
+            </button>
+        </div>
+        <list>
+            <list-item *ngFor="let item of newIngredients" class="cursor-pointer d-flex justify-content-between">
+                {{item}}
+                <button class="btn btn-primary px-4" (click)="onDelete(item)">
+                    <icon type="solid" name="trash-can"></icon>
+                </button>
+            </list-item>
+        </list>
+    </modal-body>
+    <modal-footer>
+        <button class="btn btn-link" (click)="onCancel()">
+            Cancel
+        </button>
+        <button class="btn btn-primary" (click)="onSave()" [disabled]="isSaveDisabled()">
+            Save
+        </button>
+    </modal-footer>
+</modal>

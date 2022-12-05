@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col">
-        <edit-card (saved)="onSave()">
+        <edit-card>
             <edit-card-title>Time</edit-card-title>
             <edit-card-action (click)="onEdit()">
-                <icon type="regular" name="pen-to-square"></icon> Modify
+                <icon type="regular" name="pen-to-square"></icon> Edit
             </edit-card-action>
             <edit-card-content>
                 <span class="bone">{{getCookTime(cookTime)}}</span>

@@ -5,6 +5,8 @@ import { getCookTime } from '../../models/cook-time';
 import { Recipe } from '../../models/recipes';
 import { FoodRecipeEditCooktimeComponent } from "../recipe-edit-cooktime/recipe-edit-cooktime.component";
 import { FoodRecipeEditCategoriesComponent } from '../recipe-edit-categories/recipe-edit-categories.component';
+import { FoodRecipeEditIngredientsComponent } from "../recipe-edit-ingredients/recipe-edit-ingredients.component";
+import { FoodRecipeEditMethodComponent } from "../recipe-edit-method/recipe-edit-method.component";
 
 @Component({
     selector: 'food-recipe',
@@ -17,7 +19,9 @@ import { FoodRecipeEditCategoriesComponent } from '../recipe-edit-categories/rec
         EditCardModule,
         ModalModule,
         FoodRecipeEditCooktimeComponent,
-        FoodRecipeEditCategoriesComponent
+        FoodRecipeEditCategoriesComponent,
+        FoodRecipeEditIngredientsComponent,
+        FoodRecipeEditMethodComponent
     ]
 })
 export class FoodRecipeComponent {
