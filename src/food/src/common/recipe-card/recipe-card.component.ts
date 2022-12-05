@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IconComponent } from '@assistant/common-ui';
+import { getCookTime } from '../../models/cook-time';
 import { Recipe } from '../../models/recipes';
 import { RecipeView } from './recipe-card.model';
 
@@ -19,4 +20,7 @@ export class FoodRecipeCardComponent {
     @Input() recipe!: Recipe;
     @Input() view: RecipeView = 'grid';
     @Input() readonly = false;
+
+    getCookTime = getCookTime;
+
 }

@@ -10,11 +10,9 @@
             <button class="btn text-white" (click)="onPreviousDay()">
                 <icon type="solid" name="caret-left" size="xl"></icon>
             </button>
-            <date-picker-modal [(date)]="date">
-                <button class="btn text-white display-5 m-0 p-3">
-                    {{getDay()}}
-                </button>
-            </date-picker-modal>
+            <button class="btn text-white display-5 m-0 p-3" (click)="onShowDatePicker()">
+                {{getDay()}}
+            </button>
             <button class="btn text-white" (click)="onNextDay()">
                 <icon type="solid" name="caret-right" size="xl"></icon>
             </button>
@@ -26,7 +24,7 @@
             </food-recipe-card>
         </a>
     </ng-container>
-    <button class="btn btn-primary my-3" (click)="onSelectRecipe()">
+    <button class="btn btn-primary my-3" (click)="onShowRecipes()">
         Select Recipe
     </button>
 </div>
@@ -40,8 +38,12 @@
     </button>
 </ng-template>
 
-<ng-template #recipesModal>
-    <div class="modal-body">
+<modal [(show)]="showRecipesModal">
+    <modal-header>Select Recipe</modal-header>
+    <modal-body>
         <food-recipe-select [recipes]="recipes" (selected)="onSelectedRecipe($event)"></food-recipe-select>
-    </div>
-</ng-template>
+    </modal-body>
+</modal>
+
+<date-picker-modal [(show)]="showDatePickerModal" [(date)]="date">
+</date-picker-modal>

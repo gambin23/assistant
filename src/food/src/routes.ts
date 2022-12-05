@@ -12,7 +12,16 @@ export const routes: AppRoutes = [
         path: 'search',
         title: 'Search',
         icon: 'sun',
-        loadComponent: () => import('./pages/search/search.component')
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./pages/search/search.component')
+            },
+            {
+                path: ':id',
+                loadComponent: () => import('./pages/search-recipe/search-recipe.component')
+            }
+        ]
     },
     {
         path: 'new',

@@ -13,7 +13,7 @@
         <div class="caption d-flex align-items-center justify-content-between">
             <div class="bone">
                 <icon type="regular" name="clock"></icon>
-                {{recipe.cookTime}} minutes
+                {{getCookTime(recipe.cookTime)}}
             </div>
             <div *ngIf="!readonly" class="display-5 ms-auto bone-hide">
                 <button class="btn btn-link display-5 p-0 faded pointer-events-none">
@@ -43,7 +43,7 @@
             <div class="caption d-flex align-items-center justify-content-between">
                 <div class="bone">
                     <icon type="regular" name="clock"></icon>
-                    {{recipe.cookTime}} minutes
+                    {{getCookTime(recipe.cookTime)}}
                 </div>
                 <div *ngIf="!readonly" class="display-5 ms-auto bone-hide">
                     <button class="btn btn-link display-5 p-0 faded pointer-events-none">

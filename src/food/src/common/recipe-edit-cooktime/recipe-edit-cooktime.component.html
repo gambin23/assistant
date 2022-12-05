@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col">
+        <edit-card (saved)="onSave()">
+            <edit-card-title>Time</edit-card-title>
+            <edit-card-action (click)="onEdit()">Modify</edit-card-action>
+            <edit-card-content>
+                <span class="bone">{{getCookTime(cookTime)?.value}}</span>
+            </edit-card-content>
+        </edit-card>
+    </div>
+</div>
+<modal [(show)]="showModal">
+    <modal-header>Modify Cook Time</modal-header>
+    <modal-body>
+        <list>
+            <list-item *ngFor="let time of cookTimes" class="py-3 cursor-pointer"
+                [class.active]="time.id === newCookTime" (click)="onSelect(time.id)">
+                {{time.value}}
+            </list-item>
+        </list>
+    </modal-body>
+    <modal-footer>
+        <button class="btn btn-link" (click)="onCancel()">Cancel</button>
+        <button class="btn btn-primary" (click)="onSave()" [disabled]="cookTime === newCookTime">Save</button>
+    </modal-footer>
+</modal>

@@ -1,8 +1,5 @@
+import { ChangeDetectionStrategy, Component, Input, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ModalConfig } from './modal.config';
-import { ModalService } from './modal.service';
 
 @Component({
     selector: 'modal',
@@ -11,16 +8,14 @@ import { ModalService } from './modal.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule]
 })
-export class ModalComponent implements OnInit {
-    constructor(private modalService: ModalService) { }
+export class ModalComponent {
 
-    config$!: Observable<ModalConfig>;
+    @Input() show = false;
+    @Output() showChange = new EventEmitter<boolean>();
+    @Output() closed = new EventEmitter();
 
-    ngOnInit() {
-        this.config$ = this.modalService.config$;
-    }
-
-    onClose() {
-        this.modalService.hide();
+    onClose = () => {
+        this.showChange.emit(false);
+        this.closed.emit();
     }
 }

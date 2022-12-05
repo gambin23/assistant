@@ -1,10 +1,6 @@
-<div (click)="onShow()">
-    <ng-content>
-    </ng-content>
-</div>
-
-<ng-template #modal>
-    <div class="modal-body">
+<modal [(show)]="show" (closed)="onCloseModal()">
+    <modal-header *ngIf="title">{{title}}</modal-header>
+    <modal-body>
         <div class="calendar">
             <ul class="nav calendar-months">
                 <li (click)="onDecrementMonth()" class="nav-link">
@@ -33,5 +29,5 @@
                 </div>
             </ul>
         </div>
-    </div>
-</ng-template>
+    </modal-body>
+</modal>

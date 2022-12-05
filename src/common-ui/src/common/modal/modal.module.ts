@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { ModalComponent } from './modal.component';
-import { ModalService } from './modal.service';
+import { ModalHeaderComponent } from './modal-header.component';
+import { ModalFooterComponent } from './modal-footer.component';
+import { ModalBodyComponent } from './modal-body.component';
 
 @NgModule({
     imports: [
         ModalComponent,
+        ModalHeaderComponent,
+        ModalBodyComponent,
+        ModalFooterComponent
     ],
-    declarations: [],
     exports: [
         ModalComponent,
-    ],
-    providers: [ModalService],
-    bootstrap: []
+        ModalHeaderComponent,
+        ModalBodyComponent,
+        ModalFooterComponent
+    ]
 })
 export class ModalModule { }

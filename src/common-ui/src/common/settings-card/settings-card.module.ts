@@ -11,14 +11,11 @@ import { SettingsCardComponent } from './settings-card.component';
         SettingsCardTitleComponent,
         SettingsCardDescriptionComponent
     ],
-    declarations: [],
     exports: [
         SettingsCardComponent,
         SettingsCardIconComponent,
         SettingsCardTitleComponent,
         SettingsCardDescriptionComponent
-    ],
-    providers: [],
-    bootstrap: []
+    ]
 })
 export class SettingsCardModule { }

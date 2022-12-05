@@ -1,0 +1,7 @@
+<div class="card">
+    <div class="d-flex align-items-center">
+        <ng-content select="edit-card-title"></ng-content>
+        <ng-content *ngIf="!readonly" select="edit-card-action"></ng-content>
+    </div>
+    <ng-content select="edit-card-content"></ng-content>
+</div>

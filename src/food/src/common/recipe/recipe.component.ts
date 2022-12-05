@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IconComponent } from '@assistant/common-ui';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { EditCardModule, IconComponent, ModalModule } from '@assistant/common-ui';
+import { getCookTime } from '../../models/cook-time';
 import { Recipe } from '../../models/recipes';
+import { FoodRecipeEditCooktimeComponent } from "../recipe-edit-cooktime/recipe-edit-cooktime.component";
 
 @Component({
     selector: 'food-recipe',
@@ -10,10 +12,21 @@ import { Recipe } from '../../models/recipes';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        IconComponent
+        IconComponent,
+        EditCardModule,
+        ModalModule,
+        FoodRecipeEditCooktimeComponent
     ]
 })
 export class FoodRecipeComponent {
 
     @Input() recipe!: Recipe;
+    @Input() readonly = false;
+    @Output() updated = new EventEmitter<Partial<Recipe>>();
+
+    getCookTime = getCookTime;
+
+    onUpdated(recipe: Partial<Recipe>) {
+        this.recipe = { ...this.recipe, ...recipe };
+    }
 }
