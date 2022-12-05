@@ -36,20 +36,8 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="d-flex align-items-center">
-                <div class="text-muted">Categories</div>
-            </div>
-            <div class="py-2">
-                <div *ngFor="let category of recipe.categories" class="tag bone">
-                    {{category}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<food-recipe-edit-categories [categories]="recipe.categories" (updated)="onUpdated({categories: $event})">
+</food-recipe-edit-categories>
 <food-recipe-edit-cooktime [cookTime]="recipe.cookTime" (updated)="onUpdated({cookTime: $event})">
 </food-recipe-edit-cooktime>
 <div class="row">

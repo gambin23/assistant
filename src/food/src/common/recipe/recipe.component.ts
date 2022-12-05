@@ -4,6 +4,7 @@ import { EditCardModule, IconComponent, ModalModule } from '@assistant/common-ui
 import { getCookTime } from '../../models/cook-time';
 import { Recipe } from '../../models/recipes';
 import { FoodRecipeEditCooktimeComponent } from "../recipe-edit-cooktime/recipe-edit-cooktime.component";
+import { FoodRecipeEditCategoriesComponent } from '../recipe-edit-categories/recipe-edit-categories.component';
 
 @Component({
     selector: 'food-recipe',
@@ -15,7 +16,8 @@ import { FoodRecipeEditCooktimeComponent } from "../recipe-edit-cooktime/recipe-
         IconComponent,
         EditCardModule,
         ModalModule,
-        FoodRecipeEditCooktimeComponent
+        FoodRecipeEditCooktimeComponent,
+        FoodRecipeEditCategoriesComponent
     ]
 })
 export class FoodRecipeComponent {

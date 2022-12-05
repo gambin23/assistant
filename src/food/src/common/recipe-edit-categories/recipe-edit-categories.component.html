@@ -1,23 +1,25 @@
 <div class="row">
     <div class="col">
         <edit-card (saved)="onSave()">
-            <edit-card-title>Time</edit-card-title>
+            <edit-card-title>Category</edit-card-title>
             <edit-card-action (click)="onEdit()">
                 <icon type="regular" name="pen-to-square"></icon> Modify
             </edit-card-action>
             <edit-card-content>
-                <span class="bone">{{getCookTime(cookTime)}}</span>
+                <tag *ngFor="let item of categories" class="bone">
+                    {{getCategory(item)}}
+                </tag>
             </edit-card-content>
         </edit-card>
     </div>
 </div>
 <modal [(show)]="showModal">
-    <modal-header>Modify Cook Time</modal-header>
+    <modal-header>Modify Categories</modal-header>
     <modal-body>
         <list>
-            <list-item *ngFor="let time of cookTimes" class="py-3 cursor-pointer"
-                [class.active]="time.id === newCookTime" (click)="onSelect(time.id)">
-                {{time.value}}
+            <list-item *ngFor="let item of allCategories" class="py-3 cursor-pointer" [class.active]="isActive(item.id)"
+                (click)="onSelect(item.id)">
+                {{item.name}}
             </list-item>
         </list>
     </modal-body>
@@ -25,7 +27,7 @@
         <button class="btn btn-link" (click)="onCancel()">
             Cancel
         </button>
-        <button class="btn btn-primary" (click)="onSave()" [disabled]="cookTime === newCookTime">
+        <button class="btn btn-primary" (click)="onSave()" [disabled]="isSaveDisabled()">
             Save
         </button>
     </modal-footer>

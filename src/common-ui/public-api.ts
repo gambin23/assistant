@@ -1,4 +1,5 @@
 export * from './src/common/icon/icon.component';
+export * from './src/common/tag/tag.component';
 export * from './src/common/list/list.module';
 export * from './src/common/modal/modal.module';
 export * from './src/common/edit-card/edit-card.module';
