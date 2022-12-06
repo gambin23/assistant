@@ -12,6 +12,8 @@ export interface Recipe {
     ingredients: string[];
     method: string[];
     image?: string;
+    isFavourite?: boolean;
+    isArchived?: boolean;
 }
 
 export interface RecipesFilters {

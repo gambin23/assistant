@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col">
+        <div class="card ps-0">
+            <div class="card-menu">
+                <div class="me-auto text-muted">Actions</div>
+                <ul *ngIf="readonly">
+                    <li class="btn btn-link pointer-events-none my-3 bone">
+                        <icon type="solid" name="square-check"></icon> Imported
+                    </li>
+                </ul>
+                <ul *ngIf="!readonly">
+                    <li class="card-menu-item bone" (click)="onArchive()">
+                        <icon type="solid" [name]="recipe.isArchived ? 'rotate-left': 'trash-can'"></icon>
+                        <div>{{recipe.isArchived ? 'Restore': 'Archive'}}</div>
+                    </li>
+                    <li class="card-menu-item bone" (click)="onFavourite()">
+                        <icon [type]="recipe.isFavourite ? 'regular': 'solid'" name="heart"></icon>
+                        <div>{{recipe.isFavourite ? 'Remove': 'Favourite'}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

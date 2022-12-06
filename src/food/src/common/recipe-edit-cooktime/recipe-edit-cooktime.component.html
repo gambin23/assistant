@@ -2,7 +2,7 @@
     <div class="col">
         <edit-card>
             <edit-card-title>Time</edit-card-title>
-            <edit-card-action (click)="onEdit()">
+            <edit-card-action *ngIf="!readonly" (click)="onEdit()">
                 <icon type="regular" name="pen-to-square"></icon> Edit
             </edit-card-action>
             <edit-card-content>

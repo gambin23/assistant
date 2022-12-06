@@ -21,6 +21,7 @@ import { categories, getCategory } from '../../models/category';
 export class FoodRecipeEditCategoriesComponent implements OnInit {
 
     @Input() categories!: string[];
+    @Input() readonly = false;
     @Output() updated = new EventEmitter<string[]>();
 
     allCategories = categories;

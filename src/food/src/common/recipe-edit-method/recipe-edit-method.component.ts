@@ -22,6 +22,7 @@ import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent } 
 export class FoodRecipeEditMethodComponent implements OnInit {
 
     @Input() method!: string[];
+    @Input() readonly = false;
     @Output() updated = new EventEmitter<string[]>();
 
     newItem = "";

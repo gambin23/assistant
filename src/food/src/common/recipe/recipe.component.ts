@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { EditCardModule, IconComponent, ModalModule } from '@assistant/common-ui';
 import { getCookTime } from '../../models/cook-time';
 import { Recipe } from '../../models/recipes';
+import { FoodRecipeEditHeaderComponent } from "../recipe-edit-header/recipe-edit-header.component";
+import { FoodRecipeEditActionsComponent } from "../recipe-edit-actions/recipe-edit-actions.component";
 import { FoodRecipeEditCooktimeComponent } from "../recipe-edit-cooktime/recipe-edit-cooktime.component";
 import { FoodRecipeEditCategoriesComponent } from '../recipe-edit-categories/recipe-edit-categories.component';
 import { FoodRecipeEditIngredientsComponent } from "../recipe-edit-ingredients/recipe-edit-ingredients.component";
@@ -18,10 +20,12 @@ import { FoodRecipeEditMethodComponent } from "../recipe-edit-method/recipe-edit
         IconComponent,
         EditCardModule,
         ModalModule,
+        FoodRecipeEditActionsComponent,
         FoodRecipeEditCooktimeComponent,
         FoodRecipeEditCategoriesComponent,
         FoodRecipeEditIngredientsComponent,
-        FoodRecipeEditMethodComponent
+        FoodRecipeEditMethodComponent,
+        FoodRecipeEditHeaderComponent
     ]
 })
 export class FoodRecipeComponent {

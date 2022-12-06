@@ -19,6 +19,7 @@ import { cookTimes, getCookTime } from '../../models/cook-time';
 export class FoodRecipeEditCooktimeComponent implements OnInit {
 
     @Input() cookTime!: number;
+    @Input() readonly = false;
     @Output() updated = new EventEmitter<number>();
 
     cookTimes = cookTimes;
