@@ -3,10 +3,11 @@
         <edit-card>
             <edit-card-title>Ingredients</edit-card-title>
             <edit-card-action *ngIf="!readonly" (click)="onEdit()">
-                <icon type="regular" name="pen-to-square"></icon> Edit
+                <icon type="regular" name="pen-to-square"></icon>
+                {{oldIngredients.length === 0 ? 'Add' : 'Edit'}}
             </edit-card-action>
             <edit-card-content>
-                <p *ngFor="let item of ingredients">
+                <p *ngFor="let item of oldIngredients">
                     <span class="bone">{{item}}</span>
                 </p>
             </edit-card-content>
@@ -23,8 +24,9 @@
                 <icon type="solid" name="plus"></icon>
             </button>
         </div>
-        <list>
-            <list-item *ngFor="let item of newIngredients" class="cursor-pointer d-flex justify-content-between">
+        <list cdkDropList (cdkDropListDropped)="onSorted($event)">
+            <list-item cdkDrag *ngFor="let item of newIngredients"
+                class="cursor-grab d-flex justify-content-between">
                 {{item}}
                 <button class="btn btn-primary px-4" (click)="onDelete(item)">
                     <icon type="solid" name="trash-can"></icon>
@@ -33,8 +35,8 @@
         </list>
     </modal-body>
     <modal-footer>
-        <button class="btn btn-link" (click)="onCancel()">
-            Cancel
+        <button class="btn btn-link" (click)="onClose()">
+            Close
         </button>
         <button class="btn btn-primary" (click)="onSave()" [disabled]="isSaveDisabled()">
             Save

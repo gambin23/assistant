@@ -5,7 +5,7 @@
                 <div class="col-md-8 py-0">
                     <div class="position-relative cursor-pointer">
                         <div class="bone">
-                            <img [src]="recipe.image" alt="{{recipe.name}}"
+                            <img [src]="oldRecipe.image" alt="{{oldRecipe.name}}"
                                 class="img-fluid fit-cover w-100 max-vh-50" />
                         </div>
                     </div>
@@ -14,10 +14,10 @@
 
                     <ng-container *ngIf="!isEdit">
                         <div class="tag bone display-5 w-100 bone">
-                            <span>{{recipe.name}}</span>
+                            <span>{{oldRecipe.name}}</span>
                         </div>
                         <div class="mt-3 bone">
-                            {{recipe.description}}
+                            {{oldRecipe.description}}
                         </div>
                     </ng-container>
                     <ng-container *ngIf="isEdit">
@@ -28,7 +28,7 @@
 
                     <div class="mt-3 caption bone">
                         <icon type="regular" name="clock"></icon>
-                        {{getCookTime(recipe.cookTime)}}
+                        {{getCookTime(oldRecipe.cookTime)}}
                     </div>
 
                     <div class="mt-auto">

@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { isEqual } from 'lodash-es';
 import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent } from '@assistant/common-ui';
 
@@ -12,6 +13,7 @@ import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent } 
     imports: [
         CommonModule,
         FormsModule,
+        DragDropModule,
         EditCardModule,
         ModalModule,
         ListModule,
@@ -19,19 +21,18 @@ import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent } 
         IconComponent
     ]
 })
-export class FoodRecipeEditIngredientsComponent implements OnInit {
+export class FoodRecipeEditIngredientsComponent {
 
-    @Input() ingredients!: string[];
+    @Input() set ingredients(value: string[]) {
+        this.oldIngredients = this.newIngredients = value;
+    };
     @Input() readonly = false;
     @Output() updated = new EventEmitter<string[]>();
 
     newIngredient = "";
-    newIngredients: string[] = [];
+    oldIngredients!: string[];
+    newIngredients!: string[];
     showModal = false;
-
-    ngOnInit() {
-        this.newIngredients = this.ingredients;
-    }
 
     onEdit = () => this.showModal = true;
     onAdd = () => {
@@ -39,11 +40,16 @@ export class FoodRecipeEditIngredientsComponent implements OnInit {
         this.newIngredient = "";
     }
     onDelete = (ingredient: string) => this.newIngredients = this.newIngredients.filter(x => x != ingredient);
+    onSorted = (event: any) => {
+        const ingredients = [...this.newIngredients];
+        moveItemInArray(ingredients, event.previousIndex, event.currentIndex);
+        this.newIngredients = ingredients;
+    }
     onSave = () => {
         this.updated.emit(this.newIngredients);
         this.showModal = false;
     }
-    onCancel = () => this.showModal = false;
+    onClose = () => this.showModal = false;
     isActive = (category: string) => this.newIngredients.includes(category);
-    isSaveDisabled = () => isEqual(this.ingredients, this.newIngredients);
+    isSaveDisabled = () => isEqual(this.oldIngredients, this.newIngredients);
 }

@@ -1,12 +1,13 @@
 <div class="row">
     <div class="col">
         <edit-card>
-            <edit-card-title>Category</edit-card-title>
+            <edit-card-title>Categories</edit-card-title>
             <edit-card-action *ngIf="!readonly" (click)="onEdit()">
-                <icon type="regular" name="pen-to-square"></icon> Edit
+                <icon type="regular" name="pen-to-square"></icon>
+                {{oldCategories.length === 0 ? 'Add' : 'Edit'}}
             </edit-card-action>
             <edit-card-content>
-                <tag *ngFor="let item of categories" class="bone">
+                <tag *ngFor="let item of oldCategories" class="bone">
                     {{getCategory(item)}}
                 </tag>
             </edit-card-content>
@@ -24,8 +25,8 @@
         </list>
     </modal-body>
     <modal-footer>
-        <button class="btn btn-link" (click)="onCancel()">
-            Cancel
+        <button class="btn btn-link" (click)="onClose()">
+            Close
         </button>
         <button class="btn btn-primary" (click)="onSave()" [disabled]="isSaveDisabled()">
             Save

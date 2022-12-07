@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IconComponent } from '@assistant/common-ui';
@@ -16,24 +16,26 @@ import { getCookTime } from '../../models/cook-time';
         IconComponent
     ]
 })
-export class FoodRecipeEditHeaderComponent implements OnInit {
+export class FoodRecipeEditHeaderComponent {
 
-    @Input() recipe!: Recipe;
+    @Input() set recipe(value: Recipe) {
+        this.oldRecipe = value;
+        this.newName = value.name;
+        this.newDescription = value.description;
+    }
     @Input() readonly = false;
     @Output() updated = new EventEmitter<Partial<Recipe>>();
 
     isEdit = false;
+    oldRecipe!: Recipe;
     newName!: string;
     newDescription!: string;
-    ngOnInit() {
-        this.newName = this.recipe.name;
-        this.newDescription = this.recipe.description;
-    }
+
     getCookTime = getCookTime;
     onEdit = () => this.isEdit = true;
     onCancel = () => {
-        this.newName = this.recipe.name;
-        this.newDescription = this.recipe.description;
+        this.newName = this.oldRecipe.name;
+        this.newDescription = this.oldRecipe.description;
         this.isEdit = false;
     }
     onSave = () => {

@@ -90,3 +90,11 @@ ul {
 .img-placeholder {
     opacity: 0.1;
 }
+
+.cdk-drag-preview {
+    z-index: 2000 !important;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
