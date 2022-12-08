@@ -2,7 +2,7 @@
     <div class="col">
         <div class="card py-0">
             <div class="row">
-                <div class="col-md-8 py-0">
+                <div *ngIf="!hideImage" class="col-md-8 py-0">
                     <div class="position-relative cursor-pointer">
                         <div class="bone">
                             <img [src]="oldRecipe.image" alt="{{oldRecipe.name}}"
@@ -10,14 +10,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex flex-column col-md-4">
+                <div class="d-flex flex-column" [class.col-md-4]="!hideImage">
 
                     <ng-container *ngIf="!isEdit">
                         <div class="tag bone display-5 w-100 bone">
-                            <span>{{oldRecipe.name}}</span>
+                            <span>{{oldRecipe.name || 'Name…'}}</span>
                         </div>
                         <div class="mt-3 bone">
-                            {{oldRecipe.description}}
+                            {{oldRecipe.description || 'Description…'}}
                         </div>
                     </ng-container>
                     <ng-container *ngIf="isEdit">
@@ -26,7 +26,7 @@
                             style="resize: none;"></textarea>
                     </ng-container>
 
-                    <div class="mt-3 caption bone">
+                    <div *ngIf="oldRecipe.cookTime" class="mt-3 caption bone">
                         <icon type="regular" name="clock"></icon>
                         {{getCookTime(oldRecipe.cookTime)}}
                     </div>

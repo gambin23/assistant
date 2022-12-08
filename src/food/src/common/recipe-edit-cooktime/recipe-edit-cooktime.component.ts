@@ -18,7 +18,7 @@ import { cookTimes, getCookTime } from '../../models/cook-time';
 })
 export class FoodRecipeEditCooktimeComponent extends EditCardBaseComponent<number> {
 
-    @Input() set cookTime(value: number) { this.initValue(value) };
+    @Input() set cookTime(value: number | undefined) { this.initValue(value || 0) };
 
     cookTimes = cookTimes;
 

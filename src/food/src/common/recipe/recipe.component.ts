@@ -32,6 +32,7 @@ export class FoodRecipeComponent {
 
     @Input() recipe!: Recipe;
     @Input() readonly = false;
+    @Input() hideActions = false;
     @Output() updated = new EventEmitter<Partial<Recipe>>();
 
     getCookTime = getCookTime;

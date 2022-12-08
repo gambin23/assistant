@@ -9,7 +9,7 @@ export const calendarLoadSuccess = createAction(`${prefix} Success`, props<{ cal
 export const calendarLoadError = createAction(`${prefix} Error`);
 export const calendarUpdateDay = createAction(`${prefix} Day Update`, props<{ id: string, day: Partial<CalendarDay> }>());
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class CalendarActions {
     constructor(private store: Store) { }
 

@@ -7,7 +7,7 @@ export interface Recipe {
     description: string;
     userId?: string;
     dateCreated: Date;
-    cookTime: number;
+    cookTime?: number;
     categories: string[];
     ingredients: string[];
     method: string[];

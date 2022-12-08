@@ -1,6 +1,6 @@
 <food-recipe-edit-header [recipe]="recipe" [readonly]="readonly" (updated)="onUpdated($event)">
 </food-recipe-edit-header>
-<food-recipe-edit-actions [recipe]="recipe" [readonly]="readonly" (updated)="onUpdated($event)">
+<food-recipe-edit-actions *ngIf="!hideActions" [recipe]="recipe" [readonly]="readonly" (updated)="onUpdated($event)">
 </food-recipe-edit-actions>
 <food-recipe-edit-categories [categories]="recipe.categories" [readonly]="readonly"
     (updated)="onUpdated({categories: $event})">

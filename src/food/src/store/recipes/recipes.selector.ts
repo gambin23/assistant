@@ -1,16 +1,17 @@
-import { createSelector, Store } from '@ngrx/store';
+import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Observable, } from 'rxjs';
-import { foodStore } from '../store';
+import { FOOD_APP } from '@assistant/food/name';
+import { FoodStore } from '../store';
 import { Recipe, recipesSkeleton, recipeSkeleton } from '../../models/recipes';
 import { RecipesFilters } from './recipes.model';
 
-export const selectRecipesState = createSelector(foodStore, x => x.recipes);
+export const selectRecipesState = createSelector(createFeatureSelector<FoodStore>(FOOD_APP.id), x => x.recipes);
 export const selectRecipesIsBusy = createSelector(selectRecipesState, x => x.isBusy);
 const selectRecipes = (filters?: RecipesFilters) => createSelector(selectRecipesState, x => x.isBusy ? recipesSkeleton : Object.values(x.data));
 const selectRecipe = (id: string) => createSelector(selectRecipesState, x => x.isBusy ? recipeSkeleton : x.data[id]);
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RecipesSelector {
 
     constructor(private store: Store) { }

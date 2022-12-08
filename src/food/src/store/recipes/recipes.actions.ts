@@ -7,7 +7,7 @@ export const recipesLoad = createAction(`${prefix} Load`);
 export const recipesLoadSuccess = createAction(`${prefix} Success`, props<{ recipes: Recipes }>());
 export const recipesLoadError = createAction(`${prefix} Error`);
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class RecipesActions {
     constructor(private store: Store) { }
 

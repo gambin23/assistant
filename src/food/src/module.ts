@@ -8,16 +8,12 @@ import { routes } from './routes';
 import { effects, reducers } from './store/store';
 import { RecipesActions } from './store/recipes/recipes.actions';
 import { CalendarActions } from './store/calendar/calendar.actions';
-import { FoodRecipesModule } from './store/recipes/recipes.module';
-import { FoodCalendarModule } from './store/calendar/calendar.module';
 
 @NgModule({
     imports: [
         RouterModule.forChild(routes),
         StoreModule.forFeature(FOOD_APP.id, reducers),
         EffectsModule.forFeature(effects),
-        FoodRecipesModule,
-        FoodCalendarModule
     ]
 })
 export class FoodAppModule {

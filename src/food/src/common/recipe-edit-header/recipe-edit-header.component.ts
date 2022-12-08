@@ -23,6 +23,7 @@ export class FoodRecipeEditHeaderComponent {
         this.newName = value.name;
         this.newDescription = value.description;
     }
+    @Input() hideImage = false;
     @Input() readonly = false;
     @Output() updated = new EventEmitter<Partial<Recipe>>();
 
