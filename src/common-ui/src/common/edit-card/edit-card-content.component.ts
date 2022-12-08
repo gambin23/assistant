@@ -8,5 +8,5 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 })
 export class EditCardContentComponent {
 
-    @HostBinding('class') class = 'py-2 ';
+    @HostBinding('class') class = 'py-2';
 }

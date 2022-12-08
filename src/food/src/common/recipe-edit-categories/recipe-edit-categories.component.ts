@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isEqual } from 'lodash-es';
-import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent } from '@assistant/common-ui';
+import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent } from '@assistant/common-ui';
 import { categories, getCategory } from '../../models/category';
 
 @Component({
@@ -18,28 +18,15 @@ import { categories, getCategory } from '../../models/category';
         IconComponent
     ]
 })
-export class FoodRecipeEditCategoriesComponent {
+export class FoodRecipeEditCategoriesComponent extends EditCardBaseComponent<string[]> {
 
-    @Input() set categories(value: string[]) {
-        this.oldCategories = this.newCategories = value;
-    };
-    @Input() readonly = false;
-    @Output() updated = new EventEmitter<string[]>();
+    @Input() set categories(value: string[]) { this.initValue(value) };
 
     allCategories = categories;
-    oldCategories!: string[];
-    newCategories!: string[];
-    showModal = false;
 
     getCategory = getCategory;
-    onEdit = () => this.showModal = true;
     onSelect = (category: string) =>
-        this.newCategories = this.newCategories.includes(category) ? this.newCategories.filter(x => x != category) : [...this.newCategories, category];
-    onSave = () => {
-        this.updated.emit(this.newCategories);
-        this.showModal = false;
-    }
-    onClose = () => this.showModal = false;
-    isActive = (category: string) => this.newCategories.includes(category);
-    isSaveDisabled = () => isEqual(this.oldCategories, this.newCategories);
+        this.newValue = this.newValue.includes(category) ? this.newValue.filter(x => x != category) : [...this.newValue, category];
+    isActive = (category: string) => this.newValue.includes(category);
+    isSaveDisabled = () => isEqual(this.oldValue, this.newValue);
 }

@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditCardModule, IconComponent, ListModule, ModalModule } from '@assistant/common-ui';
+import { EditCardBaseComponent, EditCardModule, IconComponent, ListModule, ModalModule } from '@assistant/common-ui';
 import { cookTimes, getCookTime } from '../../models/cook-time';
 
 @Component({
@@ -16,25 +16,13 @@ import { cookTimes, getCookTime } from '../../models/cook-time';
         IconComponent
     ]
 })
-export class FoodRecipeEditCooktimeComponent {
+export class FoodRecipeEditCooktimeComponent extends EditCardBaseComponent<number> {
 
-    @Input() set cookTime(value: number) {
-        this.oldCookTime = this.newCookTime =value;
-    };
-    @Input() readonly = false;
-    @Output() updated = new EventEmitter<number>();
+    @Input() set cookTime(value: number) { this.initValue(value) };
 
     cookTimes = cookTimes;
-    oldCookTime!: number;
-    newCookTime!: number;
-    showModal = false;
 
     getCookTime = getCookTime;
-    onEdit = () => this.showModal = true;
-    onSelect = (cookTime: number) => this.newCookTime = cookTime;
-    onSave = () => {
-        this.updated.emit(this.newCookTime);
-        this.showModal = false;
-    }
-    onClose = () => this.showModal = false;
+    onSelect = (cookTime: number) => this.newValue = cookTime;
+
 }

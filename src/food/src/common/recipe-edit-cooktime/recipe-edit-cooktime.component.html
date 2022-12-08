@@ -4,10 +4,10 @@
             <edit-card-title>Time</edit-card-title>
             <edit-card-action *ngIf="!readonly" (click)="onEdit()">
                 <icon type="regular" name="pen-to-square"></icon>
-                {{oldCookTime ? 'Edit' : 'Add'}}
+                {{oldValue ? 'Edit' : 'Add'}}
             </edit-card-action>
-            <edit-card-content>
-                <span class="bone">{{getCookTime(oldCookTime)}}</span>
+            <edit-card-content *ngIf="oldValue">
+                <span class="bone">{{getCookTime(oldValue)}}</span>
             </edit-card-content>
         </edit-card>
     </div>
@@ -17,7 +17,7 @@
     <modal-body>
         <list>
             <list-item *ngFor="let time of cookTimes" class="py-3 cursor-pointer"
-                [class.active]="time.id === newCookTime" (click)="onSelect(time.id)">
+                [class.active]="time.id === newValue" (click)="onSelect(time.id)">
                 {{time.value}}
             </list-item>
         </list>
@@ -26,7 +26,7 @@
         <button class="btn btn-link" (click)="onClose()">
             Close
         </button>
-        <button class="btn btn-primary" (click)="onSave()" [disabled]="oldCookTime === newCookTime">
+        <button class="btn btn-primary" (click)="onSave()" [disabled]="oldValue === newValue">
             Save
         </button>
     </modal-footer>

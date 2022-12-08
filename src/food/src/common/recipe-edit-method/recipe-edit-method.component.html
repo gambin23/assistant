@@ -4,11 +4,11 @@
             <edit-card-title>Method</edit-card-title>
             <edit-card-action *ngIf="!readonly" (click)="onEdit()">
                 <icon type="regular" name="pen-to-square"></icon>
-                {{oldMethod.length === 0 ? 'Add' : 'Edit'}}
+                {{newValue.length === 0 ? 'Add' : 'Edit'}}
             </edit-card-action>
-            <edit-card-content>
+            <edit-card-content *ngIf="oldValue.length > 0">
                 <list>
-                    <list-item *ngFor="let item of oldMethod; let i = index">
+                    <list-item *ngFor="let item of oldValue; let i = index">
                         <div>
                             <p class="caption">Step {{i + 1}}</p>
                             <span class="bone">{{item}}</span>
@@ -30,7 +30,7 @@
             </button>
         </div>
         <list cdkDropList (cdkDropListDropped)="onSorted($event)">
-            <list-item cdkDrag *ngFor="let item of newMethod" class="cursor-grab d-flex justify-content-between">
+            <list-item cdkDrag *ngFor="let item of newValue" class="cursor-grab d-flex justify-content-between">
                 {{item}}
                 <button class="btn btn-primary px-4" (click)="onDelete(item)">
                     <icon type="solid" name="trash-can"></icon>

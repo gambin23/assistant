@@ -4,10 +4,10 @@
             <edit-card-title>Categories</edit-card-title>
             <edit-card-action *ngIf="!readonly" (click)="onEdit()">
                 <icon type="regular" name="pen-to-square"></icon>
-                {{oldCategories.length === 0 ? 'Add' : 'Edit'}}
+                {{oldValue.length === 0 ? 'Add' : 'Edit'}}
             </edit-card-action>
-            <edit-card-content>
-                <tag *ngFor="let item of oldCategories" class="bone">
+            <edit-card-content *ngIf="oldValue.length > 0">
+                <tag *ngFor="let item of oldValue" class="bone">
                     {{getCategory(item)}}
                 </tag>
             </edit-card-content>
