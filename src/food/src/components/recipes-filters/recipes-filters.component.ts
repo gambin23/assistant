@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconComponent } from '@assistant/common-ui';
+import { IconComponent, SearchInputComponent } from '@assistant/common-ui';
 import { debounceTime, Subscription } from 'rxjs';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesFilters } from '../../store/recipes/recipes.model';
@@ -15,7 +15,8 @@ import { RecipesFilters } from '../../store/recipes/recipes.model';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        IconComponent
+        IconComponent,
+        SearchInputComponent
     ]
 })
 export class RecipesFiltersComponent implements OnInit, OnDestroy {

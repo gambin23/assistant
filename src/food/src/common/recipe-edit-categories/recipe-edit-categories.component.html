@@ -17,10 +17,14 @@
 <modal [(show)]="showModal">
     <modal-header>Modify Categories</modal-header>
     <modal-body>
+        <search-input [(search)]="search"></search-input>
         <list>
-            <list-item *ngFor="let item of allCategories" class="py-3 cursor-pointer" [class.active]="isActive(item.id)"
-                (click)="onSelect(item.id)">
+            <list-item *ngFor="let item of allCategories|searchList:search:'name'" class="py-3 cursor-pointer"
+                [class.active]="isActive(item.id)" (click)="onSelect(item.id)">
                 {{item.name}}
+                <list-item-action-right>
+                    <icon type="regular" [name]="isActive(item.id) ? 'square-check' : 'square'"></icon>
+                </list-item-action-right>
             </list-item>
         </list>
     </modal-body>

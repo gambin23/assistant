@@ -10,12 +10,7 @@
     </li>
 </ul>
 
-<div class="input-group mb-3">
-    <span class="input-group-text">
-        <icon type="solid" name="magnifying-glass"></icon>
-    </span>
-    <input type="search" class="form-control" placeholder="Search…" [formControl]="search" />
-</div>
+<search-input [(search)]="filters.search"></search-input>
 
 <div class="mb-5 d-flex align-items-center justify-content-between">
     <div class="tag bone link">Categories</div>

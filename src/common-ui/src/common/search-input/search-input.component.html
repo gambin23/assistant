@@ -1,0 +1,7 @@
+<div class="input-group mb-3">
+    <span class="input-group-text">
+        <icon type="solid" name="magnifying-glass"></icon>
+    </span>
+    <input type="search" class="form-control" placeholder="Search…" [ngModel]="search"
+        (ngModelChange)="onSearch($event)">
+</div>

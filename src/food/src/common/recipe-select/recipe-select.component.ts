@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { IconComponent } from '@assistant/common-ui';
+import { FormsModule } from '@angular/forms';
+import { IconComponent, ListModule, SearchInputComponent, SearchListPipe } from '@assistant/common-ui';
 import { Recipe } from '../../models/recipes';
 
 @Component({
@@ -10,13 +11,19 @@ import { Recipe } from '../../models/recipes';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        IconComponent
+        FormsModule,
+        IconComponent,
+        ListModule,
+        SearchListPipe,
+        SearchInputComponent
     ]
 })
 export class FoodRecipeSelectComponent {
 
     @Input() recipes!: Recipe[];
     @Output() selected = new EventEmitter<Recipe>();
+
+    search = '';
 
     onSelect(recipe: Recipe) {
         this.selected.emit(recipe);

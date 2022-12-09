@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isEqual } from 'lodash-es';
-import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent } from '@assistant/common-ui';
+import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent, SearchListPipe, SearchInputComponent } from '@assistant/common-ui';
 import { categories, getCategory } from '../../models/category';
 
 @Component({
@@ -15,7 +15,9 @@ import { categories, getCategory } from '../../models/category';
         ModalModule,
         ListModule,
         TagComponent,
-        IconComponent
+        IconComponent,
+        SearchInputComponent,
+        SearchListPipe
     ]
 })
 export class FoodRecipeEditCategoriesComponent extends EditCardBaseComponent<string[]> {
@@ -23,6 +25,7 @@ export class FoodRecipeEditCategoriesComponent extends EditCardBaseComponent<str
     @Input() set categories(value: string[]) { this.initValue(value) };
 
     allCategories = categories;
+    search = '';
 
     getCategory = getCategory;
     onSelect = (category: string) =>
