@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { StepperModule } from '@assistant/common-ui';
 import { NewRecipeSelector } from './../../store/new-recipe/new-recipe.selector';
 import { NewRecipeActions } from './../../store/new-recipe/new-recipe.actions';
 import { Recipe } from '../../models/recipes';
@@ -18,6 +19,7 @@ import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
+        StepperModule,
         FoodRecipeEditHeaderComponent,
         FoodRecipeEditCategoriesComponent,
         FoodRecipeEditCooktimeComponent,
@@ -29,7 +31,6 @@ import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
 export default class NewPageComponent implements OnInit {
 
     recipe$!: Observable<Recipe>
-    step = 1;
 
     constructor(
         private newRecipeActions: NewRecipeActions,
@@ -41,12 +42,6 @@ export default class NewPageComponent implements OnInit {
     }
 
     onUpdated = (recipe: Partial<Recipe>) => this.newRecipeActions.patch(recipe);
-    onNext = () => {
-        if (this.step === 3) {
-            this.newRecipeActions.add();
-        } else {
-            this.step = this.step + 1;
-        }
-    }
-    onBack = () => this.step = this.step - 1;
+    onCompleted = () => this.newRecipeActions.add();
+    isInvalid = (recipe: Recipe) => !recipe.name || !recipe.description;
 }

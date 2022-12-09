@@ -1,47 +1,25 @@
 <ng-container *ngIf="recipe$|async as recipe">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="d-flex align-items-center">
-                    <div class="progress-circle me-3" data-progress="25">
-                        <div>{{step}} of 3</div>
-                    </div>
-                    <div>
-                        <h3>Name and Description</h3>
-                        <p class="display-6 caption m-0">Next: Ingredients</p>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-link" [disabled]="step === 1" (click)="onBack()">Back</button>
-                        <button class="btn btn-primary" (click)="onNext()">Continue</button>
-                    </div>
-                </div>
+    <stepper (completed)="onCompleted()">
+        <stepper-step title="Name and Description" [isInvalid]="isInvalid(recipe)">
+            <div *ngIf="isInvalid(recipe)" class="callout w-100 mt-3">
+                Name and Description cannot be empty
             </div>
-        </div>
-    </div>
-
-    <div *ngIf="!recipe.name || !recipe.description" class="callout w-100 mt-3">
-        Name and Description cannot be empty
-    </div>
-
-    <ng-container *ngIf="step === 1">
-        <food-recipe-edit-header [recipe]="recipe" [hideImage]="true" (updated)="onUpdated($event)">
-        </food-recipe-edit-header>
-        <food-recipe-edit-categories [categories]="recipe.categories" (updated)="onUpdated({categories: $event})">
-        </food-recipe-edit-categories>
-        <food-recipe-edit-cooktime [cookTime]="recipe.cookTime" (updated)="onUpdated({cookTime: $event})">
-        </food-recipe-edit-cooktime>
-    </ng-container>
-
-    <ng-container *ngIf="step === 2">
-        <food-recipe-edit-ingredients [ingredients]="recipe.ingredients" (updated)="onUpdated({ingredients: $event})">
-        </food-recipe-edit-ingredients>
-        <food-recipe-edit-method [method]="recipe.method" (updated)="onUpdated({method: $event})">
-        </food-recipe-edit-method>
-    </ng-container>
-
-    <ng-container *ngIf="step === 3">
-        <food-recipe [recipe]="recipe" [readonly]="true" [hideActions]="true"></food-recipe>
-    </ng-container>
+            <food-recipe-edit-header [recipe]="recipe" [hideImage]="true" (updated)="onUpdated($event)">
+            </food-recipe-edit-header>
+            <food-recipe-edit-categories [categories]="recipe.categories" (updated)="onUpdated({categories: $event})">
+            </food-recipe-edit-categories>
+            <food-recipe-edit-cooktime [cookTime]="recipe.cookTime" (updated)="onUpdated({cookTime: $event})">
+            </food-recipe-edit-cooktime>
+        </stepper-step>
+        <stepper-step title="Ingredients & Method">
+            <food-recipe-edit-ingredients [ingredients]="recipe.ingredients"
+                (updated)="onUpdated({ingredients: $event})">
+            </food-recipe-edit-ingredients>
+            <food-recipe-edit-method [method]="recipe.method" (updated)="onUpdated({method: $event})">
+            </food-recipe-edit-method>
+        </stepper-step>
+        <stepper-step title="Preview">
+            <food-recipe [recipe]="recipe" [readonly]="true" [hideActions]="true"></food-recipe>
+        </stepper-step>
+    </stepper>
 </ng-container>
