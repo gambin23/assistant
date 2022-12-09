@@ -1,4 +1,5 @@
 import { ChangeDetectorRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { isValid } from 'date-fns';
 
@@ -6,6 +7,7 @@ export abstract class PageComponent<T> {
     constructor(
         protected router: Router,
         protected route: ActivatedRoute,
+        protected title: Title,
         protected changeRef: ChangeDetectorRef
     ) { }
 
@@ -35,4 +37,6 @@ export abstract class PageComponent<T> {
         queryParams,
         queryParamsHandling: 'merge'
     });
+
+    protected setTitle = (title: string) => this.title.setTitle(`Assistant | ${title}`)
 }

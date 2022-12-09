@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { AppsService, AppsModule, AppStore, reducers } from '@assistant/common-sdk';
-import { NavigationComponent } from '@assistant/common-ui';
+import { BrowserTitleModule, NavigationComponent } from '@assistant/common-ui';
 import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
@@ -23,6 +23,7 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
     imports: [
         BrowserModule,
         RoutesModule,
+        BrowserTitleModule.withPrefix('Assistant |'),
         AppsModule.register([
             FOOD_APP,
             FINANCE_APP

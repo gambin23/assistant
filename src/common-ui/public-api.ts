@@ -14,6 +14,7 @@ export * from './src/components/page.component';
 export * from './src/components/user-header/user-header.component';
 export * from './src/components/dashboard-header/dashboard-header.component';
 export * from './src/components/navigation/navigation.component';
+export * from './src/components/browser-title/browser-title.module'
 
 export * from './src/pipes/search-list.pipe';
 

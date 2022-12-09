@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { DashboardHeaderComponent, PageComponent } from '@assistant/common-ui';
 import { Recipe } from '../../models/recipes';
@@ -37,18 +38,18 @@ export default class DashboardPageComponent extends PageComponent<DashboardQuery
     constructor(
         router: Router,
         route: ActivatedRoute,
+        title: Title,
         changeRef: ChangeDetectorRef,
         private recipesSelector: RecipesSelector,
         private calendarSelector: CalendarSelector,
         private calendarActions: CalendarActions
     ) {
-        super(router, route, changeRef);
+        super(router, route, title, changeRef);
     }
 
     ngOnInit(): void {
         this.recipes$ = this.recipesSelector.recipes$();
         this.isBusy$ = this.calendarSelector.isBusy$();
-
         super.queryParamsChange(() => {
             this.day$ = this.calendarSelector.day$(this.date);
             this.week$ = this.calendarSelector.week$(this.date);
