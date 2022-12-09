@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IconComponent, ListModule, SearchInputComponent, SearchListPipe } from '@assistant/common-ui';
+import { IconComponent, ListModule, SearchInputComponent, SearchListPipe, SearchMarkDirective } from '@assistant/common-ui';
 import { Recipe } from '../../models/recipes';
 
 @Component({
@@ -15,7 +15,8 @@ import { Recipe } from '../../models/recipes';
         IconComponent,
         ListModule,
         SearchListPipe,
-        SearchInputComponent
+        SearchInputComponent,
+        SearchMarkDirective
     ]
 })
 export class FoodRecipeSelectComponent {

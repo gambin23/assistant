@@ -18,7 +18,7 @@
     <modal-header>Modify Categories</modal-header>
     <modal-body>
         <search-input [(search)]="search"></search-input>
-        <list>
+        <list [searchMark]="search">
             <list-item *ngFor="let item of allCategories|searchList:search:'name'" class="py-3 cursor-pointer"
                 [class.active]="isActive(item.id)" (click)="onSelect(item.id)">
                 {{item.name}}

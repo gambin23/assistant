@@ -16,3 +16,6 @@ export * from './src/components/dashboard-header/dashboard-header.component';
 export * from './src/components/navigation/navigation.component';
 
 export * from './src/pipes/search-list.pipe';
+
+export * from './src/directives/search-mark.directive';
+

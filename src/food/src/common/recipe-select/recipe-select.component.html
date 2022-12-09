@@ -1,6 +1,6 @@
 <search-input [(search)]="search"></search-input>
 
-<list>
+<list [searchMark]="search" [searchMarkConfig]="{exclude: ['.caption']}">
     <list-item *ngFor="let recipe of recipes|searchList:search:'name'" (click)="onSelect(recipe)"
         class="py-3 cursor-pointer d-flex align-items-center">
         <div class="d-flex align-items-center">

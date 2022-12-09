@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isEqual } from 'lodash-es';
-import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent, SearchListPipe, SearchInputComponent } from '@assistant/common-ui';
+import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent, SearchListPipe, SearchInputComponent, SearchMarkDirective } from '@assistant/common-ui';
 import { categories, getCategory } from '../../models/category';
 
 @Component({
@@ -17,7 +17,8 @@ import { categories, getCategory } from '../../models/category';
         TagComponent,
         IconComponent,
         SearchInputComponent,
-        SearchListPipe
+        SearchListPipe,
+        SearchMarkDirective
     ]
 })
 export class FoodRecipeEditCategoriesComponent extends EditCardBaseComponent<string[]> {
