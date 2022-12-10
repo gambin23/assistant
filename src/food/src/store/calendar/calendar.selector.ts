@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { FOOD_APP } from '@assistant/food/name';
-import { combineLatest, mergeMap, Observable } from 'rxjs';
+import { combineLatest, map, mergeMap, Observable, tap } from 'rxjs';
 import { eachDayOfInterval, endOfISOWeek, startOfISOWeek } from 'date-fns';
 import { Calendar } from '@assistant/food/models';
 import { FoodStore } from '../store';
@@ -34,8 +34,11 @@ export class CalendarSelector {
 
     week$(id: string | Date): Observable<Calendar[]> {
         id = new Date(id);
+
+        // const weekDays = eachDayOfInterval({ start: startOfISOWeek(id), end: endOfISOWeek(id) }).map(x => calendarDate(x));
+        // return this.store.select(selectCalendarState).pipe(map(x => x.data.filter(c => weekDays.includes(c.id))));
         return combineLatest([...eachDayOfInterval({ start: startOfISOWeek(id), end: endOfISOWeek(id) }).map(day =>
             this.store.select(selectDay(calendarDate(day)))
-        )]);
+        )]).pipe(tap(x => console.log(x)));
     }
 }

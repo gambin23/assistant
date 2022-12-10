@@ -9,6 +9,6 @@ export class UserRecipesData {
     constructor(private store: AngularFirestore) { }
 
     all$ = (userId: string) => getUserDictionary<Recipe>(this.store, userId, 'foodRecipes');
-    add$ = (userId: string, id: string, recipe: Recipe) => addUserEntity(this.store, 'foodRecipes', userId, id, recipe);
-    patch$ = (userId: string, id: string, recipe: Partial<Recipe>) => patchUserEntity(this.store, 'foodRecipes', userId, id, recipe);
+    add$ = (userId: string, id: string, recipe: Recipe) => addUserEntity(this.store, userId, 'foodRecipes', id, recipe);
+    patch$ = (userId: string, id: string, recipe: Partial<Recipe>) => patchUserEntity(this.store, userId, 'foodRecipes', id, recipe);
 }

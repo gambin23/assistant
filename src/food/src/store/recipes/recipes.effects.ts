@@ -7,7 +7,7 @@ import { recipesLoad, recipesLoadSuccess, recipesLoadError, recipesPatchSuccess,
 
 @Injectable()
 export class RecipesEffects {
-    loadRecipes$ = createEffect(() => this.actions$.pipe(
+    load$ = createEffect(() => this.actions$.pipe(
         ofType(recipesLoad),
         concatLatestFrom(() => this.userSelector.userId$()),
         mergeMap(([_, userId]) => this.recipesData.all$(userId)
@@ -17,7 +17,7 @@ export class RecipesEffects {
             ))
     ));
 
-    patchRecipe$ = createEffect(() => this.actions$.pipe(
+    patch$ = createEffect(() => this.actions$.pipe(
         ofType(recipesPatch),
         concatLatestFrom(() => this.userSelector.userId$()),
         mergeMap(([action, userId]) => this.recipesData.patch$(userId, action.id, action.recipe)

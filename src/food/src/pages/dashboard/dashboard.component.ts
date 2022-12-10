@@ -57,5 +57,5 @@ export default class DashboardPageComponent extends PageComponent<DashboardQuery
 
     onDateChange = (date: Date) => this.setQueryParam({ date: calendarDate(date) });
     onMealChange = (meal: MealType) => this.setQueryParam({ meal });
-    onRecipeChange = (id: string) => this.calendarActions.updateDay({ id: calendarDate(this.date), [this.meal]: id });
+    onRecipeChange = (id: string) => this.calendarActions.patch(calendarDate(this.date), { [this.meal]: id });
 }

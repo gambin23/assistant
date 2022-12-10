@@ -3,7 +3,7 @@ import { createAction, props, Store } from '@ngrx/store';
 import { Recipe } from '@assistant/food/models';
 
 
-const prefix = '[NEW RECIPE]';
+const prefix = '[FOOD] NEW RECIPE -';
 export const newRecipePatch = createAction(`${prefix} Patch`, props<{ recipe: Partial<Recipe> }>());
 export const newRecipeAdd = createAction(`${prefix} Add`);
 export const newRecipeAddSuccess = createAction(`${prefix} Add Success`, props<{ recipe: Recipe }>());

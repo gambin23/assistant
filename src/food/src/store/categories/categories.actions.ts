@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
 import { Category } from '@assistant/food/models';
 
-const prefix = '[FOOD CATEGORIES]';
+const prefix = '[FOOD] CATEGORIES -';
 export const categoriesLoad = createAction(`${prefix} Load`);
 export const categoriesLoadSuccess = createAction(`${prefix} Success`, props<{ categories: Category[] }>());
 export const categoriesLoadError = createAction(`${prefix} Error`);

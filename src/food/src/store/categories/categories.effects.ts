@@ -6,7 +6,7 @@ import { categoriesLoad, categoriesLoadSuccess, categoriesLoadError } from './ca
 
 @Injectable()
 export class CategoriesEffects {
-    loadRCategories$ = createEffect(() => this.actions$.pipe(
+    load$ = createEffect(() => this.actions$.pipe(
         ofType(categoriesLoad),
         mergeMap(() => this.categoriesData.all$()
             .pipe(

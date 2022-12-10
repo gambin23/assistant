@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { setState } from '@assistant/common-sdk';
 import { CalendarState } from './calendar.model';
-import { calendarLoad, calendarLoadSuccess, calendarLoadError, calendarUpdateDay } from './calendar.actions';
+import { calendarLoad, calendarLoadSuccess, calendarLoadError, calendarPatchSuccess } from './calendar.actions';
 
 const initialState: CalendarState = {
     data: [],
@@ -24,10 +24,12 @@ export const calendarReducer = createReducer(
         isBusy: false,
         isError: true
     })),
-    on(calendarUpdateDay, (state, action) => {
-        const index = state.data.findIndex(day => day.id === action.day.id);
-        return setState(state, {
-            data: [...state.data, index !== -1 ? state.data[index] = { ...state.data[index], ...action.day } : action.day]
-        })
+    on(calendarPatchSuccess, (state, action) => {
+        const index = state.data.findIndex(day => day.id === action.id);
+        const data = index >= 0 ?
+            Object.assign([], state.data, { [index]: { ...state.data[index], ...action.day } }) :
+            [...state.data, { id: action.id, ...action.day }];
+        return setState(state, { data });
+
     })
 );
