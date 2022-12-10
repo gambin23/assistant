@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { addDays, format, isSameDay, isToday, subDays } from 'date-fns';
+import { Calendar, MealType, Recipe } from '@assistant/food/models';
 import { IconComponent } from '@assistant/common-ui';
-import { Calendar, MealType } from '../../models/calendar';
-import { Recipe } from '../../models/recipes';
 
 @Component({
     selector: 'food-calendar-week',
@@ -19,7 +18,7 @@ export class FoodCalendarWeekComponent {
 
     @Input() date!: Date;
     @Input() meal!: MealType;
-    @Input() week!: Calendar;
+    @Input() week!: Calendar[];
     @Input() recipes!: Recipe[];
     @Input() isBusy!: boolean;
     @Output() dateChange = new EventEmitter<Date>();

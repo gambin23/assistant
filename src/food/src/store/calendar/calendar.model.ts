@@ -1,7 +1,7 @@
-import { Calendar } from '../../models/calendar';
+import { Calendar } from '@assistant/food/models';
 
 export interface CalendarState {
-    data: Calendar;
+    data: Calendar[];
     isBusy: boolean;
     isError: boolean;
 }

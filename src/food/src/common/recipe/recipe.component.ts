@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { EditCardModule, IconComponent, ModalModule } from '@assistant/common-ui';
+import { Recipe } from '@assistant/food/models';
 import { getCookTime } from '../../models/cook-time';
-import { Recipe } from '../../models/recipes';
 import { FoodRecipeEditHeaderComponent } from "../recipe-edit-header/recipe-edit-header.component";
 import { FoodRecipeEditActionsComponent } from "../recipe-edit-actions/recipe-edit-actions.component";
 import { FoodRecipeEditCooktimeComponent } from "../recipe-edit-cooktime/recipe-edit-cooktime.component";

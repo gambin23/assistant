@@ -11,6 +11,6 @@ export class UserSelector {
     constructor(private store: Store<AppStore>) { }
 
     user$ = () => this.store.select(getUser);
-    userId$ = () => this.user$().pipe(map(x => x.id));
+    userId$ = () => this.user$().pipe(map(x => x.id!));
     userName$ = () => this.user$().pipe(map(x => x.name));
 }

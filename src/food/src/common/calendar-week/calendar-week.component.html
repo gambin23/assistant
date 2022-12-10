@@ -18,13 +18,13 @@
     </div>
     <div class="card-body">
         <div class="list-group">
-            <div *ngFor="let day of week|keyvalue" [class.active]="!isBusy && isActiveDay(day.key)" (click)="onSelectDay(day.key)"
+            <div *ngFor="let day of week" [class.active]="!isBusy && isActiveDay(day.id)" (click)="onSelectDay(day.id)"
                 class="list-group-item cursor-pointer d-flex align-items-center">
-                <ng-container *ngIf="day.value[meal] as recipeId; else recipeNotFound">
+                <ng-container *ngIf="day[meal] as recipeId; else recipeNotFound">
                     <ng-container *ngIf="getRecipe(recipeId) as recipe; else recipeNotFound">
                         <div>
                             <div class="caption caption-sx bone">
-                                {{getDay(day.key)}}
+                                {{getDay(day.id)}}
                             </div>
                             <span class="bone">
                                 {{recipe.name}}
@@ -39,7 +39,7 @@
                 </ng-container>
                 <ng-template #recipeNotFound>
                     <div>
-                        <div class="caption caption-sx bone">{{getDay(day.key)}}</div>
+                        <div class="caption caption-sx bone">{{getDay(day.id)}}</div>
                         —
                     </div>
                 </ng-template>

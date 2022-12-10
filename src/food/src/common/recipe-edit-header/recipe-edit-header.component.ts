@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IconComponent } from '@assistant/common-ui';
-import { Recipe } from '../../models/recipes';
+import { Recipe } from '@assistant/food/models';
 import { getCookTime } from '../../models/cook-time';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
-import { Recipes } from '../../models/recipes';
+import { Recipes } from '@assistant/food/models';
 
 const prefix = '[RECIPES]';
 export const recipesLoad = createAction(`${prefix} Load`);

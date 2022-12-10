@@ -1,5 +1,5 @@
 import { guid } from '@assistant/common-sdk';
-import { Recipe } from '../../models/recipes';
+import { Recipe } from '@assistant/food/models';
 
 export interface NewRecipeState {
     data: Recipe;

@@ -4,7 +4,7 @@ import { CalendarState } from './calendar.model';
 import { calendarLoad, calendarLoadSuccess, calendarLoadError, calendarUpdateDay } from './calendar.actions';
 
 const initialState: CalendarState = {
-    data: {},
+    data: [],
     isBusy: false,
     isError: false
 };
@@ -24,7 +24,10 @@ export const calendarReducer = createReducer(
         isBusy: false,
         isError: true
     })),
-    on(calendarUpdateDay, (state, action) => setState(state, {
-        data: { ...state.data, [action.id]: { ...state.data[action.id], ...action.day } }
-    }))
+    on(calendarUpdateDay, (state, action) => {
+        const index = state.data.findIndex(day => day.id === action.day.id);
+        return setState(state, {
+            data: [...state.data, index !== -1 ? state.data[index] = { ...state.data[index], ...action.day } : action.day]
+        })
+    })
 );

@@ -4,7 +4,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconComponent, SearchInputComponent } from '@assistant/common-ui';
 import { debounceTime, Subscription } from 'rxjs';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
-import { RecipesFilters } from '../../store/recipes/recipes.model';
+import { RecipesFilters } from '../../models/recipe';
 
 @Component({
     selector: 'recipes-filters',

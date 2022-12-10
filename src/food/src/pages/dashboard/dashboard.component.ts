@@ -3,9 +3,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { Calendar, MealType, Recipe } from '@assistant/food/models';
 import { DashboardHeaderComponent, PageComponent } from '@assistant/common-ui';
-import { Recipe } from '../../models/recipes';
-import { Calendar, CalendarDay, MealType } from '../../models/calendar';
 import { CalendarSelector } from '../../store/calendar/calendar.selector';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
 import { CalendarActions } from '../../store/calendar/calendar.actions';
@@ -30,8 +29,8 @@ export default class DashboardPageComponent extends PageComponent<DashboardQuery
 
     date = new Date();
     meal: MealType = 'lunch';
-    day$!: Observable<CalendarDay>;
-    week$!: Observable<Calendar>;
+    day$!: Observable<Calendar>;
+    week$!: Observable<Calendar[]>;
     recipes$!: Observable<Recipe[]>;
     isBusy$!: Observable<boolean>;
 
@@ -58,5 +57,5 @@ export default class DashboardPageComponent extends PageComponent<DashboardQuery
 
     onDateChange = (date: Date) => this.setQueryParam({ date: calendarDate(date) });
     onMealChange = (meal: MealType) => this.setQueryParam({ meal });
-    onRecipeChange = (id: string) => this.calendarActions.updateDay(this.date, { [this.meal]: id });
+    onRecipeChange = (id: string) => this.calendarActions.updateDay({ id: calendarDate(this.date), [this.meal]: id });
 }

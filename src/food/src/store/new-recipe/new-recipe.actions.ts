@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
-import { Recipe } from '../../models/recipes';
+import { Recipe } from '@assistant/food/models';
+
 
 const prefix = '[NEW RECIPE]';
 export const newRecipePatch = createAction(`${prefix} Patch`, props<{ recipe: Partial<Recipe> }>());

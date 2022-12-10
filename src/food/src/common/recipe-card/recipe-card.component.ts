@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IconComponent } from '@assistant/common-ui';
+import { Recipe } from '@assistant/food/models';
 import { getCookTime } from '../../models/cook-time';
-import { Recipe } from '../../models/recipes';
 import { RecipeView } from './recipe-card.model';
 
 @Component({

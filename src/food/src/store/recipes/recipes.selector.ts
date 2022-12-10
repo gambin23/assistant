@@ -1,10 +1,10 @@
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Observable, } from 'rxjs';
+import { Recipe } from '@assistant/food/models';
 import { FOOD_APP } from '@assistant/food/name';
 import { FoodStore } from '../store';
-import { Recipe, recipesSkeleton, recipeSkeleton } from '../../models/recipes';
-import { RecipesFilters } from './recipes.model';
+import { recipesSkeleton, recipeSkeleton, RecipesFilters } from '../../models/recipe';
 
 export const selectRecipesState = createSelector(createFeatureSelector<FoodStore>(FOOD_APP.id), x => x.recipes);
 export const selectRecipesIsBusy = createSelector(selectRecipesState, x => x.isBusy);

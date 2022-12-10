@@ -1,9 +1,11 @@
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { FOOD_APP } from '@assistant/food/name';
-import { Observable, of } from 'rxjs';
+import { combineLatest, mergeMap, Observable } from 'rxjs';
+import { eachDayOfInterval, endOfISOWeek, startOfISOWeek } from 'date-fns';
+import { Calendar } from '@assistant/food/models';
 import { FoodStore } from '../store';
-import { Calendar, CalendarDay, calendarDaySkeleton, calendarSkeleton } from '../../models/calendar';
+import { calendarDaySkeleton, calendarSkeleton } from '../../models/calendar';
 import { selectRecipesIsBusy } from '../recipes/recipes.selector';
 import { calendarDate } from './calendar.functions';
 
@@ -11,14 +13,14 @@ export const selectCalendarState = createSelector(createFeatureSelector<FoodStor
 const selectCalendarIsBusy = createSelector(selectCalendarState, x => x.isBusy);
 const selectCalendarRecipesIsBusy = createSelector(selectCalendarIsBusy, selectRecipesIsBusy, (calendar, recipes) => calendar || recipes);
 const selectCalendar = () => createSelector(selectCalendarState, x => x.isBusy ? calendarSkeleton : x.data);
-const selectDay = (id: string) => createSelector(selectCalendarState, x => x.isBusy ? calendarDaySkeleton : x.data[id] || {});
+const selectDay = (id: string) => createSelector(selectCalendarState, x => x.isBusy ? calendarDaySkeleton : x.data.find(x => x.id === id) || { id });
 
 @Injectable({ providedIn: 'root' })
 export class CalendarSelector {
 
     constructor(private store: Store) { }
 
-    calendar$(): Observable<Calendar> {
+    calendar$(): Observable<Calendar[]> {
         return this.store.select(selectCalendar());
     }
 
@@ -26,12 +28,14 @@ export class CalendarSelector {
         return this.store.select(selectCalendarRecipesIsBusy);
     }
 
-    day$(id: string | Date): Observable<CalendarDay> {
+    day$(id: string | Date): Observable<Calendar> {
         return this.store.select(selectDay(calendarDate(id)));
     }
 
-    week$(id: string | Date): Observable<Calendar> {
-        return of(calendarSkeleton);
-        // return this.store.select(selectDay(calendarDate(id)));
+    week$(id: string | Date): Observable<Calendar[]> {
+        id = new Date(id);
+        return combineLatest([...eachDayOfInterval({ start: startOfISOWeek(id), end: endOfISOWeek(id) }).map(day =>
+            this.store.select(selectDay(calendarDate(day)))
+        )]);
     }
 }

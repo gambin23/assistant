@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import { IconComponent } from '@assistant/common-ui';
 import { routeFoodRecipes, routeFoodSearchRecipe } from '../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
-import { recipesSkeleton } from '../../models/recipes';
+import { RecipesFilters, recipesSkeleton } from '../../models/recipe';
 import { RecipesFiltersComponent } from '../../components/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
-import { RecipesFilters } from '../../store/recipes/recipes.model';
 
 @Component({
     selector: 'search-page',

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '@assistant/common-ui';
-import { Recipe } from '../../models/recipes';
+import { Recipe } from '@assistant/food/models';
 
 @Component({
     selector: 'food-recipe-edit-actions',

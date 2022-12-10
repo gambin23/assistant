@@ -33,18 +33,36 @@
             "@assistant/data": [
                 "./src/data/index.ts"
             ],
+            "@assistant/data/food": [
+                "./src/data/src/food/index.ts"
+            ],
+            "@assistant/data/finance": [
+                "./src/data/src/finance/index.ts"
+            ],
             "@assistant/food": [
                 "./src/food/index.ts"
             ],
             "@assistant/food/name": [
                 "./src/food/name.ts"
             ],
+            "@assistant/food/data": [
+                "./src/food/src/data/index.ts"
+            ],
+            "@assistant/food/models": [
+                "./src/food/src/models/index.ts"
+            ],
             "@assistant/finance": [
                 "./src/finance/index.ts"
             ],
             "@assistant/finance/name": [
                 "./src/finance/name.ts"
-            ]
+            ],
+            "@assistant/finance/data": [
+                "./src/finance/src/data/index.ts"
+            ],
+            "@assistant/finance/models": [
+                "./src/finance/src/models/index.ts"
+            ],
         }
     },
     "angularCompilerOptions": {

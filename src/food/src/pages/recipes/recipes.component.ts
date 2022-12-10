@@ -2,13 +2,13 @@ import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { Recipe } from '@assistant/food/models';
 import { routeFoodNewRecipe, routeFoodRecipe } from './../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
 import { RecipesFiltersComponent } from '../../components/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
-import { RecipesFilters } from '../../store/recipes/recipes.model';
-import { Recipe } from '../../models/recipes';
+import { RecipesFilters } from '../../models/recipe';
 
 @Component({
     selector: 'recipes-page',

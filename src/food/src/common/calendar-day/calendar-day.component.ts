@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addDays, format, isToday, subDays } from 'date-fns';
+import { Calendar, meals, MealType, Recipe } from '@assistant/food/models';
 import { DatePickerModalComponent, IconComponent, ModalModule } from '@assistant/common-ui';
 import { FoodRecipeSelectComponent } from '../recipe-select/recipe-select.component';
 import { FoodRecipeCardComponent } from '../recipe-card/recipe-card.component';
-import { Recipe } from '../../models/recipes';
-import { CalendarDay, MealType, meals } from '../../models/calendar';
 import { RouterModule } from '@angular/router';
 import { routeFoodRecipe } from '../../routes';
 
@@ -28,7 +27,7 @@ export class FoodCalendarDayComponent {
 
     @Input() date!: Date;
     @Input() meal!: MealType;
-    @Input() day!: CalendarDay;
+    @Input() day!: Calendar;
     @Input() recipes!: Recipe[];
     @Input() isBusy!: boolean;
     @Output() dateChange = new EventEmitter<Date>();

@@ -1,4 +1,4 @@
-import { MealType } from '../../models/calendar';
+import { MealType } from '@assistant/food/models';
 
 export interface DashboardQueryParams {
     date?: string;

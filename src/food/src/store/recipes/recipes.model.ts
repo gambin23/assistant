@@ -1,5 +1,4 @@
-import { SortOrder } from '@assistant/common-sdk';
-import { Recipes } from '../../models/recipes';
+import { Recipes } from '@assistant/food/models';
 
 export interface RecipesState {
     data: Recipes;
@@ -7,10 +6,3 @@ export interface RecipesState {
     isError: boolean;
 }
 
-export interface RecipesFilters {
-    search: string;
-    categories: string[];
-    sort: SortOrder;
-    isFavourite?: boolean;
-    isArchived?: boolean;
-}

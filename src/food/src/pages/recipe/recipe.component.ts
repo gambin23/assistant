@@ -3,9 +3,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, switchMap } from 'rxjs';
 import { NotFoundModule } from '@assistant/common-ui';
+import { Recipe } from '@assistant/food/models';
 import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
-import { Recipe } from '../../models/recipes';
 
 @Component({
     selector: 'recipe-page',
