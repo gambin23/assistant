@@ -37,7 +37,5 @@ export class FoodRecipeComponent {
 
     getCookTime = getCookTime;
 
-    onUpdated(recipe: Partial<Recipe>) {
-        this.recipe = { ...this.recipe, ...recipe };
-    }
+    onUpdated = (recipe: Partial<Recipe>) => this.updated.emit(recipe);
 }

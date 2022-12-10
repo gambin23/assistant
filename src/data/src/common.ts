@@ -1,6 +1,6 @@
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Dictionary } from '@assistant/common-sdk';
-import { map, take } from 'rxjs';
+import { from, map, take } from 'rxjs';
 
 export const getList = <T>(store: AngularFirestore, list: string) => store.collection<T>(list).valueChanges().pipe(take(1));
 export const getUserList = <T>(store: AngularFirestore, userId: string, list: string) => store.collection('users').doc(userId).collection<T>(list).valueChanges().pipe(take(1));
@@ -14,3 +14,4 @@ export const getUserDictionary = <T>(store: AngularFirestore, userId: string, co
         x.docs.map(x => dictionary[x.id] = x.data())
         return dictionary;
     }));
+export const patchUserObject = <T>(store: AngularFirestore, list: string, userId: string, id: string, object: Partial<T>) => from(store.collection('users').doc(userId).collection(list).doc(id).update(object));

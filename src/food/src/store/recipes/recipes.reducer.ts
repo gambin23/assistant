@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { setState } from '@assistant/common-sdk';
 import { RecipesState } from './recipes.model';
-import { recipesLoad, recipesLoadSuccess, recipesLoadError } from './recipes.actions';
+import { recipesLoad, recipesLoadSuccess, recipesLoadError, recipesPatchSuccess } from './recipes.actions';
 import { newRecipeAddSuccess } from './../new-recipe/new-recipe.actions';
 
 const initialState: RecipesState = {
@@ -27,5 +27,8 @@ export const recipesReducer = createReducer(
     })),
     on(newRecipeAddSuccess, (state, action) => setState(state, {
         data: { ...state.data, [action.recipe.id]: action.recipe }
+    })),
+    on(recipesPatchSuccess, (state, action) => setState(state, {
+        data:  {...state.data, [action.id]: {...state.data[action.id], ...action.recipe}}
     })),
 );
