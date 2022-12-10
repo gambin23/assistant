@@ -1,7 +1,7 @@
 import { Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { Authentication } from '@assistant/firestore';
+import { Authentication } from '@assistant/data';
 import { UserActions } from '@assistant/common-sdk';
 
 @Component({

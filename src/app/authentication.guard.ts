@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Authentication } from '@assistant/firestore';
+import { Authentication } from '@assistant/data';
 import { map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

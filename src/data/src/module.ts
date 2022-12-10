@@ -9,4 +9,4 @@ import { firestoreConfig } from './config';
         AngularFirestoreModule
     ]
 })
-export class FirestoreModule { }
+export class DataModule { }

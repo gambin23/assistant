@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserActions, UserStoreModule } from '@assistant/common-sdk';
 import { IconComponent } from '@assistant/common-ui';
-import { Authentication } from '@assistant/firestore';
+import { Authentication } from '@assistant/data';
 
 @Component({
     selector: 'app-login',
