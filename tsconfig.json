@@ -30,6 +30,9 @@
             "@assistant/common-sdk": [
                 "./src/common-sdk/index.ts"
             ],
+            "@assistant/firestore": [
+                "./src/firestore/index.ts"
+            ],
             "@assistant/food": [
                 "./src/food/index.ts"
             ],

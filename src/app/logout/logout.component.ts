@@ -1,6 +1,7 @@
 import { Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { Authentication } from '@assistant/firestore';
 import { UserActions } from '@assistant/common-sdk';
 
 @Component({
@@ -19,14 +20,17 @@ import { UserActions } from '@assistant/common-sdk';
 export class LogoutComponent {
 
     constructor(
+        private authentication: Authentication,
         private userActions: UserActions,
         private router: Router,
         private location: Location
     ) { }
 
     logout() {
-        this.userActions.logout();
-        this.router.navigate(['login'])
+        this.authentication.logout$().subscribe(() => {
+            this.userActions.logout();
+            this.router.navigate(['login'])
+        })
     }
 
     cancel() {

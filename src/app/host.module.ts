@@ -4,6 +4,7 @@ import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { FirestoreModule } from '@assistant/firestore';
 import { AppsService, AppsModule, AppStore, reducers } from '@assistant/common-sdk';
 import { BrowserTitleModule, NavigationComponent } from '@assistant/common-ui';
 import { FOOD_APP } from '@assistant/food/name';
@@ -28,6 +29,7 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
             FOOD_APP,
             FINANCE_APP
         ]),
+        FirestoreModule,
         StoreModule.forRoot(reducers, { metaReducers }),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
