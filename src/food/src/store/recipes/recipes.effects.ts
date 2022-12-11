@@ -3,7 +3,8 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { UserSelector } from '@assistant/common-sdk';
 import { UserRecipesData } from '@assistant/food/data';
-import { recipesLoad, recipesLoadSuccess, recipesLoadError, recipesPatchSuccess, recipesPatchError, recipesPatch } from './recipes.actions';
+import { recipesLoad, recipesLoadSuccess, recipesLoadError, recipesPatchSuccess, recipesPatchError, recipesPatch, recipesAdd, recipesAddError, recipesAddSuccess } from './recipes.actions';
+import { RecipesSelector } from './recipes.selector';
 
 @Injectable()
 export class RecipesEffects {
@@ -14,8 +15,18 @@ export class RecipesEffects {
             .pipe(
                 map(recipes => recipesLoadSuccess({ recipes })),
                 catchError(() => of(recipesLoadError()))
-            ))
-    ));
+            )
+        )));
+
+    add$ = createEffect(() => this.actions$.pipe(
+        ofType(recipesAdd),
+        concatLatestFrom(action => [this.userSelector.userId$(), this.recipesSelector.recipeExists$(action.recipe.id)]),
+        mergeMap(([action, userId, recipeExists]) => this.recipesData.add$(userId, action.recipe.id, action.recipe)
+            .pipe(
+                map(() => recipeExists ? recipesAddError() : recipesAddSuccess({ ...action })),
+                catchError(() => of(recipesAddError()))
+            )
+        )));
 
     patch$ = createEffect(() => this.actions$.pipe(
         ofType(recipesPatch),
@@ -24,12 +35,13 @@ export class RecipesEffects {
             .pipe(
                 map(() => recipesPatchSuccess({ ...action })),
                 catchError(() => of(recipesPatchError()))
-            ))
-    ));
+            )
+        )));
 
     constructor(
         private actions$: Actions,
         private recipesData: UserRecipesData,
-        private userSelector: UserSelector
+        private userSelector: UserSelector,
+        private recipesSelector: RecipesSelector
     ) { }
 }

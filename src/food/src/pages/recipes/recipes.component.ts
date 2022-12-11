@@ -8,6 +8,7 @@ import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.co
 import { RecipesFiltersComponent } from '../../components/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
+import { RecipesActions } from '../../store/recipes/recipes.actions';
 import { RecipesFilters } from '../../models/recipe';
 
 @Component({
@@ -36,7 +37,10 @@ export default class RecipesPageComponent implements OnInit {
     routeFoodNewRecipe = routeFoodNewRecipe;
     routeFoodRecipe = routeFoodRecipe;
 
-    constructor(private recipesSelector: RecipesSelector) { }
+    constructor(
+        private recipesSelector: RecipesSelector,
+        private recipesActions: RecipesActions
+    ) { }
 
     ngOnInit() {
         this.recipes$ = this.recipesSelector.recipes$(this.filters);
@@ -45,5 +49,5 @@ export default class RecipesPageComponent implements OnInit {
 
     onFiltered = (filters: RecipesFilters) => this.filters = filters;
     onViewChanged = (view: RecipeView) => this.view = view;
-
+    onRecipeUpdated = (event: { id: string, recipe: Partial<Recipe> }) => this.recipesActions.patch(event.id, event.recipe);
 }

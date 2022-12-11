@@ -32,7 +32,8 @@
 
 <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-3" [class.skeleton]="isBusy$|async">
     <a *ngFor="let recipe of recipes$|async" [routerLink]="routeFoodRecipe(recipe.id)">
-        <food-recipe-card [recipe]="recipe" [view]="view"></food-recipe-card>
+        <food-recipe-card [recipe]="recipe" [view]="view" [showFavouriteButton]="true" (updated)="onRecipeUpdated($event)">
+        </food-recipe-card>
     </a>
 </div>
 <router-outlet></router-outlet>

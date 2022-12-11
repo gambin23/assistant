@@ -16,9 +16,11 @@ import { Recipe } from '@assistant/food/models';
 export class FoodRecipeEditActionsComponent {
 
     @Input() recipe!: Recipe;
-    @Input() readonly = false;
+    @Input() showAddButton = false;
     @Output() updated = new EventEmitter<Partial<Recipe>>();
+    @Output() added = new EventEmitter<Partial<Recipe>>();
 
     onArchive = () => this.updated.emit({ isArchived: !this.recipe.isArchived });
     onFavourite = () => this.updated.emit({ isFavourite: !this.recipe.isFavourite });
+    onAdd = () => this.added.emit();
 }

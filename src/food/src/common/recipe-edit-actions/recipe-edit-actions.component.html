@@ -3,18 +3,19 @@
         <div class="card ps-0">
             <div class="card-menu">
                 <div class="me-auto text-muted">Actions</div>
-                <ul *ngIf="readonly">
-                    <li class="btn btn-link pointer-events-none my-3 bone">
-                        <icon type="solid" name="square-check"></icon> Imported
+                <ul *ngIf="showAddButton">
+                    <li class="card-menu-item bone" (click)="onAdd()">
+                        <icon type="solid" name="clone"></icon>
+                        <div>Import</div>
                     </li>
                 </ul>
-                <ul *ngIf="!readonly">
+                <ul *ngIf="!showAddButton">
                     <li class="card-menu-item bone" (click)="onArchive()">
                         <icon type="solid" [name]="recipe.isArchived ? 'rotate-left': 'trash-can'"></icon>
                         <div>{{recipe.isArchived ? 'Restore': 'Archive'}}</div>
                     </li>
                     <li class="card-menu-item bone" (click)="onFavourite()">
-                        <icon [type]="recipe.isFavourite ? 'regular': 'solid'" name="heart"></icon>
+                        <icon [type]="recipe.isFavourite ? 'solid': 'regular'" name="heart"></icon>
                         <div>{{recipe.isFavourite ? 'Remove': 'Favourite'}}</div>
                     </li>
                 </ul>

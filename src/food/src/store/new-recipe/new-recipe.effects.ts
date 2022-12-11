@@ -13,12 +13,14 @@ export class NewRecipeEffects {
     add$ = createEffect(() => this.actions$.pipe(
         ofType(newRecipeAdd),
         concatLatestFrom(() => [this.newRecipeSelector.recipe$(), this.userSelector.userId$()]),
-        mergeMap(([_, recipe, userId]) => this.recipesdata.add$(userId, recipe.id, recipe).pipe(
-            map(() => newRecipeAddSuccess({ recipe })),
-            tap(() => this.router.navigateByUrl(routeFoodRecipe(recipe.id))),
-            catchError(() => of(newRecipeAddError()))
-        ))
-    ));
+        mergeMap(([_, recipe, userId]) => {
+            recipe = { ...recipe, dateCreated: new Date() }
+            return this.recipesdata.add$(userId, recipe.id, recipe).pipe(
+                map(() => newRecipeAddSuccess({ recipe })),
+                tap(() => this.router.navigateByUrl(routeFoodRecipe(recipe.id))),
+                catchError(() => of(newRecipeAddError()))
+            )
+        })));
 
     constructor(
         private actions$: Actions,

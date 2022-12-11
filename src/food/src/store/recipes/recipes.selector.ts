@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { Observable, } from 'rxjs';
+import { map, Observable, } from 'rxjs';
 import { Recipe } from '@assistant/food/models';
 import { FOOD_APP } from '@assistant/food/name';
 import { FoodStore } from '../store';
@@ -26,5 +26,9 @@ export class RecipesSelector {
 
     recipe$(id: string): Observable<Recipe | undefined> {
         return this.store.select(selectRecipe(id));
+    }
+
+    recipeExists$(id: string): Observable<boolean> {
+        return this.store.select(selectRecipe(id)).pipe(map(recipe => !!recipe));
     }
 }

@@ -20,8 +20,7 @@
     </div>
     <ng-container *ngIf="day[meal] as meal; else recipeNotFound">
         <a *ngIf="getRecipe(meal) as recipe; else recipeNotFound" [routerLink]="routeFoodRecipe(recipe.id)">
-            <food-recipe-card [recipe]="recipe" [readonly]="true">
-            </food-recipe-card>
+            <food-recipe-card [recipe]="recipe"></food-recipe-card>
         </a>
     </ng-container>
     <button class="btn btn-primary my-3" (click)="onShowRecipes()">

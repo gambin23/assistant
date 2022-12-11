@@ -15,11 +15,7 @@
                 <icon type="regular" name="clock"></icon>
                 {{getCookTime(recipe.cookTime)}}
             </div>
-            <div *ngIf="!readonly" class="display-5 ms-auto bone-hide">
-                <button class="btn btn-link display-5 p-0 faded pointer-events-none">
-                    <icon type="solid" name="square-check"></icon>
-                </button>
-            </div>
+            <ng-container *ngTemplateOutlet="actions"></ng-container>
         </div>
     </div>
 </div>
@@ -45,12 +41,24 @@
                     <icon type="regular" name="clock"></icon>
                     {{getCookTime(recipe.cookTime)}}
                 </div>
-                <div *ngIf="!readonly" class="display-5 ms-auto bone-hide">
-                    <button class="btn btn-link display-5 p-0 faded pointer-events-none">
-                        <icon type="solid" name="square-check"></icon>
-                    </button>
-                </div>
+                <ng-container *ngTemplateOutlet="actions"></ng-container>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #actions>
+    <div *ngIf="showActions()" class="display-5 ms-auto bone-hide">
+        <button *ngIf="showAddButton" class="btn btn-link display-5 p-0" (click)="onAdded($event)">
+            <icon type="solid" name="clone"></icon>
+        </button>
+        <button *ngIf="showFavouriteButton" class="btn btn-link display-5 p-0"
+            (click)="onUpdated($event, {isFavourite: !recipe.isFavourite})">
+            <icon [type]="recipe.isFavourite ? 'solid' : 'regular'" name="heart"></icon>
+        </button>
+        <button *ngIf="showArchiveButton" class="btn btn-link display-5 p-0"
+            (click)="onUpdated($event, {isArchived: !recipe.isArchived})">
+            <icon type="solid" [name]="recipe.isArchived ? 'trash-undo' : 'trash-can'"></icon>
+        </button>
+    </div>
+</ng-template>

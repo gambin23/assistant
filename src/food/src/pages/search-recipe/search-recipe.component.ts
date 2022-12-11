@@ -6,6 +6,7 @@ import { NotFoundModule } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
 import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
+import { RecipesActions } from '../../store/recipes/recipes.actions';
 
 @Component({
     selector: 'search-recipe-page',
@@ -26,11 +27,14 @@ export default class SearchRecipePageComponent implements OnInit {
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private recipesSelector: RecipesSelector
+        private recipesSelector: RecipesSelector,
+        private recipesActions: RecipesActions
     ) { }
 
     ngOnInit() {
         this.recipe$ = this.activatedRoute.params.pipe(switchMap(params => this.recipesSelector.recipe$(params['id'])));
         this.isBusy$ = this.recipesSelector.isBusy$();
     }
+
+    onAdded = (recipe: Recipe) => this.recipesActions.add(recipe);
 }
