@@ -11,6 +11,7 @@ export * from './src/common/not-found/not-found.module';
 export * from './src/common/search-input/search-input.component';
 
 export * from './src/components/page.component';
+export * from './src/components/alert/alert.module';
 export * from './src/components/user-header/user-header.component';
 export * from './src/components/dashboard-header/dashboard-header.component';
 export * from './src/components/navigation/navigation.component';

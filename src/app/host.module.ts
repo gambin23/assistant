@@ -5,8 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { DataModule } from '@assistant/data';
-import { AppsService, AppsModule, AppStore, reducers } from '@assistant/common-sdk';
-import { BrowserTitleModule, NavigationComponent } from '@assistant/common-ui';
+import { AppsService, AppsModule, AppStore, reducers, effects } from '@assistant/common-sdk';
+import { AlertModule, BrowserTitleModule, NavigationComponent } from '@assistant/common-ui';
 import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
@@ -20,6 +20,7 @@ export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localSto
 const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer];
 
 @NgModule({
+    bootstrap: [HostComponent],
     declarations: [HostComponent],
     imports: [
         BrowserModule,
@@ -31,13 +32,10 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         ]),
         DataModule,
         StoreModule.forRoot(reducers, { metaReducers }),
-        EffectsModule.forRoot([]),
+        EffectsModule.forRoot(effects),
         StoreDevtoolsModule.instrument(),
-        NavigationComponent
-    ],
-    providers: [
-        AppsService
-    ],
-    bootstrap: [HostComponent]
+        NavigationComponent,
+        AlertModule
+    ]
 })
 export class HostModule { }

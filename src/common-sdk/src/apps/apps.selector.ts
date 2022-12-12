@@ -13,8 +13,6 @@ const selectAppNames = createSelector(selectAppState, x => Object.keys(x.apps));
 @Injectable({ providedIn: 'root' })
 export class AppsSelector {
 
-    private appState$ = this.store.select(state => state.apps);
-
     constructor(private store: Store<AppStore>) { }
 
     activeApp$(): Observable<EnhancedApp> {
