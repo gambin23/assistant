@@ -19,7 +19,6 @@ import { IconComponent } from '../../common/icon/icon.component';
 export class AlertComponent implements OnInit, OnDestroy {
 
     @HostBinding('class') class = 'alerts';
-    @HostBinding('class.show') get classShow() { return this.alerts.length > 0 };
     alerts: Alert[] = [];
 
     private subscription = new Subscription();

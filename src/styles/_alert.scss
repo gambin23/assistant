@@ -3,10 +3,9 @@
     z-index: 1000;
     margin-top: 3rem;
     min-width: 90%;
-    display: none;
+    border-radius: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 0.5rem;
 
     box-shadow: 0px 7px 7px 0px rgba($dark, 0.1);
     -webkit-box-shadow: 0px 7px 7px 0px rgba($dark, 0.1);
@@ -18,25 +17,20 @@
         bottom: 0;
         right: 0;
         margin-right: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         min-width: 25%;
-    }
-
-    &.show {
-        @extend .slide-down;
-        display: block;
     }
 }
 
 .alert {
     @extend .slide-down;
     display: flex;
-    text-align: center;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
+    border: none;
     margin-top: 1rem;
     padding: 0rem 1rem !important;
-    border: none;
 
     & div {
         display: flex;
@@ -45,7 +39,6 @@
         & :first-child {
             margin-right: 0.5rem;
         }
-
     }
 
     & button {
