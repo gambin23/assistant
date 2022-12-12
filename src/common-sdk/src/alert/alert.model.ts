@@ -6,7 +6,7 @@ export interface Alert {
 }
 
 export interface AlertState {
-    data?: Alert;
+    data: Alert[];
 }
 
 export type AlertType = 'success' | 'warning' | 'error';

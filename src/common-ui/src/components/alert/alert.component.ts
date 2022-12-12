@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostBinding, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, ChangeDetectorRef, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Alert, AlertActions, AlertSelector } from '@assistant/common-sdk';
 import { IconComponent } from '../../common/icon/icon.component';
@@ -11,32 +12,28 @@ import { IconComponent } from '../../common/icon/icon.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
+        RouterModule,
         IconComponent
     ]
 })
 export class AlertComponent implements OnInit, OnDestroy {
 
-    alert: Alert | undefined;
-    show = true;
-
-    @HostBinding('class') class = 'alert-hero alert-primary';
-    @HostBinding('class.show') get showClass() { return this.show; };
-    @HostBinding('class.alert-error') get errorClass() { return this.alert?.type === 'error'; };
-    @HostBinding('class.alert-success') get successClass() { return this.alert?.type === 'success'; };
-    @HostBinding('class.alert-warning') get warningClass() { return this.alert?.type === 'warning'; };
+    @HostBinding('class') class = 'alerts';
+    @HostBinding('class.show') get classShow() { return this.alerts.length > 0 };
+    alerts: Alert[] = [];
 
     private subscription = new Subscription();
 
     constructor(
         private alertSelector: AlertSelector,
         private alertActions: AlertActions,
+        private router: Router,
         private changeRef: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
-        this.subscription = this.alertSelector.alert$().subscribe(alert => {
-            this.alert = alert;
-            this.show = !!alert;
+        this.subscription = this.alertSelector.alerts$().subscribe(alerts => {
+            this.alerts = alerts;
             this.changeRef.markForCheck();
         });
     }
@@ -45,9 +42,21 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    onClose = () => this.alertActions.clear();
-    iconName = () => {
-        switch (this.alert?.type) {
+    onClick = (alert: Alert) => {
+        if (alert.link) {
+            this.router.navigateByUrl(alert.link);
+            this.alertActions.remove(alert);
+        }
+    }
+
+    onClose = (event: Event, alert: Alert) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.alertActions.remove(alert);
+    }
+
+    iconName = (alert: Alert) => {
+        switch (alert.type) {
             case 'success':
                 return 'circle-check';
             case 'error':

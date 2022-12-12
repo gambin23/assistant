@@ -1,13 +1,9 @@
-.alert-hero {
-    margin-top: 3rem;
-    padding: 0.25rem 1rem;
-    min-width: 50%;
-    display: none;
+.alerts {
     position: fixed;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
     z-index: 1000;
+    margin-top: 3rem;
+    min-width: 90%;
+    display: none;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 0.5rem;
@@ -15,23 +11,6 @@
     box-shadow: 0px 7px 7px 0px rgba($dark, 0.1);
     -webkit-box-shadow: 0px 7px 7px 0px rgba($dark, 0.1);
     -moz-box-shadow: 0px 7px 7px 0px rgba($dark, 0.1);
-
-    & span {
-        margin: auto;
-        margin-left: 1rem;
-    }
-
-    & button {
-        @extend .btn;
-        padding: 0.25rem !important;
-        font-size: 1.5rem;
-        color: inherit;
-    }
-
-    &.show {
-        @extend .slide-down;
-        display: flex;
-    }
 
     @media only screen and (min-width: $screen-min-md) {
         left: inherit;
@@ -41,6 +20,39 @@
         margin-right: 2rem;
         margin-bottom: 2rem;
         min-width: 25%;
+    }
+
+    &.show {
+        @extend .slide-down;
+        display: block;
+    }
+}
+
+.alert {
+    @extend .slide-down;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 0rem 1rem !important;
+    border: none;
+
+    & div {
+        display: flex;
+        align-items: center;
+
+        & :first-child {
+            margin-right: 0.5rem;
+        }
+
+    }
+
+    & button {
+        @extend .btn;
+        @extend .btn-link;
+        float: right;
+        color: inherit;
     }
 }
 
