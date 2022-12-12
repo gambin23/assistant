@@ -46,6 +46,7 @@ export class FoodCalendarDayComponent {
     onShowDatePicker = () => this.showDatePickerModal = true;
     onNextDay = () => this.dateChange.emit(addDays(this.date, 1));
     onPreviousDay = () => this.dateChange.emit(subDays(this.date, 1));
+    onDateChanged = (date: Date) => this.dateChange.emit(date);
     onSelectedRecipe = (recipe: Recipe) => {
         this.recipeChange.emit(recipe.id);
         this.showRecipesModal = false;

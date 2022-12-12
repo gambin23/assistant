@@ -44,5 +44,5 @@
     </modal-body>
 </modal>
 
-<date-picker-modal [(show)]="showDatePickerModal" [(date)]="date">
+<date-picker-modal [(show)]="showDatePickerModal" [date]="date" (dateChange)="onDateChanged($event)">
 </date-picker-modal>
