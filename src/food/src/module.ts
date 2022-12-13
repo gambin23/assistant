@@ -24,7 +24,7 @@ export class FoodAppModule {
         private calendarActions: CalendarActions,
         private categoriesActions: CategoriesActions
     ) {
-        this.appsActions.loadApp({ ...FOOD_APP, routes });
+        this.appsActions.loadAppRoutes(FOOD_APP.id, routes);
         this.recipesActions.load();
         this.calendarActions.load();
         this.categoriesActions.load();

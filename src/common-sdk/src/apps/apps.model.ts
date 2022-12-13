@@ -7,11 +7,9 @@ export interface App {
     name: string;
     icon: string;
 }
-export interface EnhancedApp extends App {
-    routes?: AppRoutes;
-}
 
 export interface AppsState {
     active: string;
     apps: Dictionary<App>;
+    routes: Dictionary<AppRoutes>;
 }

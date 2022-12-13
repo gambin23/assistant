@@ -38,4 +38,5 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         AlertModule
     ]
 })
-export class HostModule { }
+export class HostModule {
+}

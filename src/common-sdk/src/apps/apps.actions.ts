@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
 import { createAction, props, Store } from '@ngrx/store';
-import { App, EnhancedApp } from './apps.model';
+import { App } from './apps.model';
+import { AppRoutes } from '../routes/routes.model';
+import { Dictionary } from '../common';
 
-export const appSwitch = createAction('[APP] Switch', props<{ id: string }>());
-export const appLoad = createAction('[APP] Load', props<{ app: EnhancedApp }>());
+export const appsLoad = createAction('[APPS] Load', props<{ apps: Dictionary<App> }>());
+export const appSwitch = createAction('[APPS] Switch', props<{ id: string }>());
+export const appLoadRoutes = createAction('[APPS] Load Routes', props<{ id: string, routes: AppRoutes }>());
 
 @Injectable({ providedIn: 'root' })
 export class AppsActions {
 
     constructor(private store: Store) { }
 
-    switchApp(id: string) {
-        this.store.dispatch(appSwitch({ id }));
+    switchApp = (id: string) => this.store.dispatch(appSwitch({ id }));
+
+    loadApps = (appsList: App[]) => {
+        const apps: Dictionary<App> = {};
+        appsList.map(app => apps[app.id] = app);
+        this.store.dispatch(appsLoad({ apps }));
     }
 
-    loadApp(app: EnhancedApp) {
-        app = {
-            ...app,
-            routes: app.routes?.map(x => {
-                return {
-                    path: x.path,
-                    title: x.title,
-                    icon: x.icon,
-                }
-            })
-        };
-        this.store.dispatch(appLoad({ app }));
+    loadAppRoutes(id: string, routes: AppRoutes) {
+        routes = routes.map(x => {
+            return {
+                path: x.path,
+                title: x.title,
+                icon: x.icon,
+            }
+        });
+        this.store.dispatch(appLoadRoutes({ id, routes }));
     }
 }

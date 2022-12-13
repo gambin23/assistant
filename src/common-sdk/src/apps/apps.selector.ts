@@ -1,29 +1,36 @@
 import { Injectable } from '@angular/core';
 import { createSelector, Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Dictionary } from '../common';
+import { AppRoutes } from '../routes/routes.model';
 import { AppStore } from '../store/store';
-import { EnhancedApp } from './apps.model';
+import { App } from './apps.model';
 
 
 const selectAppState = createSelector((state: AppStore) => state.apps, x => x);
-const selectActiveApp = createSelector(selectAppState, x => x.apps[x.active]);
 const selectActiveAppName = createSelector(selectAppState, x => x.active);
-const selectAppNames = createSelector(selectAppState, x => Object.keys(x.apps));
+const selectApps = createSelector(selectAppState, x => x.apps);
+const selectActiveApp = createSelector(selectAppState, x => x.apps[x.active]);
+const selectAppRoutes = createSelector(selectAppState, x => x.routes[x.active]);
 
 @Injectable({ providedIn: 'root' })
 export class AppsSelector {
 
     constructor(private store: Store<AppStore>) { }
 
-    activeApp$(): Observable<EnhancedApp> {
-        return this.store.select(selectActiveApp);
-    }
-
     activeAppName$(): Observable<string> {
         return this.store.select(selectActiveAppName);
     }
 
-    appNames$(): Observable<string[]> {
-        return this.store.select(selectAppNames);
+    apps$(): Observable<Dictionary<App>> {
+        return this.store.select(selectApps);
+    }
+
+    activeApp$(): Observable<App> {
+        return this.store.select(selectActiveApp);
+    }
+
+    activeRoutes$(): Observable<AppRoutes> {
+        return this.store.select(selectAppRoutes);
     }
 }

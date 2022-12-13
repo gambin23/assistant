@@ -22,10 +22,10 @@ export class HostComponent implements OnInit {
     ngOnInit(): void {
         this.themeService.register();
 
-        combineLatest([this.router.events, this.appsSelector.appNames$()]).subscribe(([event, appNames]) => {
+        combineLatest([this.router.events, this.appsSelector.apps$()]).subscribe(([event, apps]) => {
             if (event instanceof NavigationEnd) {
                 const app = event.url.split('/')[1];
-                if (appNames.includes(app) && this.activeApp !== app) {
+                if (apps[app] && this.activeApp !== app) {
                     this.appsActions.switchApp(app);
                     this.activeApp = app;
                 }

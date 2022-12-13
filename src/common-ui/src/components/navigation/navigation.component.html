@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="navbar navbar-menu">
-                    <ng-container *ngFor="let route of activeApp.routes">
+                    <ng-container *ngFor="let route of activeRoutes$|async">
                         <a *ngIf="!route.hidden" class="navbar-item" [routerLink]="[activeApp.id, route.path]"
                             routerLinkActive="active">
                             <icon [name]="route.icon" type="regular"></icon>

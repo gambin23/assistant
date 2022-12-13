@@ -16,6 +16,10 @@ import { AppsService } from './apps.service';
 })
 export class AppsModule {
 
+    constructor(private appsService: AppsService) {
+        this.appsService.load();
+    }
+
     static register(apps: App[]): ModuleWithProviders<AppsModule> {
         return {
             ngModule: AppsModule,

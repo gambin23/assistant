@@ -9,6 +9,6 @@ import { routes } from './routes';
 })
 export class FinanceAppModule {
     constructor(private appsActions: AppsActions) {
-        this.appsActions.loadApp({ ...FINANCE_APP, routes });
+        this.appsActions.loadAppRoutes(FINANCE_APP.id, routes);
     }
 }

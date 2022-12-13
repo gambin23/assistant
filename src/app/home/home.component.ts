@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IconComponent, UserHeaderComponent } from '@assistant/common-ui';
-import { App, AppsService } from '@assistant/common-sdk';
+import { App, AppsSelector, Dictionary } from '@assistant/common-sdk';
 
 @Component({
     selector: 'app-home',
@@ -21,11 +21,11 @@ import { App, AppsService } from '@assistant/common-sdk';
 })
 export class HomeComponent implements OnInit {
 
-    apps$!: Observable<App[]>;
+    apps$!: Observable<Dictionary<App>>;
 
-    constructor(private appsService: AppsService) {}
+    constructor(private appsSelector: AppsSelector) {}
 
     ngOnInit(): void {
-        this.apps$ = this.appsService.getApps$();
+        this.apps$ = this.appsSelector.apps$();
     }
 }

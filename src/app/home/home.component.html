@@ -12,10 +12,10 @@
                         <icon type="solid" name="house-crack" size="xl"></icon> All Apps
                     </div>
                     <ul>
-                        <a *ngFor="let app of apps$|async" [routerLink]="app.id">
+                        <a *ngFor="let app of apps$|async|keyvalue" [routerLink]="app.key">
                             <li>
-                                <icon type="solid" [name]="app.icon" size="2x"></icon>
-                                <div>{{app.name}}</div>
+                                <icon type="solid" [name]="app.value.icon" size="2x"></icon>
+                                <div>{{app.value.name}}</div>
                             </li>
                         </a>
                     </ul>
