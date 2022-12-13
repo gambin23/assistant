@@ -26,6 +26,11 @@ const routes: Routes = [
         redirectTo: ''
     },
     {
+        path: 'notifications',
+        loadChildren: () => import('./notifications/notifications.module').then(x => x.NotificationsModule),
+        canActivate: [AuthenticationGuard]
+    },
+    {
         path: 'settings',
         component: SettingsComponent,
         canActivate: [AuthenticationGuard]

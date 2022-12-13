@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 @Component({
     selector: 'list-item',
@@ -11,6 +11,7 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 })
 export class ListItemComponent {
 
+    @Input() active = false;
     @HostBinding('class') class = 'list-group-item';
-
+    @HostBinding('class.active') get classActive() { return this.active };
 }

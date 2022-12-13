@@ -21,6 +21,11 @@ export * from './src/alert/alert.model';
 export * from './src/alert/alert.reducer';
 export * from './src/alert/alert.selector';
 
+export * from './src/notifications/notifications.actions';
+export * from './src/notifications/notifications.model';
+export * from './src/notifications/notifications.reducer';
+export * from './src/notifications/notifications.selector';
+
 export * from './src/preferences/preferences.actions';
 export * from './src/preferences/preferences.model';
 export * from './src/preferences/preferences.module';

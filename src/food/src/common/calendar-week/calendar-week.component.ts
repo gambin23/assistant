@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { addDays, format, isSameDay, isToday, subDays } from 'date-fns';
 import { Calendar, MealType, Recipe } from '@assistant/food/models';
-import { IconComponent } from '@assistant/common-ui';
+import { IconComponent, ListModule } from '@assistant/common-ui';
 
 @Component({
     selector: 'food-calendar-week',
@@ -11,6 +11,7 @@ import { IconComponent } from '@assistant/common-ui';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
+        ListModule,
         IconComponent
     ]
 })

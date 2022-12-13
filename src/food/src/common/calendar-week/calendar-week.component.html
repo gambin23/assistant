@@ -1,5 +1,5 @@
 <div class="card" [class.skeleton]="isBusy">
-    <div class="card-header">
+    <div class="card-header mb-2">
         <div class="d-flex align-items-center">
             <span class="me-2 display-4 text-muted">
                 <icon type="solid" name="calendar-days"></icon>
@@ -16,34 +16,32 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="list-group">
-            <div *ngFor="let day of week" [class.active]="!isBusy && isActiveDay(day.id)" (click)="onSelectDay(day.id)"
-                class="list-group-item cursor-pointer d-flex align-items-center">
-                <ng-container *ngIf="day[meal] as recipeId; else recipeNotFound">
-                    <ng-container *ngIf="getRecipe(recipeId) as recipe; else recipeNotFound">
-                        <div>
-                            <div class="caption caption-sx bone">
-                                {{getDay(day.id)}}
-                            </div>
-                            <span class="bone">
-                                {{recipe.name}}
-                            </span>
-                        </div>
-                        <div class="ms-auto bone">
-                            <div style="width: 4rem; height: 2.5rem;">
-                                <img [src]="recipe.image" [alt]="recipe.name" class="img-fluid fit-cover w-100 h-100" />
-                            </div>
-                        </div>
-                    </ng-container>
-                </ng-container>
-                <ng-template #recipeNotFound>
+    <list>
+        <list-item *ngFor="let day of week" class="cursor-pointer d-flex align-items-center"
+            [active]="!isBusy && isActiveDay(day.id)" (click)="onSelectDay(day.id)">
+            <ng-container *ngIf="day[meal] as recipeId; else recipeNotFound">
+                <ng-container *ngIf="getRecipe(recipeId) as recipe; else recipeNotFound">
                     <div>
-                        <div class="caption caption-sx bone">{{getDay(day.id)}}</div>
-                        —
+                        <div class="caption caption-sx bone">
+                            {{getDay(day.id)}}
+                        </div>
+                        <span class="bone">
+                            {{recipe.name}}
+                        </span>
                     </div>
-                </ng-template>
-            </div>
-        </div>
-    </div>
+                    <div class="ms-auto bone">
+                        <div style="width: 4rem; height: 2.5rem;">
+                            <img [src]="recipe.image" [alt]="recipe.name" class="img-fluid fit-cover w-100 h-100" />
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <ng-template #recipeNotFound>
+                <div>
+                    <div class="caption caption-sx bone">{{getDay(day.id)}}</div>
+                    —
+                </div>
+            </ng-template>
+        </list-item>
+    </list>
 </div>

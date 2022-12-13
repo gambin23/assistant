@@ -1,0 +1,21 @@
+<ul class="nav mb-3">
+    <back-button></back-button>
+    <li class="nav-link" [class.active]="view === 'all'" (click)="onChangeView()">
+        All
+    </li>
+    <li class="nav-link" [class.active]="view === 'unread'" (click)="onChangeView()">
+        Unread
+    </li>
+    <button class="btn btn-link ms-auto">
+        <icon type="solid" name="square-check"></icon>
+        Mark all as Read
+    </button>
+</ul>
+<list *ngIf="notifications$|async as notifications" [class.skeleton]="isBusy$|async">
+    <list-item *ngFor="let notification of notifications" class="py-3" [active]="!notification.read">
+        <div>
+            <span class="bone">{{notification.message}}</span>
+            <div class="caption bone">{{formatDate(notification.date)}}</div>
+        </div>
+    </list-item>
+</list>
