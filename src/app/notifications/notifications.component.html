@@ -12,10 +12,19 @@
     </button>
 </ul>
 <list *ngIf="notifications$|async as notifications" [class.skeleton]="isBusy$|async">
-    <list-item *ngFor="let notification of notifications" class="py-3" [active]="!notification.read">
+    <list-item *ngFor="let notification of notifications" class="py-3" [active]="!notification.read"
+        [class.cursor-pointer]="notification.link" (click)="onClick(notification)">
+        <div *ngIf="apps$|async as apps" class="avatar avatar-32 bg-dark-l-50 text-dark rounded-circle me-3 bone">
+            <icon type="solid" [name]="apps[notification.app].icon"></icon>
+        </div>
         <div>
             <span class="bone">{{notification.message}}</span>
             <div class="caption bone">{{formatDate(notification.date)}}</div>
         </div>
+        <list-item-action>
+            <button class="btn btn-link text-secondary bone" (click)="onRead($event, notification.id)">
+                <icon type="solid" name="ellipsis"></icon>
+            </button>
+        </list-item-action>
     </list-item>
 </list>

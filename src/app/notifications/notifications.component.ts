@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { formatDistance } from 'date-fns';
-import { NotificationsActions, NotificationsSelector, Notification } from '@assistant/common-sdk';
+import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector } from '@assistant/common-sdk';
 import { BackButtonComponent, IconComponent, ListModule, PageComponent } from '@assistant/common-ui';
 import { NotificationsQueryparams, View } from './notifications.model';
 
@@ -23,8 +23,9 @@ import { NotificationsQueryparams, View } from './notifications.model';
 })
 export class NotificationsComponent extends PageComponent<NotificationsQueryparams> implements OnInit {
 
-    notifications$!: Observable<Notification[]>
-    isBusy$!: Observable<boolean>
+    notifications$!: Observable<Notification[]>;
+    isBusy$!: Observable<boolean>;
+    apps$!: Observable<Dictionary<App>>;
     view: View = 'all';
 
     constructor(
@@ -33,7 +34,8 @@ export class NotificationsComponent extends PageComponent<NotificationsQuerypara
         title: Title,
         changeRef: ChangeDetectorRef,
         private notificationsSelector: NotificationsSelector,
-        private notificationsActions: NotificationsActions
+        private notificationsActions: NotificationsActions,
+        private appsSelector: AppsSelector
     ) {
         super(router, route, title, changeRef)
     }
@@ -41,9 +43,21 @@ export class NotificationsComponent extends PageComponent<NotificationsQuerypara
     ngOnInit() {
         this.notifications$ = this.notificationsSelector.notifications$();
         this.isBusy$ = this.notificationsSelector.isBusy$();
-        this.queryParamsChange();
+        this.apps$ = this.appsSelector.apps$();
+        this.subscribeParamsChange();
     }
 
     onChangeView = () => this.setQueryParam({ view: this.view === 'all' ? 'unread' : 'all' });
-    formatDate = (date: Date) => formatDistance(new Date, date);
+    formatDate = (date: Date) => formatDistance(new Date(), date);
+    onClick = (notification: Notification) => {
+        if (notification.link) {
+            this.router.navigateByUrl(notification.link);
+    }
+        this.notificationsActions.read(notification.id);
+    }
+    onRead = (event: Event, id: string) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.notificationsActions.read(id);
+    }
 }

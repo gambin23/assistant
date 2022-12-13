@@ -49,7 +49,7 @@ export default class DashboardPageComponent extends PageComponent<DashboardQuery
     ngOnInit(): void {
         this.recipes$ = this.recipesSelector.recipes$();
         this.isBusy$ = this.calendarSelector.isBusy$();
-        super.queryParamsChange(() => {
+        super.subscribeParamsChange(() => {
             this.day$ = this.calendarSelector.day$(this.date);
             this.week$ = this.calendarSelector.week$(this.date);
         });

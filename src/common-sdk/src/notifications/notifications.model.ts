@@ -1,9 +1,14 @@
-export interface Notification {
-    id: string;
+import { routeFoodRecipe } from './../../../food/src/routes';
+
+export interface NotificationBase {
     app: string;
-    date: Date;
     message: string;
     link?: string;
+}
+
+export interface Notification extends NotificationBase {
+    id: string;
+    date: Date;
     read?: boolean;
 }
 
@@ -21,4 +26,4 @@ export const notificationSkeleton: Notification = {
     read: true
 }
 
-export const notificationsSkeleton: Notification[] = [notificationSkeleton, notificationSkeleton, notificationSkeleton, notificationSkeleton, notificationSkeleton]
+export const notificationsSkeleton: Notification[] = [notificationSkeleton, notificationSkeleton, notificationSkeleton, notificationSkeleton, notificationSkeleton];

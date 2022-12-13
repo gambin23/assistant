@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
-import { alertSuccess, alertWarning, UserSelector } from '@assistant/common-sdk';
+import { alertSuccess, alertWarning, notificationAdd, UserSelector } from '@assistant/common-sdk';
 import { UserRecipesData } from '@assistant/food/data';
 import { recipesLoad, recipesLoadSuccess, recipesLoadError, recipesPatchSuccess, recipesPatchError, recipesPatch, recipesAdd, recipesAddError, recipesAddSuccess } from './recipes.actions';
 import { RecipesSelector } from './recipes.selector';
 import { routeFoodRecipe } from '../../routes';
+import { FOOD_APP } from '@assistant/food/name';
 
 @Injectable()
 export class RecipesEffects {
@@ -28,7 +29,11 @@ export class RecipesEffects {
                     if (recipeExists)
                         return [alertWarning(`${action.recipe.name} is already in your recipes.`)];
                     else
-                        return [recipesAddSuccess({ ...action }), alertSuccess(`${action.recipe.name} was added to your recipes.`, routeFoodRecipe(action.recipe.id))]
+                        return [
+                            recipesAddSuccess({ ...action }),
+                            alertSuccess(`${action.recipe.name} was added to your recipes.`, routeFoodRecipe(action.recipe.id)),
+                            notificationAdd({ notification: { app: FOOD_APP.id, message: `${action.recipe.name} was added to your recipes.`, link: routeFoodRecipe(action.recipe.id) } })
+                        ]
                 }),
                 catchError(() => of(recipesAddError()))
             )

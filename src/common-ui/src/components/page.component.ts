@@ -11,7 +11,7 @@ export abstract class PageComponent<T> {
         protected changeRef: ChangeDetectorRef
     ) { }
 
-    protected queryParamsChange(func?: () => void) {
+    protected subscribeParamsChange(func?: () => void) {
         this.route.queryParams.subscribe(params => {
             Object.keys(params).map(key => {
                 if ((<any>this)[key]) {
