@@ -18,6 +18,12 @@ export interface NotificationsState {
     isError: boolean;
 }
 
+export type NotificationView = 'all' | 'unread';
+
+export interface NotificationFilters {
+    view?: NotificationView;
+}
+
 export const notificationSkeleton: Notification = {
     id: '1',
     app: 'food',

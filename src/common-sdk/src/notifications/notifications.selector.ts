@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { createSelector, Store } from '@ngrx/store';
 import { AppStore } from '../store/store';
-import { notificationsSkeleton } from './notifications.model';
+import { Notification, NotificationFilters, notificationsSkeleton } from './notifications.model';
 
-const selectNotifications = createSelector((state: AppStore) => state.notifications, x => x.isBusy ? notificationsSkeleton : x.data);
+const selectNotifications = (filters: NotificationFilters) => createSelector((state: AppStore) => state.notifications, x => x.isBusy ? notificationsSkeleton : filterNotifications(x.data, filters));
 const selectIsBusy = createSelector((state: AppStore) => state.notifications, x => x.isBusy);
 
 @Injectable({ providedIn: 'root' })
@@ -11,6 +11,13 @@ export class NotificationsSelector {
 
     constructor(private store: Store<AppStore>) { }
 
-    notifications$ = () => this.store.select(selectNotifications);
+    notifications$ = (filters: NotificationFilters) => this.store.select(selectNotifications(filters));
     isBusy$ = () => this.store.select(selectIsBusy);
+}
+
+const filterNotifications = (notifications: Notification[], filters: NotificationFilters) => {
+    if (filters.view === 'unread')
+        notifications = notifications.filter(x => !x.read);
+
+    return notifications;
 }

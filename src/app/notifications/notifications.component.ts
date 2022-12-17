@@ -4,9 +4,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { formatDistance } from 'date-fns';
-import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector } from '@assistant/common-sdk';
-import { BackButtonComponent, IconComponent, ListModule, PageComponent } from '@assistant/common-ui';
-import { NotificationsQueryparams, View } from './notifications.model';
+import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector, NotificationFilters, NotificationView } from '@assistant/common-sdk';
+import { BackButtonComponent, IconComponent, ListModule, NotFoundModule, PageComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'notifications',
@@ -18,15 +17,16 @@ import { NotificationsQueryparams, View } from './notifications.model';
         RouterModule,
         ListModule,
         IconComponent,
-        BackButtonComponent
+        BackButtonComponent,
+        NotFoundModule
     ]
 })
-export class NotificationsComponent extends PageComponent<NotificationsQueryparams> implements OnInit {
+export class NotificationsComponent extends PageComponent<NotificationFilters> implements OnInit {
 
     notifications$!: Observable<Notification[]>;
     isBusy$!: Observable<boolean>;
     apps$!: Observable<Dictionary<App>>;
-    view: View = 'all';
+    view: NotificationView = 'all';
 
     constructor(
         router: Router,
@@ -41,10 +41,13 @@ export class NotificationsComponent extends PageComponent<NotificationsQuerypara
     }
 
     ngOnInit() {
-        this.notifications$ = this.notificationsSelector.notifications$();
         this.isBusy$ = this.notificationsSelector.isBusy$();
         this.apps$ = this.appsSelector.apps$();
-        this.subscribeParamsChange();
+        this.subscribeParamsChange(() => {
+            this.notifications$ = this.notificationsSelector.notifications$({
+                view: this.view
+            });
+        });
     }
 
     onChangeView = () => this.setQueryParam({ view: this.view === 'all' ? 'unread' : 'all' });
@@ -52,12 +55,15 @@ export class NotificationsComponent extends PageComponent<NotificationsQuerypara
     onClick = (notification: Notification) => {
         if (notification.link) {
             this.router.navigateByUrl(notification.link);
-    }
+        }
         this.notificationsActions.read(notification.id);
     }
-    onRead = (event: Event, id: string) => {
+    onRead = (event: Event, notification: Notification) => {
         event.preventDefault();
         event.stopPropagation();
-        this.notificationsActions.read(id);
+
+        if (!notification.read) {
+            this.notificationsActions.read(notification.id);
+        }
     }
 }
