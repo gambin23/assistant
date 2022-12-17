@@ -29,8 +29,8 @@
             </list-item-action>
         </list-item>
     </list>
-    <not-found *ngIf="!notifications.length">
-        <not-found-title>No Notifications</not-found-title>
-        <not-found-description>There are no notifications to display.</not-found-description>
-    </not-found>
+    <no-result *ngIf="!notifications.length">
+        <no-result-title>No Notifications</no-result-title>
+        <no-result-description>There are no notifications to display.</no-result-description>
+    </no-result>
 </ng-container>

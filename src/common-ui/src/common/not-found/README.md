@@ -1,7 +1,7 @@
-<not-found>
-    <not-found-title>Title</not-found-title>
-    <not-found-description>Description</not-found-description>
-    <not-found-actions>
+<no-result>
+    <no-result-title>Title</no-result-title>
+    <no-result-description>Description</no-result-description>
+    <no-result-actions>
         <button>Action</button>
-    </not-found-actions>
-</not-found>
+    </no-result-actions>
+</no-result>

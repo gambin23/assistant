@@ -2,10 +2,14 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'not-found-title',
+    selector: 'no-result-title',
     standalone: true,
-    templateUrl: './not-found-title.component.html',
+    template: `
+        <h3>
+            <ng-content></ng-content>
+        </h3>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule]
 })
-export class NotFoundTitleComponent { }
+export class NoResultTitleComponent { }

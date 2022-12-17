@@ -2,10 +2,14 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'not-found-actions',
+    selector: 'no-result-actions',
     standalone: true,
-    templateUrl: './not-found-actions.component.html',
+    template: `
+        <div class="my-3">
+            <ng-content></ng-content>
+        </div>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule]
 })
-export class NotFoundActionsComponent { }
+export class NoResultActionsComponent { }
