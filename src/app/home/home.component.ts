@@ -1,10 +1,9 @@
-import { SettingsCardModule } from '../../common-ui/src/common/settings-card/settings-card.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IconComponent, UserHeaderComponent } from '@assistant/common-ui';
-import { App, AppsSelector, Dictionary } from '@assistant/common-sdk';
+import { AvatarComponent, IconComponent, SettingsCardModule, UserHeaderComponent } from '@assistant/common-ui';
+import { App, AppsSelector, Dictionary, NotificationsSelector } from '@assistant/common-sdk';
 
 @Component({
     selector: 'app-home',
@@ -16,16 +15,22 @@ import { App, AppsSelector, Dictionary } from '@assistant/common-sdk';
         RouterModule,
         UserHeaderComponent,
         IconComponent,
-        SettingsCardModule
+        SettingsCardModule,
+        AvatarComponent
     ]
 })
 export class HomeComponent implements OnInit {
 
     apps$!: Observable<Dictionary<App>>;
+    notificationsCount$!: Observable<number>;
 
-    constructor(private appsSelector: AppsSelector) {}
+    constructor(
+        private appsSelector: AppsSelector,
+        private notificationsSelector: NotificationsSelector
+    ) { }
 
     ngOnInit(): void {
         this.apps$ = this.appsSelector.apps$();
+        this.notificationsCount$ = this.notificationsSelector.notificationsCount$();
     }
 }

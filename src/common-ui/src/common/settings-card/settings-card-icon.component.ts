@@ -5,7 +5,9 @@ import { IconComponent } from '../icon/icon.component';
 @Component({
     selector: 'settings-card-icon',
     standalone: true,
-    templateUrl: './settings-card-icon.component.html',
+    template: `
+        <icon type="solid" [name]="icon"></icon>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,

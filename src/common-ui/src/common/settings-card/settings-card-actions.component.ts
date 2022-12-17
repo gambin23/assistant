@@ -2,17 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'settings-card-title',
+    selector: 'settings-card-actions',
     standalone: true,
     template: `
-        <div class="h4">
-            <ng-content></ng-content>
-        </div>
+        <ng-content></ng-content>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        CommonModule
-    ]
+    imports: [CommonModule]
 })
-export class SettingsCardTitleComponent {
+export class SettingsCardActionsComponent {
 }

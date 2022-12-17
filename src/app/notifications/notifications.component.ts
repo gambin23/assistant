@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { formatDistance } from 'date-fns';
 import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector, NotificationFilters, NotificationView } from '@assistant/common-sdk';
-import { BackButtonComponent, IconComponent, ListModule, NotFoundModule, PageComponent } from '@assistant/common-ui';
+import { IconComponent, ListModule, NotFoundModule, PageComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'notifications',
@@ -17,7 +17,6 @@ import { BackButtonComponent, IconComponent, ListModule, NotFoundModule, PageCom
         RouterModule,
         ListModule,
         IconComponent,
-        BackButtonComponent,
         NotFoundModule
     ]
 })

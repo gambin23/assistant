@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, delay, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { NotificationsData } from '@assistant/data';
 import { notificationAdd, notificationAddError, notificationAddSuccess, notificationsLoad, notificationsLoadError, notificationsLoadSuccess, notificationPatch, notificationPatchError, notificationPatchSuccess } from './notifications.actions';
 import { UserSelector } from '../user/user.selector';
@@ -27,7 +27,6 @@ export class NotificationsEffects {
         mergeMap(([action, userId]) => {
             const notification: Notification = { id: guid(), date: new Date(), ...action.notification };
             return this.notificationsData.add$(userId, notification).pipe(
-                delay(1000),
                 map(() => notificationAddSuccess({ notification })),
                 catchError(() => of(notificationAddError()))
             )
@@ -39,7 +38,6 @@ export class NotificationsEffects {
         concatLatestFrom(() => this.userSelector.userId$()),
         mergeMap(([action, userId]) => this.notificationsData.patch$(userId, action.id, action.notification)
             .pipe(
-                delay(1000),
                 map(() => notificationPatchSuccess({ ...action })),
                 catchError(() => of(notificationPatchError()))
             ))

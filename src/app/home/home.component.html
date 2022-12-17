@@ -30,6 +30,10 @@
                     <settings-card-icon icon="bell"></settings-card-icon>
                     <settings-card-title>Notifications</settings-card-title>
                     <settings-card-description>See your recent notifications</settings-card-description>
+                    <settings-card-actions></settings-card-actions>
+                    <settings-card-actions *ngIf="notificationsCount$|async as count">
+                        <avatar [value]="count.toString()" theme="dark"></avatar>
+                    </settings-card-actions>
                 </settings-card>
             </a>
         </div>

@@ -1,3 +1,4 @@
+export * from './src/common/avatar/avatar.component';
 export * from './src/common/icon/icon.component';
 export * from './src/common/tag/tag.component';
 export * from './src/common/list/list.module';

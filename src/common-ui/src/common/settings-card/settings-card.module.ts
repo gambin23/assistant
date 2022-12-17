@@ -1,3 +1,4 @@
+import { SettingsCardActionsComponent } from './settings-card-actions.component';
 import { NgModule } from '@angular/core';
 import { SettingsCardDescriptionComponent } from './settings-card-description.component';
 import { SettingsCardTitleComponent } from './settings-card-title.component';
@@ -9,13 +10,15 @@ import { SettingsCardComponent } from './settings-card.component';
         SettingsCardComponent,
         SettingsCardIconComponent,
         SettingsCardTitleComponent,
-        SettingsCardDescriptionComponent
+        SettingsCardDescriptionComponent,
+        SettingsCardActionsComponent
     ],
     exports: [
         SettingsCardComponent,
         SettingsCardIconComponent,
         SettingsCardTitleComponent,
-        SettingsCardDescriptionComponent
+        SettingsCardDescriptionComponent,
+        SettingsCardActionsComponent
     ]
 })
 export class SettingsCardModule { }

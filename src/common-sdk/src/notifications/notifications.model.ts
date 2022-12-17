@@ -1,5 +1,3 @@
-import { routeFoodRecipe } from './../../../food/src/routes';
-
 export interface NotificationBase {
     app: string;
     message: string;
