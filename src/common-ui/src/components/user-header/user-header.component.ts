@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
+import { AvatarComponent } from '../../common/avatar/avatar.component';
 
 @Component({
     selector: 'user-header',
@@ -10,7 +11,8 @@ import { User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        UserStoreModule
+        UserStoreModule,
+        AvatarComponent
     ]
 })
 export class UserHeaderComponent {

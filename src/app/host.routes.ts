@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
     {
@@ -27,7 +28,7 @@ const routes: Routes = [
     },
     {
         path: 'notifications',
-        loadChildren: () => import('./notifications/notifications.module').then(x => x.NotificationsModule),
+        component: NotificationsComponent,
         canActivate: [AuthenticationGuard]
     },
     {

@@ -2,10 +2,10 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <div class="avatar avatar-64 rounded-circle text-primary me-3">
+                <avatar [size]="64" class="me-3">
                     <img [src]="user.image" [alt]="user.name" class="rounded-circle align-baseline"
                         referrerpolicy="no-referrer" />
-                </div>
+                </avatar>
                 <div>
                     <div class="h3">{{user.name}}</div>
                     <div class="caption">{{user.email}}</div>

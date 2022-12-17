@@ -24,7 +24,7 @@ export class AvatarComponent {
     sizeClass = 'avatar-32';
     themeClass = 'primary';
 
-    @HostBinding('class') get classes() { return `avatar ${this.sizeClass} text-${this.themeClass} bg-${this.themeClass}-l-50 rounded-circle`; };
+    @HostBinding('class') get classes() { return `avatar ${this.sizeClass} text-${this.themeClass} bg-${this.themeClass}-l-50 rounded-circle bone`; };
 
     generateCode = (value: string) => {
         if (Number(value))

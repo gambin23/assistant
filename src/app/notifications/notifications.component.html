@@ -15,9 +15,9 @@
     <list *ngIf="notifications.length" [class.skeleton]="isBusy$|async">
         <list-item *ngFor="let notification of notifications" class="py-3" [active]="!notification.read"
             [class.cursor-pointer]="notification.link" (click)="onClick(notification)">
-            <div *ngIf="apps$|async as apps" class="avatar avatar-32 bg-dark-l-50 text-dark rounded-circle me-3 bone">
+            <avatar *ngIf="apps$|async as apps" theme="dark" class="me-2">
                 <icon type="solid" [name]="apps[notification.app].icon"></icon>
-            </div>
+            </avatar>
             <div>
                 <span class="bone">{{notification.message}}</span>
                 <div class="caption bone">{{formatDate(notification.date)}}</div>

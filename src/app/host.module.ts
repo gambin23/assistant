@@ -5,12 +5,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { DataModule } from '@assistant/data';
-import { AppsService, AppsModule, AppStore, reducers, effects } from '@assistant/common-sdk';
+import { AppsModule, AppStore, reducers, effects } from '@assistant/common-sdk';
 import { AlertModule, BrowserTitleModule, NavigationComponent } from '@assistant/common-ui';
 import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
 import { RoutesModule } from './host.routes';
+import { NotificationsModule } from './notifications/notifications.module';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({
     keys: ['user', 'preferences', { apps: ['active'] }, { food: ['newRecipe'] }],
@@ -35,7 +36,8 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         EffectsModule.forRoot(effects),
         StoreDevtoolsModule.instrument(),
         NavigationComponent,
-        AlertModule
+        AlertModule,
+        NotificationsModule
     ]
 })
 export class HostModule {

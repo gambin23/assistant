@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { AvatarComponent } from '../avatar/avatar.component';
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
@@ -9,6 +10,7 @@ import { IconComponent } from '../icon/icon.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
+        AvatarComponent,
         IconComponent
     ]
 })

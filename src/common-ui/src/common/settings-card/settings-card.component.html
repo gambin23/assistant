@@ -1,9 +1,9 @@
 <div class="card clickable" (click)="onClicked()">
     <div class="card-body">
         <div class="d-flex align-items-center">
-            <div class="avatar avatar-64 rounded-circle bg-dark-l-50 text-dark me-3">
+            <avatar [size]="64" theme="dark" class="me-3">
                 <ng-content select="settings-card-icon"></ng-content>
-            </div>
+            </avatar>
             <div>
                 <ng-content select="settings-card-title"></ng-content>
                 <ng-content select="settings-card-description"></ng-content>

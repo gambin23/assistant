@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { App, AppRoutes, AppsSelector, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
 import { Authentication } from '@assistant/data';
 import { Observable } from 'rxjs';
+import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { IconComponent } from '../../common/icon/icon.component';
 
 @Component({
@@ -15,6 +16,7 @@ import { IconComponent } from '../../common/icon/icon.component';
         CommonModule,
         RouterModule,
         UserStoreModule,
+        AvatarComponent,
         IconComponent
     ]
 })
