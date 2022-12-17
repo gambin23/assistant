@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { ImageDirective } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
 import { routeFoodNewRecipe, routeFoodRecipe } from './../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
@@ -20,7 +21,8 @@ import { RecipesFilters } from '../../models/recipe';
         CommonModule,
         RouterModule,
         FoodRecipeCardComponent,
-        RecipesFiltersComponent
+        RecipesFiltersComponent,
+        ImageDirective
     ]
 })
 export default class RecipesPageComponent implements OnInit {

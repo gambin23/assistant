@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { addDays, format, isSameDay, isToday, subDays } from 'date-fns';
 import { Calendar, MealType, Recipe } from '@assistant/food/models';
-import { IconComponent, ListModule } from '@assistant/common-ui';
+import { IconComponent, ImageDirective, ListModule } from '@assistant/common-ui';
 
 @Component({
     selector: 'food-calendar-week',
@@ -12,7 +12,8 @@ import { IconComponent, ListModule } from '@assistant/common-ui';
     imports: [
         CommonModule,
         ListModule,
-        IconComponent
+        IconComponent,
+        ImageDirective
     ]
 })
 export class FoodCalendarWeekComponent {

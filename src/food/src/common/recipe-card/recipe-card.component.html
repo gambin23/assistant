@@ -1,7 +1,7 @@
 <div *ngIf="view === 'grid'" class="card p-0 h-100">
     <div class="card-header p-0 bone">
         <div class="embed-responsive">
-            <img [src]="recipe.image" [alt]="recipe.name" class="img-fluid img-responsive w-100 mb-3"
+            <img image [src]="recipe.image" [alt]="recipe.name" class="img-fluid img-responsive w-100 mb-3"
                 style="object-fit: cover; height: 30vh;" />
         </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="card-body p-0 d-flex align-items-center">
         <div class="me-3">
             <div style="width: 6rem; height: 4rem;">
-                <img [src]="recipe.image" [alt]="recipe.name" class="img-fluid fit-cover w-100 h-100">
+                <img image [src]="recipe.image" [alt]="recipe.name" class="img-fluid fit-cover w-100 h-100">
             </div>
         </div>
         <div class="w-100 h-100 d-flex flex-column justify-content-end">

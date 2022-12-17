@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-9">
         <div class="position-relative bone overflow-hidden" style="height: 10rem;">
-            <img src="assets/food/banner.jpg" alt="banner" class="fit-cover img-fluid w-100 h-100" />
+            <img image src="assets/food/banner.jpg" alt="banner" class="fit-cover img-fluid w-100 h-100" />
             <div class="position-absolute top-0 m-5 text-white">
                 <h3>Welcome to your Recipes</h3>
                 <div>Your journey starts here</div>
@@ -30,9 +30,11 @@
     </div>
 </div>
 
-<div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-3" [class.skeleton]="isBusy$|async">
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-3" [class.row-cols-lg-4]="view === 'grid'"
+    [class.row-cols-lg-3]="view === 'list'" [class.skeleton]="isBusy$|async">
     <a *ngFor="let recipe of recipes$|async" [routerLink]="routeFoodRecipe(recipe.id)">
-        <food-recipe-card [recipe]="recipe" [view]="view" [showFavouriteButton]="true" (updated)="onRecipeUpdated($event)">
+        <food-recipe-card [recipe]="recipe" [view]="view" [showFavouriteButton]="true"
+            (updated)="onRecipeUpdated($event)">
         </food-recipe-card>
     </a>
 </div>

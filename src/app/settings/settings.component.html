@@ -14,9 +14,11 @@
                 <settings-card-icon icon="circle-half-stroke"></settings-card-icon>
                 <settings-card-title>Dark Mode</settings-card-title>
                 <settings-card-description>Toggle Dark Mode on/off</settings-card-description>
-                <div class="form-check form-switch">
-                    <input type="checkbox" readonly [checked]="(theme$|async) === 'dark'" class="form-check-input">
-                </div>
+                <settings-card-actions>
+                    <div class="form-check form-switch">
+                        <input type="checkbox" readonly [checked]="(theme$|async) === 'dark'" class="form-check-input">
+                    </div>
+                </settings-card-actions>
             </settings-card>
         </div>
     </div>

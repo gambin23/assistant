@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IconComponent } from '@assistant/common-ui';
+import { IconComponent, ImageDirective } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
 import { getCookTime } from '../../models/cook-time';
 
@@ -13,7 +13,8 @@ import { getCookTime } from '../../models/cook-time';
     imports: [
         CommonModule,
         FormsModule,
-        IconComponent
+        IconComponent,
+        ImageDirective
     ]
 })
 export class FoodRecipeEditHeaderComponent {
