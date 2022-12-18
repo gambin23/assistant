@@ -11,6 +11,7 @@ import { RecipesFiltersComponent } from '../../common/recipes-filters/recipes-fi
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesActions } from '../../store/recipes/recipes.actions';
 import { CategoriesSelector } from '../../store/categories/categories.selector';
+import { RecipesSelector } from '../../store/recipes/recipes.selector';
 
 @Component({
     selector: 'search-page',
@@ -28,16 +29,19 @@ import { CategoriesSelector } from '../../store/categories/categories.selector';
 export default class SearchPageComponent {
 
     recipes = recipesSkeleton;
+    myRecipesCount$!: Observable<number>;
     categories$!: Observable<Category[]>;
     view: RecipeView = 'grid';
 
     constructor(
         private recipesActions: RecipesActions,
+        private recipesSelector: RecipesSelector,
         private categoriesSelector: CategoriesSelector
     ) { }
 
     ngOnInit() {
         this.categories$ = this.categoriesSelector.categories$();
+        this.myRecipesCount$ = this.recipesSelector.recipesCount$();
     }
 
     routeFoodRecipes = routeFoodRecipes;

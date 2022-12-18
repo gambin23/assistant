@@ -1,4 +1,5 @@
-<recipes-filters (filtered)="onFiltered($event)" [categories]="(categories$|async)!" (viewChanged)="onViewChanged($event)"></recipes-filters>
+<recipes-filters (filtered)="onFiltered($event)" [categories]="(categories$|async)!"
+    (viewChanged)="onViewChanged($event)"></recipes-filters>
 
 <div class="row">
     <div class="col-md-9">
@@ -23,13 +24,13 @@
                 <div class="w-100">
                     <div class="d-md-none d-flex align-items-center justify-content-between">
                         <div>
-                            <span>You already have <b>10</b> recipes in your account.</span>
+                            <span>You have <b>{{myRecipesCount$|async}}</b> recipes in your account.</span>
                         </div>
                         <div class="tag bone tag-secondary m-0">View</div>
                     </div>
                     <div class="d-none d-md-block text-center">
                         <div class="mb-3">
-                            <span>You already have <b>10</b> recipes in your account.</span>
+                            <span>You have <b>{{myRecipesCount$|async}}</b> recipes in your account.</span>
                         </div>
                         <div class="tag bone tag-secondary m-0">View</div>
                     </div>
@@ -41,6 +42,7 @@
 
 <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-3">
     <a *ngFor="let recipe of recipes" [routerLink]="routeFoodSearchRecipe(recipe.id)">
-        <food-recipe-card [recipe]="recipe" [view]="view" [showAddButton]="true" (added)="onAdded($event)"></food-recipe-card>
+        <food-recipe-card [recipe]="recipe" [view]="view" [showAddButton]="true" (added)="onAdded($event)">
+        </food-recipe-card>
     </a>
 </div>
