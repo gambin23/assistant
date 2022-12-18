@@ -52,7 +52,7 @@ export default class RecipesPageComponent extends PageComponent<RecipesQueryPara
         this.categories$ = this.categoriesSelector.categories$();
 
         this.queryParamsInit({
-            search: '',
+            name: '',
             categories: [],
             sort: 'asc',
             view: 'grid'

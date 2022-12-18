@@ -10,7 +10,7 @@
     </li>
 </ul>
 
-<search-input [search]="filters.search" (searchChange)="onSearch($event)"></search-input>
+<search-input [search]="filters.name" (searchChange)="onSearch($event)"></search-input>
 
 <div class="mb-5 d-flex align-items-center justify-content-between">
     <food-recipe-select-categories [categories]="filters.categories || []" [allCategories]="categories"
@@ -25,8 +25,8 @@
             <icon type="solid" [name]="filters.sort === 'asc' ? 'arrow-up-a-z' : 'arrow-up-z-a'"></icon>
         </button>
         <button class="btn btn-link" (click)="onChangeView()">
-            <icon type="solid" name="table-cells" class="me-2" [class.faded]="view === 'grid'"></icon>
-            <icon type="solid" name="list" [class.faded]="view === 'list'"></icon>
+            <icon type="solid" name="table-cells" class="me-2" [class.faded]="view === 'list'"></icon>
+            <icon type="solid" name="list" [class.faded]="view === 'grid'"></icon>
         </button>
     </div>
 </div>

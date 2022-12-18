@@ -31,12 +31,16 @@ const filterRecipes = (recipes: Recipe[], filters?: RecipesFilters) => {
 
     var predicates: ((recipe: Recipe) => boolean)[] = [];
 
-    if (filters.search) {
-        predicates.push((recipe: Recipe) => recipe.name.toLowerCase().includes(filters.search?.toLowerCase() || ''));
+    if (filters.name) {
+        predicates.push((recipe: Recipe) => recipe.name.toLowerCase().includes(filters.name?.toLowerCase() || ''));
+    }
+
+    if (!filters.isFavourite && !filters.isArchived) {
+        predicates.push((recipe: Recipe) => !recipe.isArchived);
     }
 
     if (filters.isFavourite) {
-        predicates.push((recipe: Recipe) => !!recipe.isFavourite);
+        predicates.push((recipe: Recipe) => !!recipe.isFavourite && !recipe.isArchived);
     }
 
     if (filters.isArchived) {

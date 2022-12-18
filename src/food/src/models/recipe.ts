@@ -17,7 +17,7 @@ export interface Recipe {
 }
 
 export interface RecipesFilters {
-    search?: string;
+    name?: string;
     categories?: string[];
     sort?: SortOrder;
     isFavourite?: boolean;

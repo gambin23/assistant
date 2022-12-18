@@ -39,7 +39,7 @@ export class RecipesFiltersComponent {
         this.view = this.view === 'grid' ? 'list' : 'grid';
         this.viewChanged.emit(this.view);
     }
-    onSearch = (search: string) => this.setFilter({ search });
+    onSearch = (search: string) => this.setFilter({ name: search });
     onChangeSort = () => this.setFilter({ sort: this.filters.sort === 'asc' ? 'desc' : 'asc' });
     onShowAll = () => this.setFilter({ isFavourite: undefined, isArchived: undefined });
     onShowFavourites = () => this.setFilter({ isFavourite: true, isArchived: undefined });
