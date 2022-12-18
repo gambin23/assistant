@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,6 +13,9 @@ export class ModalComponent {
     @Input() show = false;
     @Output() showChange = new EventEmitter<boolean>();
     @Output() closed = new EventEmitter();
+    @HostListener('document:keyup.escape') onKeyUpEscape() {
+        this.onClose();
+    }
 
     onClose = () => {
         this.showChange.emit(false);

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Subscription, debounceTime } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
@@ -23,6 +23,10 @@ export class SearchInputComponent {
     searchControl = new FormControl<string>('', { nonNullable: true });
     private subscription = new Subscription();
 
+    @HostListener('keyup', ["$event"]) onKeyup(event: Event) {
+        event.stopPropagation();
+    }
+
     ngOnInit() {
         this.searchControl.setValue(this.search || '');
         this.subscription = this.searchControl.valueChanges.pipe(
@@ -35,6 +39,4 @@ export class SearchInputComponent {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-
-    onSearch = (search: string) => this.searchChange.emit(search);
 }
