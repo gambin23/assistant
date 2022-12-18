@@ -2,13 +2,13 @@
 
 <div class="row">
     <div class="col-md-4">
-        <food-calendar-day [(date)]="date" [(meal)]="meal" [day]="(day$|async)!" [recipes]="(recipes$|async)!"
+        <food-calendar-day [date]="newDate(queryParams.date!)" [(meal)]="queryParams.meal!" [day]="(day$|async)!" [recipes]="(recipes$|async)!"
             [isBusy]="(isBusy$|async)!" (dateChange)="onDateChange($event)" (mealChange)="onMealChange($event)"
             (recipeChange)="onRecipeChange($event)">
         </food-calendar-day>
     </div>
     <div class="col-md-8">
-        <food-calendar-week [(date)]="date" [meal]="meal" [week]="(week$|async)!" [recipes]="(recipes$|async)!"
+        <food-calendar-week [date]="newDate(queryParams.date!)" [meal]="queryParams.meal!" [week]="(week$|async)!" [recipes]="(recipes$|async)!"
             [isBusy]="(isBusy$|async)!" (dateChange)="onDateChange($event)">
         </food-calendar-week>
     </div>

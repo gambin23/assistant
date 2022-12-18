@@ -10,7 +10,7 @@
     </li>
 </ul>
 
-<search-input [(search)]="filters.search"></search-input>
+<search-input [search]="filters.search" (searchChange)="onSearch($event)"></search-input>
 
 <div class="mb-5 d-flex align-items-center justify-content-between">
     <div class="tag bone link">Categories</div>

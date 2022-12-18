@@ -4,6 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { isValid } from 'date-fns';
 
 export abstract class PageComponent<T> {
+
+    queryParams: Partial<T> = {};
+    private initialQueryParams: Partial<T> = {};
+
     constructor(
         protected router: Router,
         protected route: ActivatedRoute,
@@ -11,28 +15,34 @@ export abstract class PageComponent<T> {
         protected changeRef: ChangeDetectorRef
     ) { }
 
-    protected subscribeParamsChange(func?: () => void) {
+    protected queryParamsSubscribe(func?: () => void) {
         this.route.queryParams.subscribe(params => {
+            this.queryParams = { ...this.initialQueryParams };
             Object.keys(params).map(key => {
-                if ((<any>this)[key]) {
-
-                    let value: any = params[key]
-                    if (key.includes('date')) {
-                        if (!isValid(new Date(value))) {
-                            return;
-                        }
-                        value = new Date(value);
+                let value: any = params[key]
+                if (key.includes('date')) {
+                    if (!isValid(new Date(value))) {
+                        return;
                     }
-
-                    (<any>this)[key] = value;
+                    value = new Date(value);
                 }
+                if (key.startsWith('is')) {
+                    value = value === 'true';
+                }
+
+                this.queryParams[key as keyof T] = value;
             })
             func && func();
             this.changeRef.markForCheck();
         });
     }
 
-    protected setQueryParam = (queryParams: Partial<T>) => this.router.navigate([], {
+    protected queryParamsInit = (params: Partial<T>) => {
+        this.queryParams = params;
+        this.initialQueryParams = { ...params };
+    }
+
+    protected queryParamsSet = (queryParams: Partial<T>) => this.router.navigate([], {
         relativeTo: this.route,
         queryParams,
         queryParamsHandling: 'merge'

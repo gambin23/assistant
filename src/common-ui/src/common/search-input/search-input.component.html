@@ -2,6 +2,5 @@
     <span class="input-group-text">
         <icon type="solid" name="magnifying-glass"></icon>
     </span>
-    <input type="search" class="form-control" placeholder="Search…" [ngModel]="search"
-        (ngModelChange)="onSearch($event)">
+    <input type="search" class="form-control" placeholder="Search…" [formControl]="searchControl">
 </div>

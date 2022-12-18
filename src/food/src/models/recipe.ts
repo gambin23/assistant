@@ -17,9 +17,9 @@ export interface Recipe {
 }
 
 export interface RecipesFilters {
-    search: string;
-    categories: string[];
-    sort: SortOrder;
+    search?: string;
+    categories?: string[];
+    sort?: SortOrder;
     isFavourite?: boolean;
     isArchived?: boolean;
 }
@@ -39,17 +39,10 @@ export const recipeSkeleton: Recipe = {
 
 export const recipesSkeleton: Recipe[] = [
     recipeSkeleton,
-    {
-        id: '2',
-        name: 'Tuna Salad',
-        description: 'A tuna salad with eggs, beans and fresh leave for the whole family',
-        userId: 'user-id',
-        dateCreated: new Date(),
-        cookTime: 20,
-        categories: ['salad', 'fish'],
-        ingredients: ['Tuna 240mg', 'Borlotti beans', '2 boiled eggs', 'Salad mix'],
-        method: ['Boil 2 eggs and peal them', 'Cut some fresh vegetables and mix together', 'Open beans and tuna and mix them together'],
-        image: 'https://firebasestorage.googleapis.com/v0/b/athena-5c3e6.appspot.com/o/recipes%2FzDikwc06W8LSGhsZfPYh.jpg?alt=media&token=e1487ddc-182f-48a7-ab01-e8628f1b0f54'
-    }
+    recipeSkeleton,
+    recipeSkeleton,
+    recipeSkeleton,
+    recipeSkeleton,
+    recipeSkeleton
 ]
 

@@ -5,7 +5,7 @@ import { IconComponent } from '@assistant/common-ui';
 import { routeFoodRecipes, routeFoodSearchRecipe } from '../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
 import { Recipe, RecipesFilters, recipesSkeleton } from '../../models/recipe';
-import { RecipesFiltersComponent } from '../../components/recipes-filters/recipes-filters.component';
+import { RecipesFiltersComponent } from '../../common/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesActions } from '../../store/recipes/recipes.actions';
 

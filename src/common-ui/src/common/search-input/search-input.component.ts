@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Subscription, debounceTime } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
@@ -10,14 +11,30 @@ import { IconComponent } from '../icon/icon.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         IconComponent
     ]
 })
 export class SearchInputComponent {
 
-    @Input() search = '';
+    @Input() search: string | undefined = '';
     @Output() searchChange = new EventEmitter<string>();
 
-    onSearch =(search: string) => this.searchChange.emit(search);
+    searchControl = new FormControl<string>('', { nonNullable: true });
+    private subscription = new Subscription();
+
+    ngOnInit() {
+        this.searchControl.setValue(this.search || '');
+        this.subscription = this.searchControl.valueChanges.pipe(
+            debounceTime(500)
+        ).subscribe(search =>
+            this.searchChange.emit(search)
+        );
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
+    onSearch = (search: string) => this.searchChange.emit(search);
 }

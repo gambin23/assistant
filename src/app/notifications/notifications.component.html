@@ -1,8 +1,8 @@
 <ul class="nav mb-3">
-    <li class="nav-link" [class.active]="view === 'all'" (click)="onChangeView()">
+    <li class="nav-link" [class.active]="queryParams.view === 'all'" (click)="onChangeView()">
         All
     </li>
-    <li class="nav-link" [class.active]="view === 'unread'" (click)="onChangeView()">
+    <li class="nav-link" [class.active]="queryParams.view === 'unread'" (click)="onChangeView()">
         Unread
     </li>
     <button class="btn btn-link ms-auto">

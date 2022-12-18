@@ -27,7 +27,6 @@ export class NotificationsComponent extends PageComponent<NotificationFilters> i
     notifications$!: Observable<Notification[]>;
     isBusy$!: Observable<boolean>;
     apps$!: Observable<Dictionary<App>>;
-    view: NotificationView = 'all';
 
     constructor(
         router: Router,
@@ -44,14 +43,18 @@ export class NotificationsComponent extends PageComponent<NotificationFilters> i
     ngOnInit() {
         this.isBusy$ = this.notificationsSelector.isBusy$();
         this.apps$ = this.appsSelector.apps$();
-        this.subscribeParamsChange(() => {
+
+        this.queryParamsInit({
+            view: 'all'
+        });
+        this.queryParamsSubscribe(() => {
             this.notifications$ = this.notificationsSelector.notifications$({
-                view: this.view
+                view: this.queryParams.view
             });
         });
     }
 
-    onChangeView = () => this.setQueryParam({ view: this.view === 'all' ? 'unread' : 'all' });
+    onChangeView = () => this.queryParamsSet({ view: this.queryParams.view === 'all' ? 'unread' : 'all' });
     formatDate = (date: Date) => formatDistance(date, new Date(), { addSuffix: true });
     onClick = (notification: Notification) => {
         if (notification.link) {

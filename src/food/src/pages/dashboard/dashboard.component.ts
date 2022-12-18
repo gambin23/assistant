@@ -27,8 +27,6 @@ import { DashboardQueryParams } from './dashboard.model';
 })
 export default class DashboardPageComponent extends PageComponent<DashboardQueryParams> implements OnInit {
 
-    date = new Date();
-    meal: MealType = 'lunch';
     day$!: Observable<Calendar>;
     week$!: Observable<Calendar[]>;
     recipes$!: Observable<Recipe[]>;
@@ -49,13 +47,19 @@ export default class DashboardPageComponent extends PageComponent<DashboardQuery
     ngOnInit(): void {
         this.recipes$ = this.recipesSelector.recipes$();
         this.isBusy$ = this.calendarSelector.isBusy$();
-        super.subscribeParamsChange(() => {
-            this.day$ = this.calendarSelector.day$(this.date);
-            this.week$ = this.calendarSelector.week$(this.date);
+
+        this.queryParamsInit({
+            date: calendarDate(new Date()),
+            meal: 'lunch'
+        });
+        this.queryParamsSubscribe(() => {
+            this.day$ = this.calendarSelector.day$(this.queryParams.date!);
+            this.week$ = this.calendarSelector.week$(this.queryParams.date!);
         });
     }
 
-    onDateChange = (date: Date) => this.setQueryParam({ date: calendarDate(date) });
-    onMealChange = (meal: MealType) => this.setQueryParam({ meal });
-    onRecipeChange = (id: string) => this.calendarActions.patch(calendarDate(this.date), { [this.meal]: id });
+    onDateChange = (date: Date) => this.queryParamsSet({ date: calendarDate(date) });
+    onMealChange = (meal: MealType) => this.queryParamsSet({ meal });
+    onRecipeChange = (id: string) => this.calendarActions.patch(calendarDate(this.queryParams.date!), { [this.queryParams.meal!]: id });
+    newDate = (date: string) => new Date(date);
 }
