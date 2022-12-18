@@ -1,5 +1,5 @@
-<recipes-filters [filters]="queryParams" [showFavouriteArchived]="true" (viewChanged)="onViewChanged($event)"
-    (filtered)="onFiltered($event)">
+<recipes-filters [filters]="queryParams" [showFavouriteArchived]="true" [categories]="(categories$|async)!"
+    (viewChanged)="onViewChanged($event)" (filtered)="onFiltered($event)">
 </recipes-filters>
 
 <div class="row">

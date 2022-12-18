@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { ImageDirective, NoResultModule, PageComponent } from '@assistant/common-ui';
-import { Recipe } from '@assistant/food/models';
+import { Category, Recipe } from '@assistant/food/models';
 import { routeFoodNewRecipe, routeFoodRecipe } from './../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
 import { RecipesFiltersComponent } from '../../common/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesSelector } from '../../store/recipes/recipes.selector';
 import { RecipesActions } from '../../store/recipes/recipes.actions';
+import { CategoriesSelector } from '../../store/categories/categories.selector';
 import { RecipesFilters } from '../../models/recipe';
 import { RecipesQueryParams } from './recipes.model';
 
@@ -31,6 +32,7 @@ import { RecipesQueryParams } from './recipes.model';
 export default class RecipesPageComponent extends PageComponent<RecipesQueryParams> implements OnInit {
 
     recipes$!: Observable<Recipe[]>;
+    categories$!:Observable<Category[]>;
     isBusy$!: Observable<boolean>;
 
     constructor(
@@ -39,13 +41,15 @@ export default class RecipesPageComponent extends PageComponent<RecipesQueryPara
         title: Title,
         changeRef: ChangeDetectorRef,
         private recipesSelector: RecipesSelector,
-        private recipesActions: RecipesActions
+        private recipesActions: RecipesActions,
+        private categoriesSelector: CategoriesSelector
     ) {
         super(router, route, title, changeRef);
     }
 
     ngOnInit() {
         this.isBusy$ = this.recipesSelector.isBusy$();
+        this.categories$ = this.categoriesSelector.categories$();
 
         this.queryParamsInit({
             search: '',

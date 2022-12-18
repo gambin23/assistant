@@ -1,4 +1,4 @@
-<recipes-filters (filtered)="onFiltered($event)" (viewChanged)="onViewChanged($event)"></recipes-filters>
+<recipes-filters (filtered)="onFiltered($event)" [categories]="(categories$|async)!" (viewChanged)="onViewChanged($event)"></recipes-filters>
 
 <div class="row">
     <div class="col-md-9">

@@ -1,0 +1,28 @@
+<div (click)="onShow()">
+    <ng-content></ng-content>
+</div>
+
+
+<modal [(show)]="showModal">
+    <modal-header>Modify Categories</modal-header>
+    <modal-body>
+        <search-input [(search)]="search"></search-input>
+        <list [searchMark]="search">
+            <list-item *ngFor="let item of allCategories|searchList:search:'name'" class="py-3 cursor-pointer"
+                [class.active]="isActive(item.id)" (click)="onSelect(item.id)">
+                {{item.name}}
+                <list-item-action>
+                    <icon type="regular" [name]="isActive(item.id) ? 'square-check' : 'square'"></icon>
+                </list-item-action>
+            </list-item>
+        </list>
+    </modal-body>
+    <modal-footer>
+        <button class="btn btn-link" (click)="onClearAll()">
+            Clear All
+        </button>
+        <button class="btn btn-primary" (click)="onSave()">
+            Save
+        </button>
+    </modal-footer>
+</modal>

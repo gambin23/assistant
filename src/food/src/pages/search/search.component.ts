@@ -1,13 +1,16 @@
 import { RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 import { IconComponent } from '@assistant/common-ui';
+import { Category } from '@assistant/food/models';
 import { routeFoodRecipes, routeFoodSearchRecipe } from '../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
 import { Recipe, RecipesFilters, recipesSkeleton } from '../../models/recipe';
 import { RecipesFiltersComponent } from '../../common/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesActions } from '../../store/recipes/recipes.actions';
+import { CategoriesSelector } from '../../store/categories/categories.selector';
 
 @Component({
     selector: 'search-page',
@@ -25,9 +28,17 @@ import { RecipesActions } from '../../store/recipes/recipes.actions';
 export default class SearchPageComponent {
 
     recipes = recipesSkeleton;
+    categories$!: Observable<Category[]>;
     view: RecipeView = 'grid';
 
-    constructor(private recipesActions: RecipesActions) { }
+    constructor(
+        private recipesActions: RecipesActions,
+        private categoriesSelector: CategoriesSelector
+    ) { }
+
+    ngOnInit() {
+        this.categories$ = this.categoriesSelector.categories$();
+    }
 
     routeFoodRecipes = routeFoodRecipes;
     routeFoodSearchRecipe = routeFoodSearchRecipe;

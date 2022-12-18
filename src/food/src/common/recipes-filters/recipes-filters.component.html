@@ -1,11 +1,11 @@
 <ul *ngIf="showFavouriteArchived" class="nav mb-3">
-    <li class="nav-link" (click)="showAll()" [class.active]="!filters.isFavourite && !filters.isArchived">
+    <li class="nav-link" (click)="onShowAll()" [class.active]="!filters.isFavourite && !filters.isArchived">
         All
     </li>
-    <li class="nav-link" (click)="showFavourites()" [class.active]="filters.isFavourite">
+    <li class="nav-link" (click)="onShowFavourites()" [class.active]="filters.isFavourite">
         Favourites
     </li>
-    <li class="nav-link" (click)="showArchived()" [class.active]="filters.isArchived">
+    <li class="nav-link" (click)="onShowArchived()" [class.active]="filters.isArchived">
         Archived
     </li>
 </ul>
@@ -13,7 +13,13 @@
 <search-input [search]="filters.search" (searchChange)="onSearch($event)"></search-input>
 
 <div class="mb-5 d-flex align-items-center justify-content-between">
-    <div class="tag bone link">Categories</div>
+    <food-recipe-select-categories [categories]="filters.categories || []" [allCategories]="categories"
+        (updated)="onUpdatedCategories($event)">
+        <div class="tag bone link">
+            Categories
+            <span *ngIf="filters.categories?.length">{{filters.categories?.length}}</span>
+        </div>
+    </food-recipe-select-categories>
     <div>
         <button class="btn btn-link pe-0" (click)="onChangeSort()">
             <icon type="solid" [name]="filters.sort === 'asc' ? 'arrow-up-a-z' : 'arrow-up-z-a'"></icon>

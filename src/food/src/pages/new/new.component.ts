@@ -6,7 +6,7 @@ import { Recipe } from '@assistant/food/models';
 import { NewRecipeSelector } from './../../store/new-recipe/new-recipe.selector';
 import { NewRecipeActions } from './../../store/new-recipe/new-recipe.actions';
 import { FoodRecipeEditHeaderComponent } from './../../common/recipe-edit-header/recipe-edit-header.component';
-import { FoodRecipeEditCategoriesComponent } from './../../common/recipe-edit-categories/recipe-edit-categories.component';
+import { FoodRecipeEditCategoriesComponent } from '../../common/recipe-edit-categories/recipe-edit-categories.component';
 import { FoodRecipeEditCooktimeComponent } from './../../common/recipe-edit-cooktime/recipe-edit-cooktime.component';
 import { FoodRecipeEditIngredientsComponent } from './../../common/recipe-edit-ingredients/recipe-edit-ingredients.component';
 import { FoodRecipeEditMethodComponent } from './../../common/recipe-edit-method/recipe-edit-method.component';
