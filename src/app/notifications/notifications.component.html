@@ -22,10 +22,15 @@
                 <span class="bone">{{notification.message}}</span>
                 <div class="caption bone">{{formatDate(notification.date)}}</div>
             </div>
-            <list-item-action>
-                <button class="btn btn-link text-secondary bone" (click)="onRead($event, notification)">
-                    <icon type="solid" name="ellipsis"></icon>
-                </button>
+            <list-item-action *ngIf="!notification.read">
+                <dropdown>
+                    <button dropdownToggle class="btn btn-link text-secondary bone">
+                        <icon type="solid" name="ellipsis"></icon>
+                    </button>
+                    <dropdown-menu>
+                        <dropdown-item (click)="onRead($event, notification)">Mark as read</dropdown-item>
+                    </dropdown-menu>
+                </dropdown>
             </list-item-action>
         </list-item>
     </list>

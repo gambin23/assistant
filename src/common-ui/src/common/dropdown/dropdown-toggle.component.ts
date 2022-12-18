@@ -14,7 +14,8 @@ export class DropdownToggleComponent {
 
     @Output() clicked = new EventEmitter();
 
-    @HostListener('click') onClick() {
+    @HostListener('click', ['$event']) onClick(e: Event) {
+        e.stopPropagation();
         this.clicked.emit()
     }
 }

@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { formatDistance } from 'date-fns';
 import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector, NotificationFilters, NotificationView } from '@assistant/common-sdk';
-import { AvatarComponent, IconComponent, ListModule, NoResultModule, PageComponent } from '@assistant/common-ui';
+import { AvatarComponent, DropdownModule, IconComponent, ListModule, NoResultModule, PageComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'notifications',
@@ -18,7 +18,8 @@ import { AvatarComponent, IconComponent, ListModule, NoResultModule, PageCompone
         ListModule,
         IconComponent,
         NoResultModule,
-        AvatarComponent
+        AvatarComponent,
+        DropdownModule
     ]
 })
 export class NotificationsComponent extends PageComponent<NotificationFilters> implements OnInit {
