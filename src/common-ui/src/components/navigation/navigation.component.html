@@ -5,25 +5,24 @@
                 <icon name="square-caret-left" type="solid" size="xs"></icon>
             </div>
             <ng-container *ngIf="activeApp$|async as activeApp">
-                <div class="navbar-header bg-gradient">
-                    <div class="dropdown" tabindex="0">
-                        <div [routerLink]="''">
-                            <icon [name]="activeApp.icon" type="solid" size="xl"></icon>
+                <div dropdown class="navbar-header bg-gradient px-0">
+                    <div dropdownToggle>
+                        <icon [name]="activeApp.icon" type="solid" size="xl" class="p-3"></icon>
+                    </div>
+                    <div dropdownMenu>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="dropdown-header">Switch to</h3>
+                            <a [routerLink]="''">
+                                <div class="p-3 ms-5 text-nowrap">
+                                    All Apps
+                                    <icon type="solid" name="house-crack"></icon>
+                                </div>
+                            </a>
                         </div>
-                        <ul class="dropdown-menu">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="dropdown-header">Switch to</h3>
-                                <a [routerLink]="''">
-                                    <div class="p-3 ms-5 text-nowrap">All Apps svg</div>
-                                </a>
-                            </div>
-                            <a [routerLink]="'/finance'">
-                                <li class="dropdown-item">svg Finance</li>
-                            </a>
-                            <a [routerLink]="'/food'">
-                                <li class="dropdown-item">svg Food</li>
-                            </a>
-                        </ul>
+                        <a dropdownItem *ngFor="let app of apps$|async|keyvalue" [routerLink]="app.key">
+                            <icon type="solid" [name]="app.value.icon" class="me-3"></icon>
+                            {{app.value.name}}
+                        </a>
                     </div>
                 </div>
                 <div class="navbar navbar-menu">

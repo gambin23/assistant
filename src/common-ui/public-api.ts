@@ -10,6 +10,7 @@ export * from './src/common/date-picker-modal/date-picker-modal.component';
 export * from './src/common/settings-card/settings-card.module';
 export * from './src/common/no-result/no-result.module';
 export * from './src/common/search-input/search-input.component';
+export * from './src/common/dropdown/dropdown.component';
 
 export * from './src/components/page.component';
 export * from './src/components/alert/alert.module';

@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { App, AppRoutes, AppsSelector, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
+import { App, AppRoutes, AppsSelector, Dictionary, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
 import { Authentication } from '@assistant/data';
 import { Observable } from 'rxjs';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
+import { DropdownModule } from '../../common/dropdown/dropdown.module';
 import { IconComponent } from '../../common/icon/icon.component';
 
 @Component({
@@ -17,7 +18,8 @@ import { IconComponent } from '../../common/icon/icon.component';
         RouterModule,
         UserStoreModule,
         AvatarComponent,
-        IconComponent
+        IconComponent,
+        DropdownModule
     ]
 })
 export class NavigationComponent implements OnInit {
@@ -25,6 +27,7 @@ export class NavigationComponent implements OnInit {
     @Input() routes: AppRoutes | undefined;
     isAuthenticated$!: Observable<boolean>;
     user$!: Observable<User>;
+    apps$!: Observable<Dictionary<App>>;
     activeApp$!: Observable<App>;
     activeRoutes$!: Observable<AppRoutes>;
     showSidebar = true;
@@ -38,6 +41,7 @@ export class NavigationComponent implements OnInit {
     ngOnInit(): void {
         this.isAuthenticated$ = this.authentication.isAuthenticated$;
         this.user$ = this.userSelector.user$();
+        this.apps$ = this.appsSelector.apps$();
         this.activeApp$ = this.appsSelector.activeApp$();
         this.activeRoutes$ = this.appsSelector.activeRoutes$();
     }
