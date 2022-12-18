@@ -21,6 +21,7 @@
         <list *ngIf="allCategories$|async as allCategories" [searchMark]="search">
             <list-item *ngFor="let item of allCategories|searchList:search:'name'" class="py-3 cursor-pointer"
                 [class.active]="isActive(item.id)" (click)="onSelect(item.id)">
+                <avatar class="me-3" [value]="item.name"></avatar>
                 {{item.name}}
                 <list-item-action>
                     <icon type="regular" [name]="isActive(item.id) ? 'square-check' : 'square'"></icon>

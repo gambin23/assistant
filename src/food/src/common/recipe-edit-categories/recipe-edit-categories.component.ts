@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { isEqual } from 'lodash-es';
 import { Observable } from 'rxjs';
 import { Category } from '@assistant/food/models';
-import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent, SearchListPipe, SearchInputComponent, SearchMarkDirective } from '@assistant/common-ui';
+import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, EditCardBaseComponent, SearchListPipe, SearchInputComponent, SearchMarkDirective, AvatarComponent } from '@assistant/common-ui';
 import { CategoriesSelector } from '../../store/categories/categories.selector';
 
 @Component({
@@ -17,6 +17,7 @@ import { CategoriesSelector } from '../../store/categories/categories.selector';
         ModalModule,
         ListModule,
         TagComponent,
+        AvatarComponent,
         IconComponent,
         SearchInputComponent,
         SearchListPipe,

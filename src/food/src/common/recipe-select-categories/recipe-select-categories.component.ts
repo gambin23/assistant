@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, SearchListPipe, SearchInputComponent, SearchMarkDirective, AvatarComponent } from '@assistant/common-ui';
 import { Category } from '@assistant/food/models';
-import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, SearchListPipe, SearchInputComponent, SearchMarkDirective } from '@assistant/common-ui';
 
 @Component({
     selector: 'food-recipe-select-categories',
@@ -14,6 +14,7 @@ import { EditCardModule, IconComponent, ListModule, ModalModule, TagComponent, S
         ModalModule,
         ListModule,
         TagComponent,
+        AvatarComponent,
         IconComponent,
         SearchInputComponent,
         SearchListPipe,
