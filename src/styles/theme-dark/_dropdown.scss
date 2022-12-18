@@ -1,0 +1,17 @@
+.theme-dark {
+
+    .dropdown * {
+        color: $white;
+    }
+
+    .dropdown-menu {
+        background: lighten($dark, 10);
+    }
+
+    .dropdown-item {
+
+        &:hover {
+            background: $primary;
+        }
+    }
+}
