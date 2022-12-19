@@ -1,14 +1,17 @@
 <ng-container *ngIf="show">
     <div class="fade modal-backdrop" [class.show]="show"></div>
-    <div role="dialog" aria-modal="true" class="modal fade right" [class.show]="show" tabindex="-1"
-        style="display: block;">
+    <div role="dialog" aria-modal="true" class="modal fade" [class.show]="show" [class.right]="align === 'right'"
+        [class.left]="align === 'left'" [class.modal-xl]="size === 'xl'" tabindex="-1" style="display: block;">
         <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content" #modalContent>
-                <div class="modal-header">
+            <div class="modal-content">
+                <div *ngIf="showCloseButton" class="modal-header">
                     <ng-content select="modal-header"></ng-content>
                     <button type="button" class="btn-close" aria-label="Close" (click)="onClose()">
                     </button>
                 </div>
+                <ng-container *ngIf="!showCloseButton">
+                    <ng-content select="modal-header"></ng-content>
+                </ng-container>
                 <ng-content select="modal-body"></ng-content>
                 <ng-content select="modal-footer"></ng-content>
             </div>

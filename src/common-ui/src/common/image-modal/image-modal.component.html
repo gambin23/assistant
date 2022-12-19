@@ -1,0 +1,5 @@
+<modal [(show)]="show" align="center" size="xl" [showCloseButton]="false" (click)="onClose()" (closed)="onClose()">
+    <modal-body>
+        <img *ngIf="src" image [src]="src" class="img-fluid fit-cover w-100" />
+    </modal-body>
+</modal>

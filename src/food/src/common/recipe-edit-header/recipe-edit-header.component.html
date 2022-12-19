@@ -3,7 +3,7 @@
         <div class="card py-0" [class.faded]="oldRecipe.isArchived">
             <div class="row">
                 <div *ngIf="!hideImage" class="col-md-8 py-0">
-                    <div class="position-relative cursor-pointer">
+                    <div class="position-relative cursor-pointer" (click)="onShowImageModal()">
                         <div class="bone">
                             <img image [src]="oldRecipe.image" alt="{{oldRecipe.name}}"
                                 class="img-fluid fit-cover w-100 max-vh-50" />
@@ -51,3 +51,5 @@
         </div>
     </div>
 </div>
+
+<image-modal [(show)]="showImageModal" [src]="oldRecipe.image"></image-modal>
