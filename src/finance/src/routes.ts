@@ -4,7 +4,7 @@ export const routes: AppRoutes = [
     {
         path: 'dashboard',
         title: 'Dashboard',
-        icon: 'rectangle-list',
+        icon: 'bars',
         loadComponent: () => import('./pages/dashboard/dashboard.component')
     },
     {

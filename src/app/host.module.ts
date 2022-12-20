@@ -29,9 +29,9 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         RoutesModule,
         BrowserTitleModule.withPrefix('Assistant |'),
         AppsModule.register([
+            ADMIN_APP,
             FOOD_APP,
-            FINANCE_APP,
-            ADMIN_APP
+            FINANCE_APP
         ]),
         DataModule,
         StoreModule.forRoot(reducers, { metaReducers }),

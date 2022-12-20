@@ -29,7 +29,7 @@
                     <ng-container *ngFor="let route of activeRoutes$|async">
                         <a *ngIf="!route.hidden" class="navbar-item" [routerLink]="[activeApp.id, route.path]"
                             routerLinkActive="active">
-                            <icon [name]="route.icon" type="regular"></icon>
+                            <icon [name]="route.icon" type="solid"></icon>
                             <span>{{route.title}}</span>
                         </a>
                     </ng-container>

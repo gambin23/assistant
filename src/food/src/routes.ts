@@ -5,13 +5,13 @@ export const routes: AppRoutes = [
     {
         path: 'dashboard',
         title: 'Dashboard',
-        icon: 'rectangle-list',
+        icon: 'bars',
         loadComponent: () => import('./pages/dashboard/dashboard.component')
     },
     {
         path: 'search',
         title: 'Search',
-        icon: 'sun',
+        icon: 'magnifying-glass',
         children: [
             {
                 path: '',
