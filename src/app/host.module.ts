@@ -7,6 +7,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { DataModule } from '@assistant/data';
 import { AppsModule, AppStore, reducers, effects } from '@assistant/common-sdk';
 import { AlertModule, BrowserTitleModule, NavigationComponent } from '@assistant/common-ui';
+import { ADMIN_APP } from '@assistant/admin/name';
 import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
@@ -14,7 +15,7 @@ import { RoutesModule } from './host.routes';
 import { NotificationsModule } from './notifications/notifications.module';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({
-    keys: ['user', 'preferences', { apps: ['active'] }, { food: ['newRecipe'] }],
+    keys: ['user', 'preferences', 'apps', { food: ['newRecipe'] }],
     rehydrate: true
 })(reducer);
 
@@ -29,7 +30,8 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         BrowserTitleModule.withPrefix('Assistant |'),
         AppsModule.register([
             FOOD_APP,
-            FINANCE_APP
+            FINANCE_APP,
+            ADMIN_APP
         ]),
         DataModule,
         StoreModule.forRoot(reducers, { metaReducers }),

@@ -37,6 +37,11 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard]
     },
     {
+        path: 'admin',
+        loadChildren: () => import('@assistant/admin').then(x => x.AdminAppModule),
+        canActivate: [AuthenticationGuard]
+    },
+    {
         path: 'food',
         loadChildren: () => import('@assistant/food').then(x => x.FoodAppModule),
         canActivate: [AuthenticationGuard]

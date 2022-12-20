@@ -63,6 +63,18 @@
             "@assistant/finance/models": [
                 "./src/finance/src/models/index.ts"
             ],
+            "@assistant/admin": [
+                "./src/admin/index.ts"
+            ],
+            "@assistant/admin/name": [
+                "./src/admin/name.ts"
+            ],
+            "@assistant/admin/data": [
+                "./src/admin/src/data/index.ts"
+            ],
+            "@assistant/admin/models": [
+                "./src/admin/src/models/index.ts"
+            ],
         }
     },
     "angularCompilerOptions": {
