@@ -1,1 +1,8 @@
-<h1>Admin Dashboard</h1>
+<user-header></user-header>
+
+<div class="row row-cols-md-2 row-cols-1 g-3">
+    <settings-card *ngFor="let app of apps$|async|keyvalue">
+        <settings-card-icon [icon]="app.value.icon"></settings-card-icon>
+        <settings-card-title>{{app.value.name}}</settings-card-title>
+    </settings-card>
+</div>

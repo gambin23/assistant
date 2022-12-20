@@ -8,6 +8,12 @@ export const routes: AppRoutes = [
         loadComponent: () => import('./pages/dashboard/dashboard.component')
     },
     {
+        path: 'users',
+        title: 'Users',
+        icon: 'user',
+        loadComponent: () => import('./pages/users/users.component')
+    },
+    {
         path: '**',
         redirectTo: 'dashboard',
         hidden: true

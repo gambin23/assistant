@@ -22,13 +22,15 @@ export class AppsActions {
     }
 
     loadAppRoutes(id: string, routes: AppRoutes) {
-        routes = routes.map(x => {
-            return {
-                path: x.path,
-                title: x.title,
-                icon: x.icon,
-            }
-        });
+        routes = routes
+            .filter(x => !x.hidden)
+            .map(x => {
+                return {
+                    path: x.path,
+                    title: x.title,
+                    icon: x.icon,
+                }
+            });
         this.store.dispatch(appLoadRoutes({ id, routes }));
     }
 }

@@ -33,12 +33,6 @@
             "@assistant/data": [
                 "./src/data/index.ts"
             ],
-            "@assistant/data/food": [
-                "./src/data/src/food/index.ts"
-            ],
-            "@assistant/data/finance": [
-                "./src/data/src/finance/index.ts"
-            ],
             "@assistant/food": [
                 "./src/food/index.ts"
             ],
