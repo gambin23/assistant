@@ -12,6 +12,8 @@ export * from './src/common/no-result/no-result.module';
 export * from './src/common/search-input/search-input.component';
 export * from './src/common/dropdown/dropdown.module';
 export * from './src/common/image-modal/image-modal.component';
+export * from './src/common/image-upload-modal/image-upload-modal.component';
+
 export * from './src/components/page.component';
 export * from './src/components/alert/alert.module';
 export * from './src/components/user-header/user-header.component';

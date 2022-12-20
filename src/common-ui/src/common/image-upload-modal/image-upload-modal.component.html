@@ -1,0 +1,30 @@
+<modal [(show)]="show" (closed)="onClose()">
+    <modal-header>
+        Upload Image
+    </modal-header>
+    <modal-body>
+        <div class="h-100 d-flex justify-content-center align-items-center p-5">
+            <div class="cursor-pointer p-5 bg-primary-l-50 text-primary text-center border-2 rounded-5 dashed"
+                (drop)="onDropFile($event)" (dragover)="onDragoverFile($event)" (click)="onBrowseFiles()">
+                <input #imageInput accept="image/*" multiple="" type="file" tabindex="-1" class="d-none"
+                    (change)="onSetFile($event)">
+                <div *ngIf="image">
+                    <img [src]="image" alt="0a1dbbde-f449-42e4-982c-fda1b2c26da1" class="w-100">
+                    <button class="btn btn-primary w-100">Browse files…</button>
+                </div>
+                <div *ngIf="!image">
+                    <div class="display-2 py-3">
+                        <icon type="solid" name="cloud-arrow-up"></icon>
+                    </div>
+                    <p>Drag your image here and click <b>Confirm</b> to start uploading</p>
+                    <p>OR</p><br>
+                    <button class="btn btn-primary">Browse files…</button>
+                </div>
+            </div>
+        </div>
+    </modal-body>
+    <modal-footer>
+        <button class="btn btn-link" [disabled]="isBusy" (click)="onClose()">Close</button>
+        <button class="btn btn-primary" [disabled]="isBusy || !file" (click)="onUpload()">Confirm</button>
+    </modal-footer>
+</modal>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IconComponent, ImageDirective, ImageModalComponent } from '@assistant/common-ui';
+import { IconComponent, ImageDirective, ImageModalComponent, ImageUploadModalComponent } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
 import { getCookTime } from '../../models/cook-time';
 
@@ -15,7 +15,8 @@ import { getCookTime } from '../../models/cook-time';
         FormsModule,
         IconComponent,
         ImageDirective,
-        ImageModalComponent
+        ImageModalComponent,
+        ImageUploadModalComponent
     ]
 })
 export class FoodRecipeEditHeaderComponent {
@@ -33,7 +34,9 @@ export class FoodRecipeEditHeaderComponent {
     oldRecipe!: Recipe;
     newName!: string;
     newDescription!: string;
+
     showImageModal = false;
+    showEditImageModal = false;
 
     getCookTime = getCookTime;
     onEdit = () => this.isEdit = true;
@@ -51,4 +54,9 @@ export class FoodRecipeEditHeaderComponent {
     }
 
     onShowImageModal = () => this.showImageModal = true;
+    onShowEditImageModal = (e: Event) => {
+        e.stopPropagation();
+        this.showEditImageModal = true;
+    }
+    onUploadedImage = (image: string) => this.updated.emit({ image });
 }

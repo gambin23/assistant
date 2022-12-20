@@ -4,6 +4,9 @@
             <div class="row">
                 <div *ngIf="!hideImage" class="col-md-8 py-0">
                     <div class="position-relative cursor-pointer" (click)="onShowImageModal()">
+                        <button *ngIf="!readonly" class="position-absolute end-0 btn btn-secondary rounded-0 z-index-1" (click)="onShowEditImageModal($event)">
+                            Edit…
+                        </button>
                         <div class="bone">
                             <img image [src]="oldRecipe.image" alt="{{oldRecipe.name}}"
                                 class="img-fluid fit-cover w-100 max-vh-50" />
@@ -53,3 +56,4 @@
 </div>
 
 <image-modal [(show)]="showImageModal" [src]="oldRecipe.image"></image-modal>
+<image-upload-modal [(show)]="showEditImageModal" imagePath="recipes" [imageName]="oldRecipe.id" (uploaded)="onUploadedImage($event)"></image-upload-modal>
