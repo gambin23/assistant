@@ -6,6 +6,8 @@ export interface User {
     email?: string;
     image?: string;
     apps?: Dictionary<string>;
+    registeredDate?: Date;
+    lastLoginDate?: Date;
 }
 
 export interface UserState extends User { }

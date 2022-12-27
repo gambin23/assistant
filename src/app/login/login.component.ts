@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
                 id: userData?.uid!,
                 name: userData?.displayName!,
                 email: userData?.email!,
-                image: userData?.photoURL!
+                image: userData?.photoURL!,
+                registeredDate: new Date(),
+                lastLoginDate: new Date()
             };
 
             isNewUser ? this.userActions.register(user) : this.userActions.login(user.id);

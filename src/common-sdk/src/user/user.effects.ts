@@ -21,7 +21,10 @@ export class UserEffects {
         ofType(userLogin),
         mergeMap(action => this.usersData.get$(action.id)
             .pipe(
-                map(user => userLoginSuccess({ user: user! })),
+                map(user => {
+                    this.usersData.patch$(action.id, { lastLoginDate: new Date() });
+                    return userLoginSuccess({ user: user! })
+                }),
                 catchError(() => of(userLoginError()))
             ))
     ));

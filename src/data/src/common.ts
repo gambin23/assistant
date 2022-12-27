@@ -8,6 +8,10 @@ export const getEntity = <T>(store: AngularFirestore, list: string, id: string) 
 export const addEntity = <T>(store: AngularFirestore, list: string, id: string, entity: T) =>
     from(store.collection(list).doc(id).set(<DocumentData>entity));
 
+export const patchEntity = <T>(store: AngularFirestore, list: string, id: string, entity: Partial<T>) =>
+    from(store.collection(list).doc(id).set(entity, { merge: true }));
+
+
 export const getList = <T>(store: AngularFirestore, list: string) =>
     store.collection<T>(list).valueChanges().pipe(take(1));
 
