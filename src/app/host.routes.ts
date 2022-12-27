@@ -33,6 +33,11 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard]
     },
     {
+        path: 'subscription',
+        loadChildren: () => import('./subscription/subscription.module').then(x => x.SubscriptionModule),
+        canActivate: [AuthenticationGuard]
+    },
+    {
         path: 'settings',
         component: SettingsComponent,
         canActivate: [AuthenticationGuard]
