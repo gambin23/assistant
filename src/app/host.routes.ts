@@ -24,11 +24,12 @@ const routes: Routes = [
     },
     {
         path: 'account',
-        redirectTo: ''
+        redirectTo: '',
+        canActivate: [AuthenticationGuard]
     },
     {
         path: 'notifications',
-        component: NotificationsComponent,
+        loadChildren: () => import('./notifications/notifications.module').then(x => x.NotificationsModule),
         canActivate: [AuthenticationGuard]
     },
     {
@@ -39,17 +40,17 @@ const routes: Routes = [
     {
         path: 'admin',
         loadChildren: () => import('@assistant/admin').then(x => x.AdminAppModule),
-        canActivate: [AuthenticationGuard]
+        canLoad: [AuthenticationGuard]
     },
     {
         path: 'food',
         loadChildren: () => import('@assistant/food').then(x => x.FoodAppModule),
-        canActivate: [AuthenticationGuard]
+        canLoad: [AuthenticationGuard]
     },
     {
         path: 'finance',
         loadChildren: () => import('@assistant/finance').then(x => x.FinanceAppModule),
-        canActivate: [AuthenticationGuard]
+        canLoad: [AuthenticationGuard]
     },
     {
         path: '**',

@@ -11,6 +11,7 @@ import { AlertEffects } from '../alert/alert.effects';
 import { notificationsReducer } from '../notifications/notifications.reducer';
 import { NotificationsState } from '../notifications/notifications.model';
 import { NotificationsEffects } from '../notifications/notifications.effects';
+import { UserEffects } from '../user/user.effects';
 
 export interface AppStore {
     user: UserState;
@@ -28,6 +29,6 @@ export const reducers: ActionReducerMap<AppStore> = {
     notifications: notificationsReducer
 }
 
-export const effects = [AlertEffects, NotificationsEffects];
+export const effects = [UserEffects, AlertEffects, NotificationsEffects];
 
 export const setState = <T>(state: T, partial: Partial<T>) => { return { ...state, ...partial } }

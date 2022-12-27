@@ -12,7 +12,6 @@ import { FOOD_APP } from '@assistant/food/name';
 import { FINANCE_APP } from '@assistant/finance/name';
 import { HostComponent } from './host.component';
 import { RoutesModule } from './host.routes';
-import { NotificationsModule } from './notifications/notifications.module';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({
     keys: ['user', 'preferences', 'apps', { food: ['newRecipe'] }],
@@ -38,8 +37,7 @@ const metaReducers: Array<MetaReducer<AppStore, any>> = [localStorageSyncReducer
         EffectsModule.forRoot(effects),
         StoreDevtoolsModule.instrument(),
         NavigationComponent,
-        AlertModule,
-        NotificationsModule
+        AlertModule
     ]
 })
 export class HostModule {

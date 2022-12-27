@@ -52,7 +52,8 @@ export class FoodCalendarDayComponent {
         this.showRecipesModal = false;
     }
     onRandom = () => {
-        const randomId = Math.floor(Math.random() * this.recipes.length - 1);
+        const randomId = Math.floor(Math.random() * this.recipes.length);
+        console.log(randomId);
         this.recipeChange.emit(this.recipes[randomId].id);
     }
 }

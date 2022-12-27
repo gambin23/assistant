@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, of } from 'rxjs';
+import { map } from 'rxjs';
 import { Notification } from '@assistant/common-sdk';
 import { addUserEntity, getUserList, patchUserEntity } from './common';
 
