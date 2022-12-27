@@ -4,7 +4,7 @@ import { Recipe, RecipesFilters } from '@assistant/food/models';
 import { map, take } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class SearchData {
+export class SearchRecipesData {
 
     constructor(private store: AngularFirestore) { }
 
