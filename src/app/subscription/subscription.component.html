@@ -1,22 +1,43 @@
+<div class="row mb-3">
+    <div class="col">
+        <ul class="nav">
+            <li *ngFor="let item of subscriptionLength" class="nav-link" (click)="onChangeSubscriptionLength(item)"
+                [class.active]="item === activeSubscriptionLength">
+                {{item.name}}
+            </li>
+        </ul>
+    </div>
+</div>
 <settings-card>
     <settings-card-icon icon="circle-dollar-to-slot"></settings-card-icon>
     <settings-card-title>Subscription</settings-card-title>
     <settings-card-description>Choose or update your plan!</settings-card-description>
 </settings-card>
-
-<div class="my-3">
-
-</div>
-
 <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-3">
     <div *ngFor="let subscription of subscriptions" class="px-2">
         <div class="card h-100">
-            <div class="card-header pt-3 text-center">
-                <h3>
-                    {{subscription.name}}
-                    <span class="text-primary">${{subscription.price}}</span>
-                </h3>
-                <p class="caption">{{activeSubscriptionLength.name}}</p>
+            <div class="card-header pt-3 d-flex">
+                <div dropdown *ngIf="apps$|async as apps">
+                    <div dropdownToggle class="cursor-pointer">
+                        <icon type="solid" [name]="apps[activeApp].icon" size="2x"></icon>
+                    </div>
+                    <ul dropdownMenu>
+                        <li dropdownItem *ngFor="let app of apps|keyvalue" (click)="onChangeApp(app.key)">
+                            <icon type="solid" [name]="app.value.icon" class="me-2"></icon>
+                            {{app.value.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center w-100">
+                    <h3>
+                        {{subscription.name}}
+                        <span *ngIf="subscription.type !== 'free'" class="text-primary">
+                            {{subscription.price * activeSubscriptionLength.value * activeSubscriptionLength.accumulator|currency:'EUR':'symbol':'1.0-2'}}
+                        </span>
+                    </h3>
+                    <div class="caption">{{subscription.type !== 'free' ? activeSubscriptionLength.name : 'Unlimited'}}
+                    </div>
+                </div>
             </div>
             <div class="card-body p-3">
                 <div *ngFor="let benefit of subscription.benefits[activeApp]" class="d-flex my-3">

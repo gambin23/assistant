@@ -35,6 +35,7 @@ export class DropdownComponent {
 
     ngAfterContentInit() {
         this.subscription.add(this.toggleComponent.clicked.subscribe(() => this.show = !this.show));
+        this.subscription.add(this.menuComponent.clicked.subscribe(() => this.show = false));
     }
 
     ngOnDestroy() {

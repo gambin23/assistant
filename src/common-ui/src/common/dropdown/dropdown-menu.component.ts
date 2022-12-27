@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, EventEmitter, Output, HostListener } from '@angular/core';
 
 @Component({
     selector: 'dropdown-menu, [dropdownMenu]',
@@ -13,4 +13,8 @@ import { ChangeDetectionStrategy, Component, HostBinding, EventEmitter, Output }
 export class DropdownMenuComponent {
     @Output() clicked = new EventEmitter();
     @HostBinding('class') class = 'dropdown-menu';
+
+    @HostListener('click', ['$event']) onClick(e: Event) {
+        this.clicked.emit()
+    }
 }

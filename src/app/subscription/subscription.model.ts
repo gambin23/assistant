@@ -13,20 +13,24 @@ export interface Subscription {
 
 export interface SubscriptionLength {
     name: string;
+    value: number;
     accumulator: number;
 }
 
 export const subscriptionLength: SubscriptionLength[] = [{
     name: '1 Month',
+    value: 1,
     accumulator: 1
 },
 {
     name: '3 Months',
-    accumulator: 2.5
+    value: 3,
+    accumulator: 0.8335
 },
 {
     name: '1 year',
-    accumulator: 10
+    value: 12,
+    accumulator: 0.75
 }];
 
 export const subscriptionSkeleton: Subscription = {

@@ -39,4 +39,5 @@ export class SubscriptionComponent implements OnInit {
     }
 
     onChangeApp = (app: string) => this.activeApp = app;
+    onChangeSubscriptionLength = (item:SubscriptionLength) => this.activeSubscriptionLength = item;
 }
