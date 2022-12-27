@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getEntity } from '@assistant/data';
 import { Recipe, RecipesFilters } from '@assistant/food/models';
 import { map, take } from 'rxjs';
 
@@ -19,4 +20,6 @@ export class SearchRecipesData {
 
         return recipes;
     }).valueChanges().pipe(take(1));
+
+    get$ = (id: string) => getEntity<Recipe>(this.store, 'foodRecipes', id);
 }

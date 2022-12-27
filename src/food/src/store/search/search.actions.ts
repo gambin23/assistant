@@ -23,4 +23,15 @@ export class SearchActions {
             })
         ).subscribe();
     }
+
+    get = (id: string) => {
+        this.searchSelector.isBusySubject$.next(true);
+        this.searchRecipesData.get$(id).pipe(
+            take(1),
+            map(recipe => {
+                this.searchSelector.recipeSubject$.next(recipe!);
+                this.searchSelector.isBusySubject$.next(false);
+            })
+        ).subscribe();
+    }
 }
