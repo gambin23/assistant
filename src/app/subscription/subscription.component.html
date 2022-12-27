@@ -15,14 +15,13 @@
                 <h3>
                     {{subscription.name}}
                     <span class="text-primary">${{subscription.price}}</span>
-                    <span class="text-sm"> / month</span>
                 </h3>
-                <p class="caption">{{subscription.description}}</p>
+                <p class="caption">{{activeSubscriptionLength.name}}</p>
             </div>
             <div class="card-body p-3">
                 <div *ngFor="let benefit of subscription.benefits[activeApp]" class="d-flex my-3">
                     <icon type="solid" name="check" class="me-2"></icon>
-                    <div class="text-sm">{{benefit}}</div>
+                    <div class="text-sm" [innerHTML]="benefit"></div>
                 </div>
             </div>
             <div *ngIf="subscription.type !== activeSubscription" class="card-footer p-3">

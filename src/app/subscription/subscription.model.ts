@@ -32,10 +32,10 @@ export const subscriptionLength: SubscriptionLength[] = [{
 export const subscriptionSkeleton: Subscription = {
     type: 'free',
     name: 'Free',
-    description: 'The standard free plan.',
+    description: 'The standard free tier.',
     price: 0,
     benefits: {
-        'food': ['Add 50 recipes to your recipes', 'Pick one random recipe for every meal']
+        'food': ['Add <b>50</b> recipes to your recipes', 'Pick one random recipe for every meal']
     }
 }
 
@@ -44,31 +44,31 @@ export const subscriptionsSkeleton: Subscription[] = [
     {
         type: 'bronze',
         name: 'Bronze',
-        description: 'The standard free plan.',
+        description: 'The bronze tier.',
         color: '#CD7F32',
         price: 2,
         benefits: {
-            'food': ['Add 50 recipes to your recipes', 'Pick one random recipe for every meal']
+            'food': ['Add <b>100</b> recipes to your recipes', 'Auto add ingredients to Shopping cart']
         }
     },
     {
         type: 'silver',
         name: 'Silver',
-        description: 'The standard free plan.',
+        description: 'The silver tier.',
         color: '#C0C0C0',
         price: 5,
         benefits: {
-            'food': ['Add 50 recipes to your recipes', 'Pick one random recipe for every meal']
+            'food': ['Add <b>200</b> recipes to your recipes', 'Create group calendar to share with your friends']
         }
     },
     {
         type: 'gold',
         name: 'Gold',
-        description: 'The standard free plan.',
+        description: 'The gold tier.',
         color: '#FFD700',
         price: 8,
         benefits: {
-            'food': ['Add 50 recipes to your recipes', 'Pick one random recipe for every meal']
+            'food': ['Add <b>unlimited</b> recipes to your recipes', 'Picking random recipes is unlimited']
         }
     }
 ]
