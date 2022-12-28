@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '@assistant/common-sdk';
 import { AvatarComponent, DateAgoPipe, ListModule, NoResultModule, SearchInputComponent } from '@assistant/common-ui';
@@ -8,13 +8,12 @@ import { UsersSelector } from '../../store/users/users.selector';
 import { UsersActions } from '../../store/users/users.actions';
 
 @Component({
-    selector: 'admin-users-page',
+    selector: 'admin-user-page',
     standalone: true,
-    templateUrl: './users.component.html',
+    templateUrl: './user.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        RouterModule,
         ListModule,
         AvatarComponent,
         SearchInputComponent,
@@ -22,20 +21,20 @@ import { UsersActions } from '../../store/users/users.actions';
         DateAgoPipe
     ]
 })
-export default class UsersComponent implements OnInit {
+export default class UserComponent implements OnInit {
 
-    users$!: Observable<User[]>;
+    user$!: Observable<User | undefined>;
     isBusy$!: Observable<boolean>;
-    search = '';
 
     constructor(
+        private route: ActivatedRoute,
         private usersActions: UsersActions,
         private usersSelector: UsersSelector
     ) { }
 
     ngOnInit() {
-        this.usersActions.search();
-        this.users$ = this.usersSelector.users$();
+        this.usersActions.get(this.route.snapshot.params['id']);
+        this.user$ = this.usersSelector.user$();
         this.isBusy$ = this.usersSelector.isBusy$();
     }
 

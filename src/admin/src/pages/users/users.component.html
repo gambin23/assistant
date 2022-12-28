@@ -1,1 +1,20 @@
-Users
+<search-input [search]="search" (searchChange)="onSearch($event)"></search-input>
+
+<ng-container *ngIf="users$|async as users">
+    <list [class.skeleton]="isBusy$|async">
+        <a listItem *ngFor="let user of users" [routerLink]="user.id">
+            <avatar theme="dark" class="me-2" [value]="user.name!"></avatar>
+            <div>
+                <div class="bone">{{user.name}}</div>
+                <span class="caption bone">{{user.email}}</span>
+            </div>
+            <list-item-action class="caption bone">
+                {{user.lastLoginDate|dateAgo}}
+            </list-item-action>
+        </a>
+    </list>
+    <no-result *ngIf="!users.length">
+        <no-result-title>No Users</no-result-title>
+        <no-result-description>There are no users to display.</no-result-description>
+    </no-result>
+</ng-container>

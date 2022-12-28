@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { formatDistance } from 'date-fns';
-import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector, NotificationFilters, NotificationView } from '@assistant/common-sdk';
-import { AvatarComponent, DropdownModule, IconComponent, ListModule, NoResultModule, PageComponent } from '@assistant/common-ui';
+import { NotificationsActions, NotificationsSelector, Notification, App, Dictionary, AppsSelector, NotificationFilters } from '@assistant/common-sdk';
+import { AvatarComponent, DateAgoPipe, DropdownModule, IconComponent, ListModule, NoResultModule, PageComponent } from '@assistant/common-ui';
 
 @Component({
     selector: 'notifications',
@@ -19,7 +18,8 @@ import { AvatarComponent, DropdownModule, IconComponent, ListModule, NoResultMod
         IconComponent,
         NoResultModule,
         AvatarComponent,
-        DropdownModule
+        DropdownModule,
+        DateAgoPipe
     ]
 })
 export class NotificationsComponent extends PageComponent<NotificationFilters> implements OnInit {
@@ -55,7 +55,6 @@ export class NotificationsComponent extends PageComponent<NotificationFilters> i
     }
 
     onChangeView = () => this.queryParamsSet({ view: this.queryParams.view === 'all' ? 'unread' : 'all' });
-    formatDate = (date: Date) => formatDistance(date, new Date(), { addSuffix: true });
     onClick = (notification: Notification) => {
         if (notification.link) {
             this.router.navigateByUrl(notification.link);

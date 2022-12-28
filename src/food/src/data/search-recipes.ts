@@ -10,7 +10,8 @@ export class SearchRecipesData {
     constructor(private store: AngularFirestore) { }
 
     search$ = (filters: RecipesFilters) => this.store.collection<Recipe>('foodRecipes', data => {
-        var recipes = data.orderBy('name', filters.sort)
+        var recipes = data
+            .orderBy('name', filters.sort)
             .orderBy('dateCreated', 'desc')
             .where('name', '>=', filters.name)
             .where('name', '<', filters.name + 'z');

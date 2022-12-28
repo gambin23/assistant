@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 import { ModalModule } from '../modal/modal.module';
 
 @Component({
-    selector: 'list',
+    selector: 'list, [list]',
     standalone: true,
     templateUrl: './list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

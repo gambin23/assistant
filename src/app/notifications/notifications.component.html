@@ -20,7 +20,7 @@
             </avatar>
             <div>
                 <span class="bone">{{notification.message}}</span>
-                <div class="caption bone">{{formatDate(notification.date)}}</div>
+                <div class="caption bone">{{notification.date|dateAgo}}</div>
             </div>
             <list-item-action *ngIf="!notification.read">
                 <dropdown>

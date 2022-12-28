@@ -6,7 +6,7 @@ import { App, AppsSelector, Dictionary } from '@assistant/common-sdk';
 import { SettingsCardModule, UserHeaderComponent } from '@assistant/common-ui';
 
 @Component({
-    selector: 'admin-dashboard',
+    selector: 'admin-dashboard-page',
     standalone: true,
     templateUrl: './dashboard.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

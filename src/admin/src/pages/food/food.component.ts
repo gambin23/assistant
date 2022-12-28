@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Recipe } from '@assistant/food/models';
 
 @Component({
-    selector: 'admin-food',
+    selector: 'admin-food-page',
     standalone: true,
     templateUrl: './food.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

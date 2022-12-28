@@ -23,6 +23,7 @@ export * from './src/components/browser-title/browser-title.module';
 export * from './src/components/back-button/back-button.component';
 
 export * from './src/pipes/search-list.pipe';
+export * from './src/pipes/date-ago.pipe';
 
 export * from './src/directives/search-mark.directive';
 export * from './src/directives/image.directive';

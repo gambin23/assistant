@@ -11,7 +11,16 @@ export const routes: AppRoutes = [
         path: 'users',
         title: 'Users',
         icon: 'user',
-        loadComponent: () => import('./pages/users/users.component')
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./pages/users/users.component')
+            },
+            {
+                path: ':id',
+                loadComponent: () => import('./pages/user/user.component')
+            }
+        ]
     },
     {
         path: 'food',
