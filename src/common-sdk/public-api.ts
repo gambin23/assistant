@@ -9,6 +9,8 @@ export * from './src/user/user.module';
 export * from './src/user/user.reducer';
 export * from './src/user/user.selector';
 
+export * from './src/subscriptions/subscriptions.model';
+
 export * from './src/apps/apps.actions';
 export * from './src/apps/apps.model';
 export * from './src/apps/apps.module';

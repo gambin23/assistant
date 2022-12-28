@@ -1,6 +1,6 @@
 import { Dictionary } from '@assistant/common-sdk';
 
-export type SubscriptionType = 'free' | 'bronze' | 'silver' | 'gold';
+export type SubscriptionType = 'free' | 'bronze' | 'silver' | 'gold' | 'admin';
 
 export interface Subscription {
     type: SubscriptionType;
@@ -39,7 +39,7 @@ export const subscriptionSkeleton: Subscription = {
     description: 'The standard free tier.',
     price: 0,
     benefits: {
-        'food': ['Add <b>50</b> recipes to your recipes', 'Pick one random recipe for every meal']
+        'food': ['Add <b>25</b> recipes to your account', 'Pick one random recipe for every meal']
     }
 }
 
@@ -52,7 +52,7 @@ export const subscriptionsSkeleton: Subscription[] = [
         color: '#CD7F32',
         price: 2,
         benefits: {
-            'food': ['Add <b>100</b> recipes to your recipes', 'Auto add ingredients to Shopping cart']
+            'food': ['Add <b>50</b> recipes to your account', 'Auto add ingredients to Shopping cart']
         }
     },
     {
@@ -62,7 +62,7 @@ export const subscriptionsSkeleton: Subscription[] = [
         color: '#C0C0C0',
         price: 5,
         benefits: {
-            'food': ['Add <b>200</b> recipes to your recipes', 'Create group calendar to share with your friends']
+            'food': ['Add <b>100</b> recipes to your account', 'Create group calendar to share with your friends']
         }
     },
     {
@@ -72,7 +72,7 @@ export const subscriptionsSkeleton: Subscription[] = [
         color: '#FFD700',
         price: 8,
         benefits: {
-            'food': ['Add <b>unlimited</b> recipes to your recipes', 'Picking random recipes is unlimited']
+            'food': ['Add <b>250</b> recipes to your account', 'Picking random recipes is unlimited']
         }
     }
 ]

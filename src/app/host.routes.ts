@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationGuard } from './guards/authentication.guard';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
     {
@@ -45,7 +46,7 @@ const routes: Routes = [
     {
         path: 'admin',
         loadChildren: () => import('@assistant/admin').then(x => x.AdminAppModule),
-        canLoad: [AuthenticationGuard]
+        canLoad: [AuthenticationGuard, AdminGuard]
     },
     {
         path: 'food',

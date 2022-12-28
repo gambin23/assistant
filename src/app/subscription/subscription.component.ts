@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Notification, AppsSelector, App, Dictionary } from '@assistant/common-sdk';
+import { AppsSelector, App, Dictionary, Subscription, SubscriptionType, subscriptionLength, subscriptionsSkeleton, SubscriptionLength } from '@assistant/common-sdk';
 import { ListModule, SettingsCardModule, IconComponent, DropdownModule } from '@assistant/common-ui';
-import { Subscription, SubscriptionLength, SubscriptionType, subscriptionLength, subscriptionsSkeleton } from './subscription.model';
 
 @Component({
     selector: 'subscription',
@@ -39,5 +38,5 @@ export class SubscriptionComponent implements OnInit {
     }
 
     onChangeApp = (app: string) => this.activeApp = app;
-    onChangeSubscriptionLength = (item:SubscriptionLength) => this.activeSubscriptionLength = item;
+    onChangeSubscriptionLength = (item: SubscriptionLength) => this.activeSubscriptionLength = item;
 }
