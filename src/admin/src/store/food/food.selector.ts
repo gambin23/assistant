@@ -4,7 +4,7 @@ import { User } from '@assistant/common-sdk';
 import { userSkeleton, usersSkeleton } from '@assistant/admin/models';
 
 @Injectable({ providedIn: 'root' })
-export class FoodSelector {
+export class AdminFoodSelector {
 
     usersSubject$ = new BehaviorSubject(usersSkeleton);
     userSubject$ = new BehaviorSubject<User | undefined>(userSkeleton);

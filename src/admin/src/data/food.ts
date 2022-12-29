@@ -4,7 +4,7 @@ import { patchEntity } from '@assistant/data';
 import { Recipe } from '@assistant/food/models';
 
 @Injectable({ providedIn: 'root' })
-export class FoodData {
+export class AdminFoodData {
 
     constructor(private store: AngularFirestore) { }
 

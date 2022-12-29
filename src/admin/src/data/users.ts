@@ -5,7 +5,7 @@ import { User } from '@assistant/common-sdk';
 import { getEntity } from '@assistant/data';
 
 @Injectable({ providedIn: 'root' })
-export class UsersData {
+export class AdminUsersData {
 
     constructor(private store: AngularFirestore) { }
 

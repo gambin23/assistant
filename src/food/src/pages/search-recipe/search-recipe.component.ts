@@ -7,6 +7,7 @@ import { UserSelector } from '@assistant/common-sdk';
 import { Recipe } from '@assistant/food/models';
 import { RecipesActions, SearchActions, SearchSelector } from '@assistant/food/store';
 import { FoodRecipeComponent } from '@assistant/food/components';
+import { AdminFoodActions } from '@assistant/admin/store';
 
 @Component({
     selector: 'search-recipe-page',
@@ -22,6 +23,7 @@ import { FoodRecipeComponent } from '@assistant/food/components';
 })
 export default class SearchRecipePageComponent implements OnInit {
 
+    recipeId!: string;
     recipe$!: Observable<Recipe | undefined>;
     isBusy$!: Observable<boolean>;
     isAdmin$!: Observable<boolean>;
@@ -31,16 +33,18 @@ export default class SearchRecipePageComponent implements OnInit {
         private searchActions: SearchActions,
         private searchSelector: SearchSelector,
         private recipesActions: RecipesActions,
-        private userSelector: UserSelector
+        private userSelector: UserSelector,
+        private adminFoodActions: AdminFoodActions
     ) { }
 
     ngOnInit() {
-        const recipeId = this.activatedRoute.snapshot.params['id'];
-        this.searchActions.get(recipeId);
-        this.recipe$ = this.searchSelector.recipe$(recipeId);
+        this.recipeId = this.activatedRoute.snapshot.params['id'];
+        this.searchActions.get(this.recipeId);
+        this.recipe$ = this.searchSelector.recipe$(this.recipeId);
         this.isBusy$ = this.searchSelector.isBusy$();
         this.isAdmin$ = this.userSelector.isAdmin$();
     }
 
     onAdded = (recipe: Recipe) => this.recipesActions.add(recipe);
+    onUpdated = (recipe: Partial<Recipe>) => this.adminFoodActions.recipePatch(this.recipeId, recipe);
 }

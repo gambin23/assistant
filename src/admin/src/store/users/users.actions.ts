@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { first, map } from 'rxjs';
-import { UsersData } from '@assistant/admin/data';
+import { AdminUsersData } from '@assistant/admin/data';
 import { userSkeleton, usersSkeleton } from '@assistant/admin/models';
 import { UsersSelector } from './users.selector';
 
@@ -9,7 +9,7 @@ export class UsersActions {
 
     constructor(
         private usersSelector: UsersSelector,
-        private usersData: UsersData
+        private usersData: AdminUsersData
     ) { }
 
     search = (search?: string) => {

@@ -10,6 +10,7 @@ import { NewRecipeState } from './new-recipe/new-recipe.model';
 import { CategoriesEffects } from './categories/categories.effects';
 import { CategoriesState } from './categories/categories.model';
 import { categoriesReducer } from './categories/categories.reducer';
+import { AdminFoodEffects } from '@assistant/admin/store';
 
 export interface FoodStore {
     recipes: RecipesState;
@@ -29,5 +30,6 @@ export const effects = [
     RecipesEffects,
     CalendarEffects,
     NewRecipeEffects,
-    CategoriesEffects
+    CategoriesEffects,
+    AdminFoodEffects
 ];

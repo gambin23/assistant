@@ -1,3 +1,3 @@
-import { FoodEffects } from './food/food.effects';
+import { AdminFoodEffects } from './food/food.effects';
 
-export const adminEffects = [FoodEffects];
+export const adminEffects = [AdminFoodEffects];
