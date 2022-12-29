@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { AppsActions } from '@assistant/common-sdk';
 import { routes } from './routes';
 import { ADMIN_APP } from '../name';
-import { EffectsModule } from '@ngrx/effects';
-import { adminEffects } from './store';
+import { effects, reducers } from './store';
 
 @NgModule({
     imports: [
         RouterModule.forChild(routes),
-        EffectsModule.forFeature(adminEffects)
+        StoreModule.forFeature(ADMIN_APP.id, reducers),
+        EffectsModule.forFeature(effects)
     ]
 })
 export class AdminAppModule {

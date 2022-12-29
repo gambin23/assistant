@@ -1,6 +1,6 @@
 <ng-container *ngIf="recipe$|async as recipe; else empty">
-    <food-recipe [recipe]="recipe" [class.skeleton]="isBusy$|async" [readonly]="!(isAdmin$|async)"
-        (added)="onAdded(recipe)" (updated)="onUpdated($event)"></food-recipe>
+    <food-recipe [recipe]="recipe" [class.skeleton]="isBusy$|async" [readonly]="true"
+        (added)="onAdded(recipe)" ></food-recipe>
 </ng-container>
 
 <ng-template #empty>

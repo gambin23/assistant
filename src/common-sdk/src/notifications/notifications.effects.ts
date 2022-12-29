@@ -8,7 +8,7 @@ import { UserSelector } from '../user/user.selector';
 import { Notification } from './notifications.model';
 import { guid } from '../common';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NotificationsEffects {
 
     load$ = createEffect(() => this.actions$.pipe(

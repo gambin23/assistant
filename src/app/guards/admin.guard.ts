@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Router, UrlTree } from '@angular/router';
 import { UserSelector } from '@assistant/common-sdk';
-import { map, Observable } from 'rxjs';
+import { combineLatest, filter, map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanLoad {
@@ -12,8 +12,9 @@ export class AdminGuard implements CanLoad {
     ) { }
 
     canLoad(): Observable<boolean | UrlTree> {
-        return this.userSelector.isAdmin$().pipe(map(isAdmin =>
-            isAdmin ? true : this.router.createUrlTree([''])
-        ));
+        return combineLatest([this.userSelector.isBusy$(), this.userSelector.isAdmin$()]).pipe(
+            filter(([isBusy, _]) => !isBusy),
+            map(isAdmin => isAdmin ? true : this.router.createUrlTree(['']))
+        );
     }
 }

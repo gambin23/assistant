@@ -5,7 +5,7 @@ import { AdminFoodData } from '@assistant/admin/data';
 import { SearchSelector } from '@assistant/food/store';
 import { foodRecipePatch, foodRecipePatchError, foodRecipePatchSuccess } from './food.actions';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AdminFoodEffects {
 
     patch$ = createEffect(() => this.actions$.pipe(

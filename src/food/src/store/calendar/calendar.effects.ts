@@ -5,7 +5,7 @@ import { UserSelector } from '@assistant/common-sdk';
 import { CalendarData } from '@assistant/food/data';
 import { calendarLoad, calendarLoadError, calendarLoadSuccess, calendarPatch, calendarPatchError, calendarPatchSuccess } from './calendar.actions';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CalendarEffects {
     load$ = createEffect(() => this.actions$.pipe(
         ofType(calendarLoad),

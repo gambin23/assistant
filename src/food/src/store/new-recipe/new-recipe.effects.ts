@@ -9,7 +9,7 @@ import { NewRecipeSelector } from './new-recipe.selector';
 import { newRecipeAdd, newRecipeAddSuccess, newRecipeAddError } from './new-recipe.actions';
 import { routeFoodRecipe } from './../../routes';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NewRecipeEffects {
     add$ = createEffect(() => this.actions$.pipe(
         ofType(newRecipeAdd),

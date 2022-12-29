@@ -7,7 +7,6 @@ import { UserSelector } from '@assistant/common-sdk';
 import { Recipe } from '@assistant/food/models';
 import { RecipesActions, SearchActions, SearchSelector } from '@assistant/food/store';
 import { FoodRecipeComponent } from '@assistant/food/components';
-import { AdminFoodActions } from '@assistant/admin/store';
 
 @Component({
     selector: 'search-recipe-page',
@@ -33,8 +32,7 @@ export default class SearchRecipePageComponent implements OnInit {
         private searchActions: SearchActions,
         private searchSelector: SearchSelector,
         private recipesActions: RecipesActions,
-        private userSelector: UserSelector,
-        private adminFoodActions: AdminFoodActions
+        private userSelector: UserSelector
     ) { }
 
     ngOnInit() {
@@ -46,5 +44,4 @@ export default class SearchRecipePageComponent implements OnInit {
     }
 
     onAdded = (recipe: Recipe) => this.recipesActions.add(recipe);
-    onUpdated = (recipe: Partial<Recipe>) => this.adminFoodActions.recipePatch(this.recipeId, recipe);
 }

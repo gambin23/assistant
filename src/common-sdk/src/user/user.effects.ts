@@ -6,7 +6,7 @@ import { UsersData } from '@assistant/data';
 import { userRegister, userRegisterError, userLogin, userLoginError, userLoginSuccess } from './user.actions';
 import { Router } from '@angular/router';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserEffects {
 
     register$ = createEffect(() => this.actions$.pipe(

@@ -8,7 +8,7 @@ import { RecipesSelector } from './recipes.selector';
 import { routeFoodRecipe } from '../../routes';
 import { FOOD_APP } from '@assistant/food/name';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RecipesEffects {
     load$ = createEffect(() => this.actions$.pipe(
         ofType(recipesLoad),

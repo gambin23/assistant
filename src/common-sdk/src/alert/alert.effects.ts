@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { delay, filter, map } from 'rxjs';
 import { alertAdd, alertRemove } from './alert.actions';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AlertEffects {
 
     add$ = createEffect(() => this.actions$.pipe(

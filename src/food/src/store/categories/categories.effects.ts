@@ -4,7 +4,7 @@ import { catchError, map, mergeMap, of } from 'rxjs';
 import { CategoriesData } from '@assistant/food/data';
 import { categoriesLoad, categoriesLoadSuccess, categoriesLoadError } from './categories.actions';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CategoriesEffects {
     load$ = createEffect(() => this.actions$.pipe(
         ofType(categoriesLoad),
