@@ -5,7 +5,8 @@ import { Observable, switchMap } from 'rxjs';
 import { NoResultModule } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
 import { RecipesActions, RecipesSelector } from '@assistant/food/store';
-import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
+import { FoodRecipeComponent } from '@assistant/food/components';
+
 @Component({
     selector: 'recipe-page',
     standalone: true,

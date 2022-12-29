@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { StepperModule } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
 import { NewRecipeActions, NewRecipeSelector } from '@assistant/food/store';
-import { FoodRecipeEditHeaderComponent } from './../../common/recipe-edit-header/recipe-edit-header.component';
-import { FoodRecipeEditCategoriesComponent } from '../../common/recipe-edit-categories/recipe-edit-categories.component';
-import { FoodRecipeEditCooktimeComponent } from './../../common/recipe-edit-cooktime/recipe-edit-cooktime.component';
-import { FoodRecipeEditIngredientsComponent } from './../../common/recipe-edit-ingredients/recipe-edit-ingredients.component';
-import { FoodRecipeEditMethodComponent } from './../../common/recipe-edit-method/recipe-edit-method.component';
-import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
+import {
+    FoodRecipeComponent,
+    FoodRecipeEditCategoriesComponent,
+    FoodRecipeEditCooktimeComponent,
+    FoodRecipeEditHeaderComponent,
+    FoodRecipeEditIngredientsComponent,
+    FoodRecipeEditMethodComponent
+} from '@assistant/food/components';
 
 @Component({
     selector: 'new-page',

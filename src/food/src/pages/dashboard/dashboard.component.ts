@@ -6,9 +6,8 @@ import { Observable } from 'rxjs';
 import { DashboardHeaderComponent, PageComponent } from '@assistant/common-ui';
 import { Calendar, MealType, Recipe } from '@assistant/food/models';
 import { CalendarActions, CalendarSelector, RecipesSelector, calendarDate } from '@assistant/food/store';
-import { FoodCalendarDayComponent } from '../../common/calendar-day/calendar-day.component';
-import { FoodCalendarWeekComponent } from '../../common/calendar-week/calendar-week.component';
 import { DashboardQueryParams } from './dashboard.model';
+import { FoodCalendarDayComponent, FoodCalendarWeekComponent } from '@assistant/food/components';
 
 @Component({
     selector: 'dashboard-page',

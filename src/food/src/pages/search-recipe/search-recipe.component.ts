@@ -6,7 +6,7 @@ import { NoResultModule } from '@assistant/common-ui';
 import { UserSelector } from '@assistant/common-sdk';
 import { Recipe } from '@assistant/food/models';
 import { RecipesActions, SearchActions, SearchSelector } from '@assistant/food/store';
-import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
+import { FoodRecipeComponent } from '@assistant/food/components';
 
 @Component({
     selector: 'search-recipe-page',

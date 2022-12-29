@@ -6,10 +6,8 @@ import { Observable } from 'rxjs';
 import { ImageDirective, NoResultModule, PageComponent } from '@assistant/common-ui';
 import { Category, Recipe, RecipesFilters } from '@assistant/food/models';
 import { CategoriesSelector, RecipesActions, RecipesSelector } from '@assistant/food/store';
+import { FoodRecipeCardComponent, RecipeView, RecipesFiltersComponent } from '@assistant/food/components';
 import { routeFoodNewRecipe, routeFoodRecipe } from './../../routes';
-import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
-import { RecipesFiltersComponent } from '../../common/recipes-filters/recipes-filters.component';
-import { RecipeView } from '../../common/recipe-card/recipe-card.model';
 import { RecipesQueryParams } from './recipes.model';
 
 @Component({

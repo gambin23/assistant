@@ -47,6 +47,9 @@
             "@assistant/food/models": [
                 "./src/food/src/models/index.ts"
             ],
+            "@assistant/food/components": [
+                "./src/food/src/components/index.ts"
+            ],
             "@assistant/finance": [
                 "./src/finance/index.ts"
             ],
@@ -62,6 +65,9 @@
             "@assistant/finance/models": [
                 "./src/finance/src/models/index.ts"
             ],
+            "@assistant/finance/components": [
+                "./src/finance/src/components/index.ts"
+            ],
             "@assistant/admin": [
                 "./src/admin/index.ts"
             ],
@@ -76,6 +82,9 @@
             ],
             "@assistant/admin/models": [
                 "./src/admin/src/models/index.ts"
+            ],
+            "@assistant/admin/components": [
+                "./src/admin/src/components/index.ts"
             ],
         }
     },
