@@ -14,7 +14,7 @@ import { HostComponent } from './host.component';
 import { RoutesModule } from './host.routes';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => localStorageSync({
-    keys: ['user', 'preferences', 'apps', { food: ['newRecipe'] }],
+    keys: ['preferences', 'apps', { food: ['newRecipe'] }],
     rehydrate: true
 })(reducer);
 

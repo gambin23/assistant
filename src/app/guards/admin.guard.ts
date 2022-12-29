@@ -12,8 +12,8 @@ export class AdminGuard implements CanLoad {
     ) { }
 
     canLoad(): Observable<boolean | UrlTree> {
-        return this.userSelector.userSubscription$().pipe(map(subscription =>
-            subscription === 'admin' ? true : this.router.createUrlTree([''])
+        return this.userSelector.isAdmin$().pipe(map(isAdmin =>
+            isAdmin ? true : this.router.createUrlTree([''])
         ));
     }
 }

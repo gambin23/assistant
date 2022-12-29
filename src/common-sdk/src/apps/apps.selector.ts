@@ -11,7 +11,7 @@ import { selectUser } from '../user/user.selector';
 
 const selectAppState = createSelector((state: AppStore) => state.apps, x => x);
 const selectActiveAppName = createSelector(selectAppState, x => x.active);
-const selectApps = createSelector(selectAppState, selectUser, (x, user) => user.subscriptionType === 'admin' ? x.apps : omit(x.apps, 'admin'));
+const selectApps = createSelector(selectAppState, selectUser, (x, user) => user?.subscriptionType === 'admin' ? x.apps : omit(x.apps, 'admin'));
 const selectActiveApp = createSelector(selectAppState, x => x.apps[x.active]);
 const selectAppRoutes = createSelector(selectAppState, x => x.routes[x.active]);
 

@@ -37,6 +37,4 @@ export default class UserComponent implements OnInit {
         this.user$ = this.usersSelector.user$();
         this.isBusy$ = this.usersSelector.isBusy$();
     }
-
-    onSearch = (search: string) => this.usersActions.search(search);
 }

@@ -37,11 +37,11 @@
             </ng-container>
             <div class="navbar navbar-settings">
                 <a *ngIf="user$|async as user" class="navbar-item d-flex align-items-center" [routerLink]="'/account'"
-                    routerLinkActive="active">
-                    <avatar class="d-inline">
+                    routerLinkActive="active" [class.skeleton]="!user.email">
+                    <avatar class="d-inline bone">
                         <img [src]="user.image" [alt]="user.name" class="rounded-circle align-baseline" />
                     </avatar>
-                    <span>
+                    <span class="bone">
                         {{user.name}}
                     </span>
                 </a>

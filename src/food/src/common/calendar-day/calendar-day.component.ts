@@ -53,7 +53,6 @@ export class FoodCalendarDayComponent {
     }
     onRandom = () => {
         const randomId = Math.floor(Math.random() * this.recipes.length);
-        console.log(randomId);
         this.recipeChange.emit(this.recipes[randomId].id);
     }
 }

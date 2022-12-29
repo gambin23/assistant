@@ -14,4 +14,5 @@ export class UserSelector {
     userId$ = () => this.user$().pipe(map(x => x.id!));
     userName$ = () => this.user$().pipe(map(x => x.name));
     userSubscription$ = () => this.user$().pipe(map(x => x.subscriptionType));
+    isAdmin$ = () => this.user$().pipe(map(x => x.subscriptionType === 'admin'));
 }
