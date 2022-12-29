@@ -3,12 +3,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NoResultModule } from '@assistant/common-ui';
-import { Recipe } from '@assistant/food/models';
 import { UserSelector } from '@assistant/common-sdk';
+import { Recipe } from '@assistant/food/models';
+import { RecipesActions, SearchActions, SearchSelector } from '@assistant/food/store';
 import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
-import { RecipesActions } from '../../store/recipes/recipes.actions';
-import { SearchSelector } from '../../store/search/search.selector';
-import { SearchActions } from '../../store/search/search.actions';
 
 @Component({
     selector: 'search-recipe-page',

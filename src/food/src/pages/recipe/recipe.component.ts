@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Observable, switchMap } from 'rxjs';
 import { NoResultModule } from '@assistant/common-ui';
 import { Recipe } from '@assistant/food/models';
+import { RecipesActions, RecipesSelector } from '@assistant/food/store';
 import { FoodRecipeComponent } from '../../common/recipe/recipe.component';
-import { RecipesSelector } from '../../store/recipes/recipes.selector';
-import { RecipesActions } from '../../store/recipes/recipes.actions';
-
 @Component({
     selector: 'recipe-page',
     standalone: true,

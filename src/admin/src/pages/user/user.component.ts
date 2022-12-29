@@ -4,8 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '@assistant/common-sdk';
 import { AvatarComponent, DateAgoPipe, ListModule, NoResultModule, SearchInputComponent } from '@assistant/common-ui';
-import { UsersSelector } from '../../store/users/users.selector';
-import { UsersActions } from '../../store/users/users.actions';
+import { UsersActions, UsersSelector } from '@assistant/admin/store';
 
 @Component({
     selector: 'admin-user-page',

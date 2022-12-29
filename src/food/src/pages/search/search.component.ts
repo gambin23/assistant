@@ -4,17 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { IconComponent, PageComponent } from '@assistant/common-ui';
-import { Category } from '@assistant/food/models';
+import { Category, Recipe, RecipesFilters } from '@assistant/food/models';
+import { CategoriesSelector, RecipesActions, RecipesSelector, SearchActions, SearchSelector } from '@assistant/food/store';
 import { routeFoodRecipes, routeFoodSearchRecipe } from '../../routes';
 import { FoodRecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
-import { Recipe, RecipesFilters } from '../../models/recipe';
 import { RecipesFiltersComponent } from '../../common/recipes-filters/recipes-filters.component';
 import { RecipeView } from '../../common/recipe-card/recipe-card.model';
-import { RecipesActions } from '../../store/recipes/recipes.actions';
-import { CategoriesSelector } from '../../store/categories/categories.selector';
-import { RecipesSelector } from '../../store/recipes/recipes.selector';
-import { SearchSelector } from '../../store/search/search.selector';
-import { SearchActions } from '../../store/search/search.actions';
 import { RecipesQueryParams } from '../recipes/recipes.model';
 
 @Component({

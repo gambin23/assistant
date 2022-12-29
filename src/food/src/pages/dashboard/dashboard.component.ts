@@ -3,12 +3,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { Calendar, MealType, Recipe } from '@assistant/food/models';
 import { DashboardHeaderComponent, PageComponent } from '@assistant/common-ui';
-import { CalendarSelector } from '../../store/calendar/calendar.selector';
-import { RecipesSelector } from '../../store/recipes/recipes.selector';
-import { CalendarActions } from '../../store/calendar/calendar.actions';
-import { calendarDate } from '../../store/calendar/calendar.functions';
+import { Calendar, MealType, Recipe } from '@assistant/food/models';
+import { CalendarActions, CalendarSelector, RecipesSelector, calendarDate } from '@assistant/food/store';
 import { FoodCalendarDayComponent } from '../../common/calendar-day/calendar-day.component';
 import { FoodCalendarWeekComponent } from '../../common/calendar-week/calendar-week.component';
 import { DashboardQueryParams } from './dashboard.model';
