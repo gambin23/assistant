@@ -14,4 +14,7 @@ export interface User {
     subscriptionEndDate?: Date;
 }
 
-export interface UserState extends User { }
+export interface UserState {
+    data: User;
+    isBusy: boolean;
+}

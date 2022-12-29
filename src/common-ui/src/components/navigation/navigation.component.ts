@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { App, AppRoutes, AppsSelector, Dictionary, User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
+import { App, AppRoutes, AppsSelector, Dictionary, User, UserSelector } from '@assistant/common-sdk';
 import { Authentication } from '@assistant/data';
 import { Observable } from 'rxjs';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
@@ -16,7 +16,6 @@ import { IconComponent } from '../../common/icon/icon.component';
     imports: [
         CommonModule,
         RouterModule,
-        UserStoreModule,
         AvatarComponent,
         IconComponent,
         DropdownModule

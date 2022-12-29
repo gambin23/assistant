@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User, UserSelector, UserStoreModule } from '@assistant/common-sdk';
+import { User, UserSelector } from '@assistant/common-sdk';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 
 @Component({
@@ -11,7 +11,6 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        UserStoreModule,
         AvatarComponent
     ]
 })

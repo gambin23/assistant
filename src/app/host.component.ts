@@ -36,8 +36,7 @@ export class HostComponent implements OnInit, OnDestroy {
                 lastLoginDate: new Date()
             };
 
-            isNewUser ? this.userActions.register(user) : this.userActions.login(user.id);
-            this.router.navigate(['']);
+            isNewUser ? this.userActions.register(user.id, user) : this.userActions.login(user.id);
         });
 
         combineLatest([this.router.events, this.appsSelector.apps$()]).subscribe(([event, apps]) => {

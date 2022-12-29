@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { UsersData } from '@assistant/data';
 import { userRegister, userRegisterError, userLogin, userLoginError, userLoginSuccess } from './user.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserEffects {
@@ -32,5 +33,6 @@ export class UserEffects {
     constructor(
         private actions$: Actions,
         private usersData: UsersData,
+        private router: Router
     ) { }
 }

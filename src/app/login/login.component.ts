@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { Component } from '@angular/core';
-import { UserStoreModule } from '@assistant/common-sdk';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IconComponent } from '@assistant/common-ui';
 import { Authentication } from '@assistant/data';
 
@@ -12,13 +13,29 @@ import { Authentication } from '@assistant/data';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        UserStoreModule,
         IconComponent
     ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
 
-    constructor(private authentication: Authentication) { }
+    private subscription = new Subscription();
 
-    login = () => this.authentication.login();
+    constructor(
+        private authentication: Authentication,
+        private router: Router
+    ) { }
+
+    ngOnInit() {
+        this.authentication.isAuthenticated$.subscribe(() => {
+            this.router.navigateByUrl('');
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
+    login = () => {
+        this.authentication.login();
+    }
 }

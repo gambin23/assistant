@@ -5,7 +5,7 @@ import { User } from './user.model';
 export const userLogin = createAction('[USER] Login', props<{ id: string }>());
 export const userLoginSuccess = createAction('[USER] Login Success', props<{ user: User }>());
 export const userLoginError = createAction('[USER] Login Error');
-export const userRegister = createAction('[USER] Register', props<{ user: User }>());
+export const userRegister = createAction('[USER] Register', props<{ id: string, user: User }>());
 export const userRegisterError = createAction('[USER] Register Error');
 
 export const userLogout = createAction('[USER] Logout');
@@ -18,8 +18,8 @@ export class UserActions {
         this.store.dispatch(userLogin({ id }));
     }
 
-    register(user: User) {
-        this.store.dispatch(userRegister({ user }));
+    register(id: string, user: User) {
+        this.store.dispatch(userRegister({ id, user }));
     }
 
     logout() {

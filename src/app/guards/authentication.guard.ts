@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
+import { CanActivate, CanLoad, Router, UrlTree } from '@angular/router';
 import { Authentication } from '@assistant/data';
 import { map, Observable } from 'rxjs';
 
@@ -11,15 +11,10 @@ export class AuthenticationGuard implements CanActivate, CanLoad {
         private authentication: Authentication
     ) { }
 
-    canLoad(): Observable<boolean | UrlTree> {
-        return this.authentication.isAuthenticated$.pipe(map(isAuthenticated =>
-            isAuthenticated ? true : this.router.createUrlTree(['login'])
-        ));
-    }
+    canLoad = (): Observable<boolean | UrlTree> => this.guard();
+    canActivate = (): Observable<boolean | UrlTree> => this.guard();
 
-    canActivate(): Observable<boolean | UrlTree> {
-        return this.authentication.isAuthenticated$.pipe(map(isAuthenticated =>
-            isAuthenticated ? true : this.router.createUrlTree(['login'])
-        ));
-    }
+    private guard = () => this.authentication.isAuthenticated$.pipe(map(isAuthenticated =>
+        isAuthenticated ? true : this.router.createUrlTree(['login'])
+    ));
 }
